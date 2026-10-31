@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101c1b">
+  <title>BRASA — Ecos do Brasil</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="wordmark nav-item" id="homeButton" aria-label="BRASA, voltar ao início"><span class="brand-sigil">✦</span> BRASA<span class="brand-small">ECOS DO BRASIL</span></button>
+    <nav aria-label="Navegação principal"><button class="top-link nav-item" data-screen="roster">ELENCO</button><button class="top-link nav-item" data-screen="arenas">ARENAS</button><button class="top-link nav-item" data-screen="controls">CONTROLES</button></nav>
+    <div class="top-tools"><span id="padStatus" class="device-badge">◈ TECLADO</span><button id="soundButton" class="icon-button nav-item" aria-label="Ativar som" title="Ativar som">♫<span>SOM OFF</span></button><button id="fullButton" class="icon-button nav-item" aria-label="Tela cheia" title="Tela cheia">⛶</button></div>
+  </header>
+  <main id="app"></main>
+  <footer class="site-footer"><span><i class="status-dot"></i> BRASA ARCADE <b>•</b> ARCADE 0.14</span><span id="footerHint"><kbd>↑</kbd><kbd>↓</kbd> NAVEGAR <kbd>ENTER</kbd> CONFIRMAR <kbd>ESC</kbd> VOLTAR</span><span>FEITO DE HISTÓRIAS BRASILEIRAS.</span></footer>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="assets.js"></script><script src="data.js"></script><script src="moves.js"></script><script src="render-fighters.js"></script><script src="render-stages.js"></script><script src="render.js"></script><script src="presentation.js"></script><script src="camera.js"></script><script src="combat.js"></script><script src="combat-fx.js"></script><script src="input.js"></script><script src="world-map.js"></script><script src="story.js"></script><script src="app.js"></script>
+</body>
+</html>
