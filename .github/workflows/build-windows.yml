@@ -1,0 +1,55 @@
+name: Pacote Windows
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm test
+      - run: npm run build:pc
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: BRASA-PC
+          path: |
+            dist/BRASA-PC-v*.zip
+            dist/SHA256SUMS.txt
+          retention-days: 14
+      - name: Criar prerelease privada de desenvolvimento
+        if: github.repository == 'rodrigosantossilv/brasa-ecos-do-brasil' && github.event.repository.private
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_COMMIT: ${{ github.sha }}
+        run: |
+          Get-Command gh -ErrorAction Stop | Out-Null
+          gh --version
+          if ($LASTEXITCODE -ne 0) { throw 'Não foi possível executar o GitHub CLI.' }
+          $tag = 'v0.14.0'
+          $assets = @('dist/BRASA-PC-v0.14.zip', 'dist/SHA256SUMS.txt')
+          foreach ($asset in $assets) {
+            if (-not (Test-Path -LiteralPath $asset -PathType Leaf)) {
+              throw "Arquivo de release ausente: $asset"
+            }
+          }
+          gh release view $tag --repo $env:GH_REPO --json tagName 1>$null 2>$null
+          if ($LASTEXITCODE -eq 0) {
+            throw "A release $tag já existe. Nenhuma release ou anexo será substituído."
+          }
+          $notes = 'Versão de desenvolvimento para Windows, gerada neste commit pelo workflow manual. Baixe o ZIP e confira SHA256SUMS.txt. Pacote sem assinatura digital; esta prerelease não representa aprovação da Steam nem atesta teste físico em outro computador.'
+          gh release create $tag @assets --repo $env:GH_REPO --title 'BRASA 0.14 — versão de desenvolvimento' --notes $notes --prerelease --target $env:RELEASE_COMMIT
+          if ($LASTEXITCODE -ne 0) {
+            throw 'Falha ao criar a prerelease. Releases e anexos existentes não são sobrescritos; consulte o erro acima.'
+          }

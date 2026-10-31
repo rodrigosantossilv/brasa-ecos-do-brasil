@@ -1,0 +1,14 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{spawnSync}=require('node:child_process'),{root,game,scripts,manifest,assets}=require('./lib.cjs');
+function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>{if(['.git','node_modules','dist','build','test-results'].includes(entry.name))return[];const file=path.join(dir,entry.name);return entry.isDirectory()?walk(file):[file];});}
+const files=walk(root);for(const file of files.filter(file=>/\.(?:js|cjs)$/.test(file))){const result=spawnSync(process.execPath,['--check',file],{stdio:'pipe',encoding:'utf8',windowsHide:true});assert(!result.error&&result.status===0,'JavaScript syntax check failed: '+path.relative(root,file));}
+const html=fs.readFileSync(path.join(game,'index.html'),'utf8'),order=[...html.matchAll(/<script\s+src="([^"]+)"\s*>\s*<\/script>/g)].map(match=>match[1]);assert.deepEqual(order,scripts,'Unexpected runtime script order');assert(!/<script[^>]+src=["'](?:https?:)?\/\//i.test(html),'Runtime must be offline');
+for(const name of [...scripts,'index.html','style.css'])assert(fs.existsSync(path.join(game,name)),'Missing runtime file: '+name);
+for(const name of scripts){const source=fs.readFileSync(path.join(game,name),'utf8');assert(!/BrasaNarrator|speechSynthesis|SpeechSynthesisUtterance|data:audio|narrator\./.test(source),'Retired narrator found in '+name);}
+assert(!html.includes('narrator.js'));if(fs.existsSync(path.join(game,'narrator.js'))){const retired=fs.readFileSync(path.join(game,'narrator.js'),'utf8').replace(/\/\*[\s\S]*?\*\//g,'').replace(/\/\/[^\n]*/g,'').trim();assert.equal(retired,'','Retired narrator stub must contain no executable code');}
+const current=manifest(),saved=JSON.parse(fs.readFileSync(path.join(root,'asset-manifest.json'),'utf8'));assert.deepEqual(saved,current,'Asset hashes changed; inspect the change and run npm run assets:manifest');
+const data=assets();assert.equal(data.authoredFighters.length,76);assert.equal(Object.keys(data.pixelStages).length,13);for(const definition of data.authoredFighters)assert.equal(definition.frames.length,64);
+// Report only filenames if a likely credential is found; never print its content.
+const secretPatterns=[/\bgh[pousr]_[A-Za-z0-9]{25,}\b/,/\bgithub_pat_[A-Za-z0-9_]{30,}\b/,/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,/\bAKIA[A-Z0-9]{16}\b/];
+for(const file of files){if(/\.(?:png|ico|jpg|jpeg|gif|webp|mp4|woff2?|ttf|zip|exe)$/i.test(file))continue;const content=fs.readFileSync(file,'utf8');assert(!secretPatterns.some(pattern=>pattern.test(content)),'Possible credential in '+path.relative(root,file));}
+console.log('PASS: JavaScript syntax, 14-script order, offline runtime, '+current.files.length+' SHA256 assets, roster, narrator removal and basic secret scan.');

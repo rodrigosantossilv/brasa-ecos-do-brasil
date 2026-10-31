@@ -1,0 +1,26 @@
+{
+  "name": "brasa-ecos-do-brasil",
+  "version": "0.14.0",
+  "private": true,
+  "description": "Jogo de luta 2D original em pixel art.",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node scripts/serve.cjs",
+    "check": "node scripts/check.cjs",
+    "test": "node scripts/test.cjs",
+    "build:pc": "node scripts/build-pc.cjs",
+    "geometry": "node scripts/generate-geometry.cjs",
+    "assets:manifest": "node scripts/assets-manifest.cjs"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "0.1.100",
+    "pngjs": "7.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rodrigosantossilv/brasa-ecos-do-brasil.git"
+  }
+}
