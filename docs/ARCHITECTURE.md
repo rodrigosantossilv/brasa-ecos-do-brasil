@@ -17,3 +17,11 @@ Os normais elegíveis para uma troca no mesmo passo são examinados antes de apl
 Cada kit possui `movement` com avanço, recuo e salto. A velocidade base considera os atributos; perfis explícitos têm precedência sobre os valores antigos por identidade. A barra de dano recente pertence ao HUD: não altera HP, roda com o tempo de apresentação, pausa com o jogo e sincroniza em cura, novo round e movimento reduzido.
 
 O launcher Windows incorpora HTML e PNGs com manifesto SHA-256. Extrai para a pasta local do aplicativo, preserva `BrowserData` e abre Edge/Chrome em modo aplicativo. O build do repositório é independente do workspace original.
+
+## Contratos0.16
+
+`combat-frame-data.js` compila as durações existentes em frames e projeta o relógio para os renderers antigos; `input-history.js` mantém120ticks e motions opcionais. O motor expõe step/state/stateFrame/moveFrame e usa o mesmo pipeline para teclado, controles e CPU.
+
+`combat-debug.js` lê as caixas do resolver e fornece HUD, timeline e medição de vantagem no treino. O painel fica desligado nas partidas normais. Timers de status permanecem compatíveis com a lógica anterior; não há alegação de FSM totalmente reescrita ou rollback.
+
+`locomotion-data.js` e `locomotion.js` indexam64poses por direção, geradas offline pelo baker a partir da textura original. O renderer carrega os dois atlas selecionados sob demanda. Geometria e margens consideram os bounds novos; a caixa corporal continua estável.

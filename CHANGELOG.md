@@ -1,5 +1,16 @@
 # Histórico
 
+## 0.16.0 — 2026-11-01
+
+- Caminhada refeita para76 lutadores:64 quadros por direção, roupa/paleta estáveis e apoio de pés, com estilos próprios.
+- Relógio inteiro dos ataques, compilador de frame data e estado/stateFrame.
+- Defesa mantém pose de guarda; removido flash de impacto após o recovery.
+- Histórico120 frames e comandos236/623/214 opcionais, sem retirar os botões diretos.
+- Laboratório de treino: pausa, step, caixas, timeline, histórico, vantagem e alvo com guarda configurável.
+- Pacote Windows offline com19 scripts e novos atlas carregados sob demanda.
+- Mantidos76 personagens,13 arenas, especiais, supers, campanha e controles PS/Xbox.
+
+
 ## 0.15.0 — Em desenvolvimento
 
 - Contatos simultâneos sem prioridade arbitrária do jogador 1.

@@ -1,4 +1,4 @@
-# BRASA 0.15 — Guia de golpes e controles
+# BRASA 0.16 — Guia de golpes e controles
 
 76/76 personagens com novas folhas de 64 quadros; 0 personagens ainda usam animação anterior.
 
@@ -1501,3 +1501,8 @@ Combos:
 - **Mensagem Recebida**: H → K → E1.
 
 Arremate: **Ainda Há Tempo de Escolher**.
+
+
+## Treino e comandos0.16
+
+Os atalhos do controle permanecem. Também é possível usar236+leve,623+forte e214+chute como alternativas para os três especiais. No treino, LAB/FRAMES mostra os comandos, startup/active/recovery e vantagem. F1 pausa,F2 avança1 frame,F3 mostra caixas,F4 inputs,F5 reinicia. Consulte [o guia do laboratório](../COMBAT_V16.md).

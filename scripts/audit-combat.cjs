@@ -138,4 +138,8 @@ function generate(){fs.mkdirSync(path.join(root,'reports'),{recursive:true});con
  console.log(JSON.stringify({...evidence,examples:undefined},null,2));return evidence;
 }
 module.exports={api,fighters,DT,NI,NA,game,state,direction,authoritative,hash,AuditSession,commands,measureMove,contactProbe,superProbe,sequence,deterministicChecks,behavioralProbes,generate};
-if(require.main===module)generate();
+if(require.main===module){
+ const actual=crypto.createHash('sha256').update(fs.readFileSync(path.join(root,'game/combat.js'))).digest('hex');
+ if(actual!=='9a28b7a7ecadac8dd7fcd9162f50daf48d8705a0c340d1ff4591a2c8f6072ddd')throw Error('This archived audit targets BRASA0.15. Check out commit47d2a116 before regenerating its historical reports; use the0.16 training laboratory for the current runtime.');
+ generate();
+}

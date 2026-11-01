@@ -1,7 +1,7 @@
 'use strict';
 const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'../game'),s={window:{}};vm.createContext(s);
-for(const f of ['assets.js','data.js','moves.js','combat.js'])vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),s);
+for(const f of ['assets.js','data.js','moves.js','combat-frame-data.js','input-history.js','combat.js'])vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),s);
 const w=s.window,events=[],g=new w.BrasaCombat({fighters:['damiao','caua'].map(id=>w.BRASA_DATA.fighters.find(x=>x.id===id)),fighterScale:1,visualGeometry:true,mode:'versus',onEvent:e=>events.push(e)});
 g.phase='fight';g.timer=Infinity;const[p,e]=g.players;p.x=1400;e.x=p.x+g.minimumDistance(p,e)+1;g.facePlayers();let checked=false;
 for(let n=0;n<120;n++){

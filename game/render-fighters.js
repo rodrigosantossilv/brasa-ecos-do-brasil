@@ -4,6 +4,8 @@
   const canonicalDefinitions=global.BRASA_ASSETS?.canonicalFighters||[];
   const motionDefinitions=global.BRASA_ASSETS?.motionFighters||[];
   const authoredDefinitions=global.BRASA_ASSETS?.authoredFighters||[];
+  const locomotionDefinitions=global.BRASA_ASSETS?.locomotionFighters||[];
+  const locomotionActors=new Map(locomotionDefinitions.map(def=>[def.id,def]));
   const authoredActors=new Map(authoredDefinitions.map(def=>[def.id,def]));
   const actors=new Map(canonicalDefinitions.map(def=>[def.id,def]));
   const motions=new Map(motionDefinitions.map(def=>[def.id,def]));
@@ -20,7 +22,7 @@
       for(const[canvas,item]of Array.from(pendingPortraits))if(images.get(actors.get(idOf(item.data))?.source)?.loaded){pendingPortraits.delete(canvas);if(canvas.isConnected!==false)portrait(canvas,item.data,item.options);}
       if(typeof global.dispatchEvent==='function'&&typeof Event==='function'){
         global.dispatchEvent(new Event('brasa-fighter-art-ready'));
-        if(motionDefinitions.some(def=>def.url===url))global.dispatchEvent(new Event('brasa-walk-art-ready'));
+        if(motionDefinitions.some(def=>def.url===url)||locomotionDefinitions.some(def=>def.url===url))global.dispatchEvent(new Event('brasa-walk-art-ready'));
       }
     };
     slot.image.onerror=()=>{slot.failed=true;};slot.image.src=url;
@@ -33,6 +35,7 @@
   }
   function readyMotion(data){
     const defs=data===undefined?canonicalDefinitions.map(def=>authoredActors.get(def.id)||motions.get(def.id)):[authoredActors.get(idOf(data))||motions.get(idOf(data))];
+    if(data!==undefined){const gait=locomotionActors.get(idOf(data));if(gait)defs.push(gait);}
     for(const def of defs)if(def)request(def.url);
     return defs.length>0&&defs.every(def=>def&&images.get(def.url)?.loaded);
   }
@@ -93,6 +96,11 @@
   }
   function animationFrame(data,pose='idle',time=0,attack=null,options={}){
     const id=idOf(data),def=actors.get(id),motion=motions.get(id);if(!def)return null;
+    const heldWalk=Number.isInteger(options.hitstopFrame)&&options.hitstopFrame>=8&&options.hitstopFrame<24;
+    const gaitPose=heldWalk?(options.hitstopFrame>=16?'backwalk':'walk'):pose;
+    if((!attack||heldWalk)&&!options.canonicalPortrait&&['walk','backwalk','run'].includes(gaitPose)){
+      const gait=global.BrasaLocomotion?.sample(id,gaitPose,time,options);if(gait&&images.get(gait.definition.url)?.loaded)return{...gait,authored:true,motion:false,walk:true,phase:heldWalk?'hitstop':gaitPose};
+    }
     const authored=authoredActors.get(id);if(!options.canonicalPortrait&&authored&&images.get(authored.url)?.loaded)return authoredFrame(authored,pose,time,attack,options);
     const gesture=options.introGesture,gestureFrames=gesture&&motion?.gestures?.[gesture.kind];
     if(!attack&&gestureFrames?.length&&readyMotion(id)){
@@ -204,9 +212,10 @@
   function draw(ctx,data,x,groundY,scale=2.5,pose='idle',face=1,time=0,options={}){
     if(!ctx||![x,groundY].every(Number.isFinite))return false;
     scale=Number.isFinite(scale)&&scale>0?scale:2.5;time=Number.isFinite(time)?time:0;
-    const id=idOf(data),def=actors.get(id),selection=animationFrame(data,pose,time,options.attack,options);if(!def||!selection||!(options.canonicalPortrait?images.get(def.source)?.loaded:ready(id)))return false;
-    const authored=selection.authored?authoredActors.get(id):null,motion=selection.motion?motions.get(id):null,source=authored||motion||def,entry=images.get(authored?authored.url:motion?motion.url:def.source);if(!entry?.loaded)return false;
-    const frame=source.frames[selection.index]||source.frames[0],factor=100*scale/source.standingHeight,dead=['ko','lose'].includes(pose),strike=strikeMotion(options.attack),held=selection.authored&&selection.phase==='hitstop';
+    const id=idOf(data),def=actors.get(id),selection=animationFrame(data,pose,time,options.attack,{...options,worldScale:scale/2.15});if(!def||!selection||!(options.canonicalPortrait?images.get(def.source)?.loaded:ready(id)))return false;
+    const locomotion=selection.locomotion?selection.definition:null;
+    const authored=selection.authored?authoredActors.get(id):null,motion=selection.motion?motions.get(id):null,source=locomotion||authored||motion||def,entry=images.get(locomotion?locomotion.url:authored?authored.url:motion?motion.url:def.source);if(!entry?.loaded)return false;
+    const frame=source.frames[locomotion?selection.locomotionIndex:selection.index]||source.frames[0],factor=100*scale/source.standingHeight,dead=['ko','lose'].includes(pose),strike=strikeMotion(options.attack),held=selection.authored&&selection.phase==='hitstop';
     ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha*=clamp(options.alpha??1);
     shadow(ctx,x,groundY,scale,pose,{...options,contacts:authored?frame.footContacts:null,contactFactor:factor,contactAnchor:frame.anchorX,actorFace:selection.contactMirror?-face:face},groundY);
     ctx.translate(Math.round(x),Math.round(groundY));
@@ -217,7 +226,7 @@
       // settings keep it even when all secondary motion is disabled.
       const offset=global.BrasaSpriteGeometry?.contactOffset(options.attack)||0;if(offset)ctx.translate(offset,0);
       if(dead){const bounds=global.BrasaSpriteGeometry?.get(id)?.frames?.[selection.index],left=bounds?bounds.left*factor:Math.max(0,(frame.anchorX-frame.left)*factor);ctx.translate(20*scale,-left);ctx.rotate(-Math.PI/2);}
-      else bodyMotion(ctx,pose,time,scale,face,options,strike,Math.round((frame.footY-frame.top)*factor));
+      else if(!locomotion)bodyMotion(ctx,pose,time,scale,face,options,strike,Math.round((frame.footY-frame.top)*factor));
       if(pose==='thrown')ctx.rotate(-.7+Math.sin(time*8)*.12);
       if(pose==='dazed')ctx.rotate(Math.sin(time*4.5)*.018);
       if(pose==='dodge'){ctx.translate(-3*scale,0);ctx.rotate(-.035);}

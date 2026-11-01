@@ -1,0 +1,7 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),{createCanvas,loadImage}=require('@napi-rs/canvas');
+const root=path.resolve(__dirname,'..');
+async function main(){const c={window:{}};vm.createContext(c);for(const file of ['assets.js','data.js','locomotion-data.js','locomotion.js'])vm.runInContext(fs.readFileSync(path.join(root,'game',file),'utf8'),c);const ids=['bento','jana','tiao','ramiro','apogeu'],canvas=createCanvas(1280,1000),ctx=canvas.getContext('2d');ctx.fillStyle='#15202a';ctx.fillRect(0,0,1280,1000);ctx.imageSmoothingEnabled=false;ctx.font='16px monospace';
+for(let row=0;row<ids.length;row++){const def=c.window.BrasaLocomotion.get(ids[row]),image=await loadImage(path.join(root,'game',def.url));ctx.fillStyle='#dfc38c';ctx.fillText(ids[row]+' / '+def.rig.walk.mode,12,row*200+23);for(let k=0;k<8;k++){const f=def.frames[k*8],scale=1.15,x=80+k*160,y=row*200+192;ctx.strokeStyle='#648580';ctx.beginPath();ctx.moveTo(k*160,y+.5);ctx.lineTo(k*160+157,y+.5);ctx.stroke();ctx.drawImage(image,f.rasterX,f.rasterY,f.rasterWidth,f.rasterHeight,x-f.anchorX*scale,y-f.footY*scale,f.rasterWidth*scale,f.rasterHeight*scale);}}
+fs.mkdirSync(path.join(root,'build'),{recursive:true});const target=path.join(root,'build/gait-preview.png');fs.writeFileSync(target,canvas.toBuffer('image/png'));console.log(target);}
+main().catch(e=>{console.error(e);process.exitCode=1;});

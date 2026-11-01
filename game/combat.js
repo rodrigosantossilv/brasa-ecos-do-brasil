@@ -73,6 +73,10 @@
       this.seed = Number(options.seed) || 1729;
       this.clock = 0;
       this.simulationClock = 0;
+      this.simulationFrame = 0; this.actionFrame = 0;
+      this.inputBufferFrames = Math.round(clamp(Number(options.inputBufferFrames) || 6, 1, 12));
+      this.debugEvents = []; this.lastAdvantage = [null,null];this.advantageTrials=[null,null];
+      this.trainingGuard='none';
       this.actionSequence = 0;
       this.rng = typeof options.rng === 'function' ? options.rng : () => {
         this.seed = (Math.imul(this.seed, 1664525) + 1013904223) >>> 0;
@@ -99,8 +103,9 @@
           landingImpact:0,verticalSpeed:0,moveSpeed:0,walkSpeed:0,anticipation:0,apex:false,landing:false,jumpDirection:0,
           dashing:false,dashDirection:0,dashProgress:1},
         dashTime:0,dashDuration:0,dashDirection:0,dashSpeed:0,dashCooldown:0,dashQueued:0,lastTapDirection:0,lastTapAt:-Infinity,reaction:null,
-        hp: 1000, maxHp: 1000, meter: 0, maxMeter: 100, rounds: 0, pose: 'idle',
+        hp: 1000, maxHp: 1000, meter: 0, maxMeter: 100, rounds: 0, pose: 'idle', state:'IDLE',stateFrame:0,
         attack: null, stun: 0, blockStun: false, guard: false, crouching: false, grounded: true,
+        inputHistory:global.BrasaInputHistory?new global.BrasaInputHistory(120):null,
         specialCooldown: 0, specialCooldowns: [0, 0, 0], combo: 0, comboTime: 0, comboDamage: 0,
         comboName: '', lastComboName: '', lastComboDamage: 0, comboActions: [], comboTarget: null, comboActionIds: [], inputBuffer: null,
         lastMoveName: '', lastMoveId: '', armor: 0, invulnerable: 0, root: 0, frozen: 0, iceImmunity: 0, defenseCooldown: 0, revive: 0,
@@ -135,6 +140,7 @@
       this.effects.length = 0;
       this.previous = [{}, {}];
       this.ai = { next: 0, pulse: 0, input: {} };
+      this.lastAdvantage=[null,null];this.advantageTrials=[null,null];this.debugEvents=[];
     }
 
     nextRound() {
@@ -150,7 +156,10 @@
       this.resetRound();
     }
 
-    event(type, data = {}) { this.onEvent({ type, ...data }); }
+    event(type, data = {}) {
+      if(this.options.debugCombat){this.debugEvents.push({simulationFrame:this.simulationFrame,event:type,...data});if(this.debugEvents.length>240)this.debugEvents.shift();}
+      this.onEvent({ type, ...data });
+    }
     color(p) { return typeof p.data.color === 'string' ? p.data.color : '#ffb35a'; }
     effect(x, y, kind, color, text = '', life = .42) {
       this.effects.push({ x, y, kind, color, text, life, maxLife: life });
@@ -158,7 +167,8 @@
 
     hitFreeze(attack, blocked, owner) {
       if (this.options.hitstop === false || !this.catalog(this.players[owner].data.id)) return 0;
-      const duration = (blocked ? 2 : attack.special ? 10 : attack.kind === 'heavy' || attack.token === 'heavy' ? 8 : 6) / 60;
+      const frames=attack.frameData||(global.BrasaAttackData?.compile({...attack,startup:attack.startup??0,active:attack.active??1/60,recovery:attack.recovery??0}));
+      const duration = (frames ? blocked?frames.hitstopBlock:frames.hitstopHit : blocked ? 2 : attack.special ? 10 : attack.kind === 'heavy' || attack.token === 'heavy' ? 8 : 6) / 60;
       this.freeze = Math.max(this.freeze, duration);
       this.event('impact', { player: owner, victim: 1 - owner, blocked, duration,
         strength: blocked ? .25 : attack.special ? 1 : attack.kind === 'heavy' || attack.token === 'heavy' ? .7 : .4 });
@@ -176,7 +186,8 @@
       if (!bounds) return {left:BODY.halfWidth*this.fighterScale,right:BODY.halfWidth*this.fighterScale,
         top:BODY.standingHeight*this.fighterScale,bottom:0};
       const factor = 215 * this.fighterScale / (Number(authored?.standingHeight) || 128);
-      return {left:bounds[0]*factor,right:bounds[1]*factor,top:bounds[2]*factor,bottom:bounds[3]*factor};
+      const gait=global.BrasaLocomotion?.envelope(data.id);
+      return {left:Math.max(bounds[0],gait?.left||0)*factor,right:Math.max(bounds[1],gait?.right||0)*factor,top:Math.max(bounds[2],gait?.top||0)*factor,bottom:Math.max(bounds[3],gait?.bottom||0)*factor};
     }
 
     visualBox(p) {
@@ -187,7 +198,7 @@
     spriteFootprint(data, pose, time, attack, options = {}) {
       const geometry=global.BrasaSpriteGeometry,definition=geometry?.get(data.id);
       if (!definition) return null;
-      const native=geometry.bounds(data.id,pose,time,attack,options),factor=215*this.fighterScale/definition.standingHeight;
+      const native=!attack&&global.BrasaLocomotion?.bounds(data.id,pose,time,{...options,worldScale:this.fighterScale})||geometry.bounds(data.id,pose,time,attack,options),factor=215*this.fighterScale/definition.standingHeight;
       return {left:native.left*factor,right:native.right*factor,top:native.top*factor,bottom:native.bottom*factor};
     }
 
@@ -301,21 +312,29 @@
     }
 
     captureInput(p, i, input) {
+      p.inputHistory?.record(input,p.facing,this.simulationFrame,this.actionFrame);
       if (p.inputBuffer && p.inputBuffer.expires < this.simulationClock - 1e-9) p.inputBuffer = null;
       const edge = key => input.pressed?.[key] || input[key] && !this.previous[i][key];
       this.captureDash(p, i, input);
       if(edge('up')&&p.hp>0)p.jumpBufferUntil=this.simulationClock+MOTION.jumpBuffer;
       const directVariant=edge('special2')?1:edge('special3')?2:null;
+      let motion=null;
+      if(this.options.motionInputs===true&&!input.block&&!input.special&&!input.special2&&!input.special3&&!input.super&&p.inputHistory){
+        if(edge('heavy')){const match=p.inputHistory.motion([6,2,3],24);if(match)motion={match,variant:1};}
+        if(!motion&&edge('light')){const match=p.inputHistory.motion([2,3,6],24);if(match)motion={match,variant:0};}
+        if(!motion&&edge('kick')){const match=p.inputHistory.motion([2,1,4],24);if(match)motion={match,variant:2};}
+      }
       const kind = edge('super') || !input.directSpecial && input.heavy && input.special && (edge('heavy') || edge('special')) ? 'super' :
         directVariant!==null ? 'special' :
         input.block && input.kick && (edge('block') || edge('kick')) ? 'dodge' :
         input.block && input.heavy && (edge('block') || edge('heavy')) ? 'grab' :
-        input.block && input.light && (edge('block') || edge('light')) ? 'defense' : ATTACK_KEYS.find(edge);
+        input.block && input.light && (edge('block') || edge('light')) ? 'defense' : motion?'special':ATTACK_KEYS.find(edge);
       if (!kind || p.hp <= 0) return;
       p.dashQueued = 0;
       const forward = p.facing > 0 ? input.right && !input.left : input.left && !input.right;
-      p.inputBuffer = { kind, variant: directVariant!==null ? directVariant : input.directSpecial ? 0 : input.down ? 1 : forward ? 2 : 0,
-        crouching: !!input.down, expires: this.simulationClock + BUFFER_TIME };
+      p.inputBuffer = { kind, variant: directVariant!==null ? directVariant : motion?motion.variant:input.directSpecial ? 0 : input.down ? 1 : forward ? 2 : 0,
+        crouching: !!input.down, expires: this.simulationClock + this.inputBufferFrames/60 };
+      if(motion)p.inputHistory.consumeMotion(motion.match);
     }
 
     captureDash(p, i, input) {
@@ -418,7 +437,38 @@
       return spec;
     }
 
-    update(dt, input = []) {
+    step(input = []) { return this.update(1/60,input); }
+
+    update(dt,input=[]) {
+      if(!(Number(dt)>0))return;
+      const held=this.phase==='fight'&&this.freeze>0;
+      this.simulationFrame++;if(!held)this.actionFrame++;
+      try { return this.updateSimulation(dt,input); }
+      finally {
+        for(const p of this.players){
+          const next=global.BrasaAttackData?.state(p,this.phase)||(p.stun>0?p.blockStun?'BLOCKSTUN':'HITSTUN':p.attack?'ATTACK':'IDLE');
+          if(p.state!==next){this.event('state',{player:this.players.indexOf(p),from:p.state,state:next});p.state=next;p.stateFrame=0;}
+          else if(!held)p.stateFrame++;
+        }
+        if(this.options.debugCombat&&this.phase==='fight')for(let owner=0;owner<2;owner++){
+          const trial=this.advantageTrials[owner];if(!trial)continue;
+          for(const i of [owner,1-owner]){const p=this.players[i],ready=!p.attack&&p.stun<=0&&p.frozen<=0&&p.root<=0&&p.dodgeTime<=0&&p.dashTime<=0&&p.overheat<=0&&p.hp>0;
+            if(ready&&trial.ready[i]===null)trial.ready[i]=this.simulationFrame;}
+          if(trial.ready.every(v=>v!==null)){this.lastAdvantage[owner]={frames:trial.ready[1-owner]-trial.ready[owner],type:trial.type,contactFrame:trial.contactFrame,move:trial.move};this.advantageTrials[owner]=null;}
+        }
+      }
+    }
+
+    resetTraining() {
+      if(this.mode!=='training')return false;
+      this.resetRound();this.phase='fight';this.phaseTime=0;
+      const distance=this.minimumDistance(...this.players)+36;
+      this.players[0].x=this.worldWidth/2-distance/2;this.players[1].x=this.worldWidth/2+distance/2;
+      this.players.forEach(p=>{p.meter=100;p.state='IDLE';p.stateFrame=0;});
+      this.debugEvents=[];this.lastAdvantage=[null,null];this.advantageTrials=[null,null];this.facePlayers();return true;
+    }
+
+    updateSimulation(dt, input = []) {
       dt = clamp(Number(dt) || 0, 0, .05);
       if (!dt) return;
       this.previousWorldPositions = this.players.map(p => p.x);
@@ -430,7 +480,7 @@
       this.effects = this.effects.filter(e => e.life > 0);
       const controls = [this.inputs(input[0]), this.inputs(input[1])];
       if (this.mode === 'cpu') controls[1] = this.cpuInput(dt);
-      if (this.mode === 'training') controls[1] = this.inputs(null);
+      if (this.mode === 'training') controls[1] = this.inputs({block:['high','low'].includes(this.trainingGuard),down:this.trainingGuard==='low'});
       this.phaseTime += dt;
       if (this.phase === 'intro') {
         // Keep a last-moment tap and let a held command work when FIGHT appears.
@@ -594,7 +644,8 @@
       }
       if (p.attack) {
         p.guard = false;
-        p.attack.time += dt;
+        p.attack.moveFrame=(p.attack.moveFrame||0)+1;
+        p.attack.time=p.attack.frameData&&Math.abs(dt-1/60)<1e-12&&Math.abs(p.attack.time-p.attack.frameData.timeAt(p.attack.moveFrame-1))<1e-12?p.attack.frameData.timeAt(p.attack.moveFrame):p.attack.time+dt;
         if (p.attack.moveDuringActive) {
           p.vx = p.attack.time >= p.attack.startup && p.attack.time < p.attack.startup + p.attack.active ? p.attack.move * p.attack.direction : 0;
         } else if (p.attack.move && p.attack.time < p.attack.startup + p.attack.active) p.vx = p.attack.move * p.attack.direction;
@@ -619,7 +670,7 @@
         }
       }
       const backwalking = back && !input.block && p.grounded && !p.crouching && Math.abs(p.vx) > 40;
-      p.pose = p.hp <= 0 ? 'ko' : p.frozen > 0 ? 'frozen' : p.thrownTime > 0 ? 'thrown' : p.dodgeTime > 0 ? 'dodge' : p.stun > 0 ? 'hurt' : p.attack ? p.attack.pose || p.attack.kind : !p.grounded ? 'jump' : p.dashTime > 0 ? p.dashDirection === p.facing ? 'walk' : 'backwalk' : backwalking ? 'backwalk' : p.guard ? 'guard' : p.crouching ? 'crouch' : Math.abs(p.vx) > 40 ? 'walk' : p.landingTime > 0 ? 'land' : 'idle';
+      p.pose = p.hp <= 0 ? 'ko' : p.frozen > 0 ? 'frozen' : p.thrownTime > 0 ? 'thrown' : p.dodgeTime > 0 ? 'dodge' : p.stun > 0 ? p.blockStun?'guard':'hurt' : p.attack ? p.attack.pose || p.attack.kind : !p.grounded ? 'jump' : p.dashTime > 0 ? p.dashDirection === p.facing ? 'walk' : 'backwalk' : backwalking ? 'backwalk' : p.guard ? 'guard' : p.crouching ? 'crouch' : Math.abs(p.vx) > 40 ? 'walk' : p.landingTime > 0 ? 'land' : 'idle';
       this.updateMotion(p, dt);
       // Keep an immobilized combatant facing the opponent without snapping attacks mid-swing.
       if (!p.attack && Math.abs(opponent.x - p.x) > 2) p.facing = opponent.x > p.x ? 1 : -1;
@@ -644,7 +695,8 @@
       const player = options.player ?? this.players.indexOf(p);
       p.attack = { ...spec, kind, token: spec.token || kind, actionToken: spec.token || kind,
         actionId: ++this.actionSequence, time: 0, direction: p.facing, hits: 0, confirmed: false,
-        nextHit: spec.startup, targets: new Set(), comboFinished: false };
+        nextHit: spec.startup, targets: new Set(), comboFinished: false,moveFrame:0 };
+      p.attack.frameData=global.BrasaAttackData?.compile(p.attack)||null;
       if (this.normalContact(p,p.attack)) p.attack.visualContactOffset=this.normalContactOffset(p,p.attack);
       p.pose = spec.pose || kind;
       p.jumpBufferUntil = 0; p.landingTime = 0; p.motion.anticipation = 0; p.motion.landing = false;
@@ -868,6 +920,10 @@
         if (a.overheat) p.overheat = Math.min(1.8, Math.max(.25, Number(a.overheat)));
         if (!a.confirmed && !this.projectiles.some(q => q.owner === i && q.actionId === a.actionId)) this.clearCombo(p);
         p.attack = null;
+        // Pose is chosen before updateAttack runs. Leaving the old attack pose
+        // here selected its contact cell without an attack for one extra frame.
+        p.pose=p.hp<=0?'ko':p.frozen>0?'frozen':p.stun>0?p.blockStun?'guard':'hurt':!p.grounded?'jump':p.crouching?'crouch':p.guard?'guard':p.landingTime>0?'land':'idle';
+        this.updateMotion(p,0);
       }
     }
 
@@ -934,6 +990,7 @@
         strength:blocked ? .25 : attack.special ? 1 : attack.kind==='heavy'||attack.token==='heavy' ? .7 : .4,
         impactFrame:impactFrame?.index??null,impactMirror:!!impactFrame?.contactMirror,impactClock:this.simulationClock};
       if (blocked) {
+        victim.pose='guard';
         a.confirmed = false; this.clearCombo(attacker); victim.inputBuffer = null;
         victim.stun = Math.max(victim.stun, .13); victim.blockStun = true;
         victim.meter += 4;
@@ -1016,6 +1073,7 @@
       }
       this.updateMotion(victim, 0);
       if(attack.swap&&attack.throw)this.resolveReposition();else this.constrainToViewport();
+      if(this.options.debugCombat&&victim.hp>0)this.advantageTrials[owner]={type:blocked?'block':'hit',move:attack.moveId||attack.token||attack.kind,contactFrame:this.simulationFrame,ready:[null,null]};
       return true;
     }
 
@@ -1226,7 +1284,7 @@
     }
 
     snapshot() {
-      return { phase: this.phase, round: this.round, timer: this.timer, winner: this.winner, worldWidth: this.worldWidth,
+      return { simulationFrame:this.simulationFrame,actionFrame:this.actionFrame,phase: this.phase, round: this.round, timer: this.timer, winner: this.winner, worldWidth: this.worldWidth,
         introDuration: this.introDuration, finisherWinner: this.finisherWinner, finisherLoser: this.finisherLoser,
         finisherTime: this.finisherTime, finisher: this.finisher,
         superOwner: this.superOwner, superTarget: this.superTarget, superTime: this.superTime, superDefinition: this.superDefinition,

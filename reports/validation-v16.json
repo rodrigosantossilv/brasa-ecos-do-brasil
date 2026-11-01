@@ -1,0 +1,162 @@
+{
+  "version": "0.16.0",
+  "baseline": "47d2a1161aef9049f98f80bb1d39020e02629572",
+  "suites": [
+    {
+      "suite": "tools-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "combat-v15-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "movement-v15-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "damage-hud-v15-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "fluid-combat-v14-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "impact-clock-v14-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "fluid-app-v14-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "fluid-render-v14-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "app-regression-v14-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "renderer-regression-v14-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "story-specials-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "combat-v16-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "training-v16-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "gait-support-v16-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "locomotion-render-v16-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "determinism-v16-check.cjs",
+      "status": 0,
+      "signal": null
+    }
+  ],
+  "combatChecks": 12,
+  "trainingChecks": 3,
+  "locomotion": {
+    "fighters": 76,
+    "poses": 9728,
+    "directions": 2,
+    "framesPerDirection": 64,
+    "textureSource": "original idle frame0",
+    "supportSegments": 380,
+    "maxNativeMarkerDrift": 0.9953488372093062,
+    "originalAtlasesUnchanged": true
+  },
+  "determinism": {
+    "runs": 100,
+    "logicSHA256": "4f7320522ab326175dd8d5db27ad746ddc1ee21b543fb456fe662b6cf0fb3a4e",
+    "debugOnOffIdentical": true,
+    "renderRates": [
+      {
+        "hz": 30,
+        "steps": 720,
+        "state": "7a909205aa59cce3f68a0f7bdeb8f78e14b3f0038e17563a950d093b738e9ee2",
+        "camera": "832d23b935b8f947637830109c49ffcedeb52ce8ad7b99ab4da0a2025120d8e1"
+      },
+      {
+        "hz": 60,
+        "steps": 720,
+        "state": "7a909205aa59cce3f68a0f7bdeb8f78e14b3f0038e17563a950d093b738e9ee2",
+        "camera": "832d23b935b8f947637830109c49ffcedeb52ce8ad7b99ab4da0a2025120d8e1"
+      },
+      {
+        "hz": 120,
+        "steps": 720,
+        "state": "7a909205aa59cce3f68a0f7bdeb8f78e14b3f0038e17563a950d093b738e9ee2",
+        "camera": "832d23b935b8f947637830109c49ffcedeb52ce8ad7b99ab4da0a2025120d8e1"
+      },
+      {
+        "hz": 144,
+        "steps": 720,
+        "state": "7a909205aa59cce3f68a0f7bdeb8f78e14b3f0038e17563a950d093b738e9ee2",
+        "camera": "832d23b935b8f947637830109c49ffcedeb52ce8ad7b99ab4da0a2025120d8e1"
+      }
+    ],
+    "physicalHardwareTested": false
+  },
+  "localWindowsBuild": {
+    "version": "0.16.0",
+    "scripts": 19,
+    "pngResources": 193,
+    "payloadEntries": 194,
+    "allExtractedHashesVerified": true,
+    "zipCRCVerified": true,
+    "profilePreserved": true,
+    "unchangedResourcesPreserved": true,
+    "corruptResourceRepaired": true,
+    "archive": "BRASA-PC-v0.16.zip",
+    "archiveBytes": 183037051,
+    "archiveSha256": "d129a18b7bba79293ce93149386bb156bddc20f665a709aa0faacca454b8e337",
+    "exeSha256": "4a215b210beb4ae2655b15696de8e197fb498340d2e36ea335b16f30c13e7fd7"
+  },
+  "browser": {
+    "url": "http://127.0.0.1:8953/",
+    "errors": 0,
+    "observed": [
+      "Training selection",
+      "F5reset",
+      "F1pause",
+      "F3boxes",
+      "F4history",
+      "Real blocked jab at moveFrame6 with2hitstop and8blockstun",
+      "Optional laboratory hidden by default"
+    ],
+    "physicalControllersTested": false,
+    "physicalFPSMeasured": false
+  },
+  "review": "Self-review; independent workers unavailable",
+  "scope": "Frame/timing compatibility, input history, training, guard/recovery pose fixes and locomotion across all76. No new parry, knockdown/wakeup or online rollback."
+}

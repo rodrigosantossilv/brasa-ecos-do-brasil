@@ -2,7 +2,7 @@
   'use strict';
   const {fighters,stages}=window.BRASA_DATA;
   const render=window.BrasaRender,input=new window.BrasaInput(),app=document.getElementById('app');
-  const state={screen:'home',mode:'cpu',step:0,chosen:[0,2],inspect:0,arena:0,paused:false,engine:null,camera:null,debugLayers:false,worldRound:null,returnTo:'home',movesReturn:'home',movesPlayer:0,trainingCombo:null,finisherPreview:null,pendingFight:false,sound:false,difficulty:'normal'};
+  const state={screen:'home',mode:'cpu',step:0,chosen:[0,2],inspect:0,arena:0,paused:false,engine:null,camera:null,debugLayers:false,worldRound:null,returnTo:'home',movesReturn:'home',movesPlayer:0,trainingCombo:null,finisherPreview:null,pendingFight:false,sound:false,difficulty:'normal',labPaused:false,lab:{open:false,boxes:false,inputs:false}};
   const story=new window.BrasaStory(),countries=window.BRASA_DATA.countries||window.BRASA_COUNTRIES;
   state.country='BR';state.moon=false;state.storyResult=null;state.storyRecorded=false;
   let worldMap=null,lunarMusicTimer=null,lunarMusicStep=0;
@@ -195,7 +195,7 @@
     if(!panel){panel=el('div','fight-loading');panel.id='fightLoading';panel.setAttribute('role','status');panel.setAttribute('aria-live','polite');panel.innerHTML='<strong>PREPARANDO ANIMAÇÕES…</strong><p></p><div class="fight-loading-track"><span></span></div><small>A luta começa automaticamente quando os dois lutadores estiverem prontos.</small>';app.append(panel);}
     const progress=fightArtProgress(),fraction=Math.min(progress.total?progress.ready/progress.total:1,progress.prepared/Math.max(1,progress.fighters),fightArtReady()?1:.99);panel.querySelector('p').textContent=(progress.total?progress.ready+' / '+progress.total+' CONJUNTOS · ':'')+progress.prepared+' / '+progress.fighters+' LUTADORES';panel.querySelector('.fight-loading-track span').style.width=Math.round(fraction*100)+'%';
   }
-  function startFight(){if(state.mode!=='story'&&state.chosen.some(i=>!story.unlocked(fighters[i].id))){toast('Derrote os guardiões no Modo História para selecioná-los.');begin(state.mode);return;}if(!fightArtReady()){state.pendingFight=true;updateFightLoading();return;}state.pendingFight=false;state.trainingCombo=null;state.finisherPreview=null;state.storyRecorded=false;state.engine=new window.BrasaCombat({fighters:state.chosen.map(i=>fighters[i]),stage:stages[state.arena],mode:state.mode==='story'?'cpu':state.mode,difficulty:state.difficulty,introDuration:8.8,finishers:true,fighterScale:1,visualGeometry:true,onEvent:combatEvent});if(window.BrasaCamera)resetFightWorld();state.paused=false;go('fight');}
+  function startFight(){if(state.mode!=='story'&&state.chosen.some(i=>!story.unlocked(fighters[i].id))){toast('Derrote os guardiões no Modo História para selecioná-los.');begin(state.mode);return;}if(!fightArtReady()){state.pendingFight=true;updateFightLoading();return;}state.pendingFight=false;state.trainingCombo=null;state.finisherPreview=null;state.storyRecorded=false;state.labPaused=false;state.lab={open:false,boxes:false,inputs:false};state.engine=new window.BrasaCombat({fighters:state.chosen.map(i=>fighters[i]),stage:stages[state.arena],mode:state.mode==='story'?'cpu':state.mode,difficulty:state.difficulty,introDuration:8.8,finishers:true,fighterScale:1,visualGeometry:true,motionInputs:true,debugCombat:state.mode==='training',onEvent:combatEvent});if(window.BrasaCamera)resetFightWorld();state.paused=false;go('fight');}
   function previewFinisher(){
     const engine=state.engine;if(!engine||state.mode!=='training')return;
     state.paused=false;$('.fight-overlay')?.remove();overlayDrawn=false;input.clear();
@@ -211,7 +211,7 @@
     hud.quickHelp=commands;hud.superHints=[$('#superHint0'),$('#superHint1')];
     const meta=el('div','fight-meta');meta.innerHTML='<span><strong>'+escapeText(stages[state.arena].name).toUpperCase()+'</strong> · '+stages[state.arena].state+'<br><br>'+modes[state.mode]+' / MELHOR DE 3'+(state.mode==='training'?' / VIDA REGENERA':'')+'</span>';
     const tools=el('div','fight-controls');if(state.mode==='training')tools.append(button('REINICIAR TREINO',()=>{engine.rematch();if(window.BrasaCamera)resetFightWorld();state.trainingCombo=null;state.finisherPreview=null;state.paused=false;fight.focus({preventScroll:true});},''),button('VER ARREMATE',previewFinisher,''));tools.append(button('GOLPES & COMBOS',()=>openMoves(),''),button('PAUSAR [ESC]',togglePause,''));meta.append(tools);app.append(meta);
-    if(state.mode==='training'){const readout=el('div','training-readout');readout.id='trainingReadout';readout.setAttribute('aria-label','Dados de treino');shell.append(readout);hud.training=readout;}
+    if(state.mode==='training'){const readout=el('div','training-readout');readout.id='trainingReadout';readout.setAttribute('aria-label','Dados de treino');shell.append(readout);hud.training=readout;makeCombatLab(shell);tools.append(button('LAB / FRAMES',()=>trainingAction('boxes'),''));}
     const help=el('div','fight-help');help.id='fightHelp';help.innerHTML=fightHelpMarkup();app.append(help);
     hud.help=help;
     const note=el('p','story-note','Especiais usam recarga curta. No controle: △, R2 e L2 fazem os três especiais; R3 usa o super com BRASA cheia. No teclado, forte + especial usa o super. '+(state.mode==='training'?'O parceiro de treino fica parado e recupera a vida após um nocaute.':'Vença dois rounds para encerrar a partida.'));app.append(note);
@@ -221,7 +221,7 @@
   function helpMarkup(p){const pad=input.slots[p]!==null;return '<strong>P'+(p+1)+' / '+(pad?'CONTROLE':'TECLADO')+'</strong> '+['left','right','up','down','light','heavy','kick','special',...(pad?['special2','special3','super']:[]),'grab','block'].map(a=>'<kbd>'+escapeText(pad?input.padLabel(p,a):input.label(input.config.keyboard[p][a]))+'</kbd> '+({left:'',right:'MOVER',up:'PULAR',down:'ABAIXAR',light:'LEVE',heavy:'FORTE',kick:'CHUTE',special:'ESP. 1',special2:'ESP. 2',special3:'ESP. 3',super:'SUPER',grab:'AGARRAR',block:'DEFENDER'})[a]).join(' ')+(pad?' · OPTIONS / MENU: PAUSAR':'');}
   function quickFightHelpMarkup(){return (state.mode==='versus'?[0,1]:[0]).map(player=>{const pad=input.slots[player]!==null,label=action=>escapeText(pad?input.padLabel(player,action):input.label(input.config.keyboard[player][action]));return '<div class="fight-input-row"><strong>P'+(player+1)+'</strong><span><kbd>'+label('light')+'</kbd> SOCO</span><span><kbd>'+label('heavy')+'</kbd> FORTE</span><span><kbd>'+label('kick')+'</kbd> CHUTE</span><span><kbd>'+label('special')+'</kbd> ESP. 1</span>'+(pad?'<span><kbd>'+label('special2')+'</kbd> ESP. 2</span><span><kbd>'+label('special3')+'</kbd> ESP. 3</span><span><kbd>'+label('super')+'</kbd> SUPER</span>':'')+'<span><kbd>'+label('block')+'</kbd> DEFESA</span><small>'+(pad?'OPTIONS / MENU':'ESC')+' PAUSA</small></div>';}).join('');}
   function fightHelpMarkup(){return helpMarkup(0)+(state.mode==='versus'?'<br>'+helpMarkup(1):'<br>Defenda com o botão de defesa ou caminhando para trás. Agarrões vencem a guarda.')+'<br>Dash: dois toques rápidos na mesma direção.';}
-  function togglePause(){if(state.screen!=='fight'||state.engine.phase==='matchOver')return;state.paused=!state.paused;previousTick=null;pausedFrameDrawn=false;input.clear();syncLunarMusic();if(state.paused)showPause();else{$('.fight-overlay')?.remove();overlayDrawn=false;fight?.focus();}}
+  function togglePause(){if(state.screen!=='fight'||state.engine.phase==='matchOver')return;state.labPaused=false;state.paused=!state.paused;previousTick=null;pausedFrameDrawn=false;input.clear();syncLunarMusic();if(state.paused)showPause();else{$('.fight-overlay')?.remove();overlayDrawn=false;fight?.focus();}}
   function showPause(){
     if($('#pauseOverlay'))return;$('.fight-overlay')?.remove();
     state.paused=true;previousTick=null;pausedFrameDrawn=false;syncLunarMusic();const overlay=el('div','fight-overlay');overlay.id='pauseOverlay';const panel=el('div','overlay-panel');panel.innerHTML='<div class="eyebrow">RESPIRA. A LUTA ESPERA.</div><h2>PAUSA</h2><p>'+escapeText(stages[state.arena].name)+' · '+modes[state.mode]+'</p>';
@@ -257,7 +257,48 @@
   function updatePadInfo(){const info=$('#controllersInfo');if(!info)return;const pads=input.getPads();info.textContent=pads.length?input.slots.map((id,i)=>{const p=pads.find(p=>p.index===id);return 'P'+(i+1)+': '+(p?p.id+' ['+(p.mapping||'personalizado')+']':'teclado');}).join(' | '):'NENHUM CONTROLE ATIVO / Conecte seu controle e pressione um botão. O teclado está pronto.';}
   input.onBind=result=>{const bindingFocus=document.activeElement?.dataset.bind;if(result==='saved')toast('Comando salvo.');if(result==='conflict')toast('Essa tecla já está com o outro jogador. Escolha outra.');if(result==='reserved')toast('Tecla reservada à navegação. Escolha outra.');if(state.screen==='controls'){controls();if(bindingFocus)document.querySelector('[data-bind="'+bindingFocus+'"]')?.focus({preventScroll:true});}};
   input.onDisconnect=slot=>{if(state.screen==='fight'&&!state.paused&&(slot===0||state.mode==='versus')){state.paused=true;showPause();toast('Controle P'+(slot+1)+' desconectado. Partida pausada.');}};
+  function makeCombatLab(shell){
+    const panel=el('section','combat-lab');panel.hidden=!state.lab.open;panel.setAttribute('aria-label','Laboratório de combate');
+    panel.innerHTML='<div class="lab-heading"><strong>LABORATÓRIO / 60 Hz</strong><span class="lab-clock"></span></div><div class="lab-players"><pre></pre><pre></pre></div><div class="lab-timeline" aria-label="Timeline do ataque"></div><pre class="lab-inputs" hidden></pre>';
+    const controls=el('div','fight-controls lab-controls');for(const [label,action]of [['PAUSA F1','pause'],['+1 FRAME F2','step'],['CAIXAS F3','boxes'],['INPUTS F4','inputs'],['ALVO: SEM GUARDA','guard'],['RESET F5','reset'],['FECHAR','close']]){const b=button(label,()=>trainingAction(action,true),'');b.dataset.labAction=action;controls.append(b);}panel.append(controls);shell.append(panel);
+    hud.lab={panel,clock:panel.querySelector('.lab-clock'),players:Array.from(panel.querySelectorAll('.lab-players pre')),timeline:panel.querySelector('.lab-timeline'),inputs:panel.querySelector('.lab-inputs')};
+  }
+  function trainingAction(action,fromButton=false){
+    if(state.screen!=='fight'||state.mode!=='training'||!state.engine)return false;
+    const engine=state.engine;state.lab ||= {open:false,boxes:false,inputs:false};
+    state.lab.open=action!=='close';
+    if(action==='pause'||action==='step'){
+      state.labPaused=action==='step'||!state.paused;state.paused=state.labPaused;
+      $('#pauseOverlay')?.remove();overlayDrawn=false;
+      if(action==='step'){
+        const controls=input.states();if(fromButton)controls.forEach(s=>{for(const key of ['light','heavy','kick','special','special2','special3','grab','super'])s[key]=false;s.pressed={};});
+        captureFightPositions(engine);engine.step(controls);updateFightWorld(1/60);input.consume();
+      }
+      accumulator=0;previousTick=null;syncLunarMusic();
+    }else if(action==='boxes')state.lab.boxes=!state.lab.boxes;
+    else if(action==='inputs')state.lab.inputs=!state.lab.inputs;
+    else if(action==='structure')state.debugLayers=!state.debugLayers;
+    else if(action==='guard'){const values=['none','high','low'];engine.trainingGuard=values[(values.indexOf(engine.trainingGuard)+1)%values.length];}
+    else if(action==='reset'){engine.resetTraining();input.clear();accumulator=0;previousTick=null;state.finisherPreview=null;state.trainingCombo=null;resetFightWorld();}
+    else if(action==='close'){state.lab.boxes=false;state.lab.inputs=false;if(state.labPaused){state.paused=false;state.labPaused=false;syncLunarMusic();}}
+    pausedFrameDrawn=false;updateCombatLab(engine);return true;
+  }
+  function updateCombatLab(engine){
+    const lab=hud?.lab;if(!lab||!window.BrasaCombatDebug)return;
+    lab.panel.hidden=!state.lab.open;if(lab.panel.hidden)return;
+    const texts=window.BrasaCombatDebug.text(engine);lab.clock.textContent='#'+engine.simulationFrame+' · '+(state.paused?'PAUSADO':'AO VIVO');
+    const guard=lab.panel.querySelector('[data-lab-action="guard"] span');if(guard)guard.textContent='ALVO: '+({none:'SEM GUARDA',high:'GUARDA ALTA',low:'GUARDA BAIXA'})[engine.trainingGuard];
+    texts.forEach((text,i)=>{if(lab.players[i].textContent!==text)lab.players[i].textContent=text;});
+    const a=engine.players[0].attack,d=a?.frameData;if(d){const current=a.moveFrame,content=[];for(let f=1;f<=d.totalFrames;f++)content.push('<i class="phase-'+d.phaseAt(f)+(f===current?' current':'')+'" title="Frame '+f+'">'+(f===current?'◆':'')+'</i>');const markup=content.join('');if(lab.timeline.innerHTML!==markup)lab.timeline.innerHTML=markup;}else lab.timeline.textContent='S: antecipação · A: janela ativa · R: recuperação';
+    lab.inputs.hidden=!state.lab.inputs;if(state.lab.inputs){const lines=engine.players.map((p,i)=>{let prev=null;const changes=(p.inputHistory?.entries||[]).filter(e=>{const signature=e.direction+':'+e.held.filter(k=>!['up','down','left','right'].includes(k)).join('+');const changed=signature!==prev||e.pressed.length;prev=signature;return changed;}).slice(-7);return 'P'+(i+1)+' / HISTÓRICO 120 FRAMES\n'+changes.map(e=>'#'+e.frame+'  '+e.direction+'  '+e.held.filter(k=>!['up','down','left','right'].includes(k)).join('+')).join('\n');});lab.inputs.textContent=lines.join('\n\n');}
+  }
+  document.addEventListener('keydown',event=>{
+    const editing=!!event.target?.closest?.('input,textarea,select,[contenteditable="true"]'),remapped=input.config.keyboard.some(map=>Object.values(map).includes(event.code));
+    const action=window.BrasaCombatDebug?.action(event,{training:state.screen==='fight'&&state.mode==='training',editing,remapped:remapped||!!input.binding});
+    if(!action)return;event.preventDefault();event.stopImmediatePropagation();trainingAction(action);
+  },true);
   function handleStructureDebug(event){
+    if(state.mode==='training'&&!event.altKey)return;
     if(event.code!=='F3'||state.screen!=='fight')return;
     event.preventDefault();event.stopImmediatePropagation();
     if(event.repeat)return;
@@ -274,7 +315,7 @@
     }
     if(action==='start'&&fighting&&state.paused){togglePause();return;}
     if(action==='back'){goBack();return;}
-    const root=fighting?$('.fight-overlay'):document; if(!root)return;
+    const root=fighting?(state.labPaused?app:$('.fight-overlay')):document; if(!root)return;
     const buttons=Array.from(root.querySelectorAll('.nav-item:not(:disabled)')).filter(b=>b.getClientRects().length);
     if(!buttons.length)return;
     let index=buttons.indexOf(document.activeElement);if(action==='confirm'){if(document.activeElement?.matches('button.nav-item')&&document.activeElement.getClientRects().length)document.activeElement.click();else buttons[Math.max(0,index)].click();return;}
@@ -365,6 +406,7 @@
       if(entrance&&activeEntry===i&&engine.phaseTime<engine.introDuration-.7){const progress=Math.min(1,(engine.phaseTime-i*entranceSlot)/entranceSlot);window.BrasaPresentation.drawEntrance(ctx,p.data,p.x,455,2.15,p.facing,progress,{...actorOptions,reducedMotion:input.config.reducedMotion});}
       else render.fighter(ctx,p.data,p.x,455-p.y,2.15,pose,p.facing,actorTime,{...actorOptions,attack:p.attack,frozen:p.frozen,walkDistance:p.walkDistance,motion:p.motion,reaction:p.reaction,hitstopFrame:holdingImpact&&p.reaction?.impactClock===actual.simulationClock?p.reaction?.impactFrame:undefined,hitstopMirror:holdingImpact&&p.reaction?.impactClock===actual.simulationClock?!!p.reaction?.impactMirror:false,reducedMotion:input.config.reducedMotion,alpha:p.invulnerable>0?.7:1});
     }
+    if(state.mode==='training'&&state.lab?.boxes)window.BrasaCombatDebug?.draw(ctx,engine,{groundY:455});
     // Discrete attacks remain visible; ambient and impact particle passes stay removed.
     for(const q of engine.projectiles){
       if(window.BrasaCombatFX?.drawProjectile(ctx,q,actorTime))continue;
@@ -381,6 +423,7 @@
       const defense=p.defenseCooldown>0?'DEFESA ATIVA: '+p.defenseCooldown.toFixed(1)+'s':'DEFESA ATIVA: '+commandText('defense',0,input.slots[0]!==null)+' · 20 BRASA';
       const markup='<small>TREINO / P1</small><strong>'+escapeText(p.lastMoveName||'COMECE COM UM GOLPE')+'</strong><span>'+result+'</span><em>'+escapeText(p.lastComboName||'Acerte e encadeie os botões para formar um combo.')+'</em><small>'+escapeText(defense)+'</small>';hudWrite('training',readout,'innerHTML',markup);
     }
+    if(hud?.lab)updateCombatLab(actual);
     hudWrite('timer',hud.timer,'textContent',Number.isFinite(engine.timer)?String(Math.ceil(engine.timer)).padStart(2,'0'):'∞');hudWrite('roundLabel',hud.round,'textContent',state.mode==='training'?'TREINO':'ROUND '+String(engine.round).padStart(2,'0'));
     hudClass('entranceClass',hud.banner,'entrance-banner',entrance&&engine.phaseTime<engine.introDuration-.7);hudWrite('skipHidden',hud.skip,'hidden',!entrance);
     hudClass('finisherClass',hud.banner,'finisher-banner',['finishWindow','finisher'].includes(engine.phase));
@@ -399,7 +442,7 @@
     if(now-uiClock>700){uiClock=now;const activePads=input.slots.filter(id=>id!==null).length,padText=activePads?'◈ '+activePads+' CONTROLE'+(activePads>1?'S':''):'◈ TECLADO',padStatus=$('#padStatus');if(padStatus.textContent!==padText)padStatus.textContent=padText;if(state.screen==='controls')updatePadInfo();if(hud){hudWrite('help',hud.help,'innerHTML',fightHelpMarkup());hudWrite('quickHelp',hud.quickHelp,'innerHTML',quickFightHelpMarkup());for(let i=0;i<2;i++)hudWrite('superHint'+i,hud.superHints?.[i],'textContent','BRASA / SUPER · '+commandText('super',i,input.slots[i]!==null));}}
     if(state.screen==='fight'&&fight&&state.engine){
       if(state.finisherPreview){accumulator=0;if(!state.paused){state.finisherPreview.time+=dt;if(state.finisherPreview.time>=state.engine.finisherDuration)state.finisherPreview=null;}input.consume();}
-      else if(!state.paused){accumulator=Math.min(accumulator+dt,.25);while(accumulator+1e-9>=1/60){captureFightPositions(state.engine);state.engine.update(1/60,input.states());updateFightWorld(1/60);input.consume();accumulator=Math.max(0,accumulator-1/60);}}else accumulator=0;
+      else if(!state.paused){accumulator=Math.min(accumulator+dt,.25);while(accumulator+1e-9>=1/60){captureFightPositions(state.engine);state.engine.step(input.states());updateFightWorld(1/60);input.consume();accumulator=Math.max(0,accumulator-1/60);}}else accumulator=0;
       if(hud)updateDamageHud(state.engine,state.paused?0:dt);
       if(!state.paused||!pausedFrameDrawn)drawFight(time,accumulator*60);pausedFrameDrawn=state.paused;
     }else{

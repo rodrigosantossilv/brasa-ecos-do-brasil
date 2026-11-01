@@ -33,7 +33,7 @@ function fixture({mode='versus',reducedMotion=false}={}){
   state:{screen:'fight',engine,arena:0,mode,paused:false},input:{slots:[null,null],config:{reducedMotion},poll(){},consume(){},states:()=>[{},{}]},
   stages:h.data.stages,modes:{versus:'VERSUS',training:'TREINO'},escapeText:value=>String(value??''),commandText:()=>'',moveSet:()=>({}),
   fight:null,hud:null,previousTick:null,shake:0,lastTime:0,accumulator:0,uiClock:0,pausedFrameDrawn:false,hero:null,preview:null,detail:null,worldMap:null,
-  render:{stage(){},fighter(){}},quickFightHelpMarkup:()=>'',fightHelpMarkup:()=>'',syncLunarMusic(){},showPause(){},showResult(){},togglePause(){},previewFinisher(){},updateFightWorld(){},updatePadInfo(){},
+  render:{stage(){},fighter(){}},quickFightHelpMarkup:()=>'',fightHelpMarkup:()=>'',makeCombatLab(){},trainingAction(){},syncLunarMusic(){},showPause(){},showResult(){},togglePause(){},previewFinisher(){},updateFightWorld(){},updatePadInfo(){},
   requestAnimationFrame(){},setTimeout(){throw Error('Damage HUD must not allocate timers');},setInterval(){throw Error('Damage HUD must not allocate timers');},Object,Map};
  c.$=selector=>dom.document.querySelector(selector)||{textContent:'◈ TECLADO'};c.button=(text,action,cls)=>{const node=dom.el('button',cls,text);node.onclick=action;return node;};
  vm.createContext(c);vm.runInContext(section('  function fightScreen()','  function helpMarkup('),c);vm.runInContext(section('  function captureFightPositions(','  // Read-only diagnostic'),c);

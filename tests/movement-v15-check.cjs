@@ -2,7 +2,7 @@
 // Real combat consumers: deleting profiles or ignoring stats must change travel, not just metadata.
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict'),crypto=require('node:crypto');
 const sandbox={window:{},console};vm.createContext(sandbox);
-for(const file of ['assets.js','data.js','moves.js','combat.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../game',file),'utf8'),sandbox,{filename:file});
+for(const file of ['assets.js','data.js','moves.js','combat-frame-data.js','input-history.js','combat.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../game',file),'utf8'),sandbox,{filename:file});
 const {BRASA_DATA:data,BRASA_MOVES:moves,BrasaCombat:Combat}=sandbox.window,dt=1/60;
 const authored={brick:[.79,.57,.85],jack:[1.18,.88,1],silas:[1.1,.72,1.23],boris:[.86,.6,.9],aya:[1.2,.89,1.13],tommy:[.77,.56,.87]};
 let checks=0,failed=0;

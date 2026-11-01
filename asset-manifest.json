@@ -603,6 +603,391 @@
       "sha256": "80f3cb1e337d0d605be16c5d30c74d3fd04508290d6e52e0cafd49da3611d447"
     },
     {
+      "path": "assets/locomotion-v16-akari.png",
+      "bytes": 440031,
+      "sha256": "310374fe24abb031a76f5efdfe6772fe9c6d7675a6439707c3c02b8cbcdef16a"
+    },
+    {
+      "path": "assets/locomotion-v16-alfie.png",
+      "bytes": 442394,
+      "sha256": "42cf5701484a252956c81bbf0d7a9d52593c0a6141f59f96c9f29d51a84ba1b0"
+    },
+    {
+      "path": "assets/locomotion-v16-anya.png",
+      "bytes": 440814,
+      "sha256": "ee2300d7f730f87941e06b898c735d92961558c38380300e7198d8669f22d63a"
+    },
+    {
+      "path": "assets/locomotion-v16-apogeu.png",
+      "bytes": 502370,
+      "sha256": "c5ce8b740b86fcdc3042d4d6fe828302bff05156c791dedfa0074afe6958b9aa"
+    },
+    {
+      "path": "assets/locomotion-v16-arthur.png",
+      "bytes": 542582,
+      "sha256": "6257b477c0536910b0536f9d990e73284e350965d57bdcf6d41f3d69e7975139"
+    },
+    {
+      "path": "assets/locomotion-v16-augusto.png",
+      "bytes": 380873,
+      "sha256": "081b5422d017f1b2a15e239cb5d5b0a1e2687613aa38d59654728617f4df9267"
+    },
+    {
+      "path": "assets/locomotion-v16-aya.png",
+      "bytes": 442696,
+      "sha256": "da9afcaa9b1cc2f8fa7d28d4ed19a6fde1250f3f471dbcf73300d6c97d7b3421"
+    },
+    {
+      "path": "assets/locomotion-v16-barro.png",
+      "bytes": 471861,
+      "sha256": "092524966af936e464e94bacd56f49c6f7c56aa52012ef95aa4c380c7d31b822"
+    },
+    {
+      "path": "assets/locomotion-v16-belladonna.png",
+      "bytes": 477500,
+      "sha256": "1d88d6594dfa80b37ebb724d637bbb381b5ee253c3feeb76ef8da2a988282b0e"
+    },
+    {
+      "path": "assets/locomotion-v16-bento.png",
+      "bytes": 304636,
+      "sha256": "e9805757b7295340363518d7ca44762e065aba50123d8d7b0a438117f6273027"
+    },
+    {
+      "path": "assets/locomotion-v16-bianca.png",
+      "bytes": 440254,
+      "sha256": "d8603e57ca335adfb6425b439b4f400f713ff29f8b5388edd924c65dff205964"
+    },
+    {
+      "path": "assets/locomotion-v16-bo.png",
+      "bytes": 525421,
+      "sha256": "7996dbb7dde48143b8fb778f0fd826cb63b206ee469dd1ad16744d9b7a52817f"
+    },
+    {
+      "path": "assets/locomotion-v16-boris.png",
+      "bytes": 425579,
+      "sha256": "9cb457bcc75c4943fc341e23baf26d4dd059ee2a69af957fad5335fbe11f44f5"
+    },
+    {
+      "path": "assets/locomotion-v16-bram.png",
+      "bytes": 459686,
+      "sha256": "8064e970f501fbb54ec6f872df906467037d722f5263e9335e63361b6aa9baf7"
+    },
+    {
+      "path": "assets/locomotion-v16-breu.png",
+      "bytes": 328257,
+      "sha256": "96a6282903462801ee5ff4bcb6f7b0a2edbf28dadb3559c3c6554b413b42218c"
+    },
+    {
+      "path": "assets/locomotion-v16-brick.png",
+      "bytes": 470134,
+      "sha256": "521d0925c35f0c4da1252349dff218ffce284d32854afc3c598b990b0cbe3e0d"
+    },
+    {
+      "path": "assets/locomotion-v16-caio.png",
+      "bytes": 319513,
+      "sha256": "a767431c8136194e13455e4da41cc68fa072e06286cc23a161ceae64080df776"
+    },
+    {
+      "path": "assets/locomotion-v16-caua.png",
+      "bytes": 408059,
+      "sha256": "4e624472d748eb3559aad97087f23750d3eba4b261fc86a08f0995613eb5c082"
+    },
+    {
+      "path": "assets/locomotion-v16-clockwork.png",
+      "bytes": 400215,
+      "sha256": "1fc96c7e71473b4767d08c05bb135f67eca0f7969075745e71f9f78e2e847269"
+    },
+    {
+      "path": "assets/locomotion-v16-daigo.png",
+      "bytes": 468653,
+      "sha256": "d99a5f841b8774e119d54107aae611185e5388c3dc544a5c2db39e9e0b70d8b4"
+    },
+    {
+      "path": "assets/locomotion-v16-damiao.png",
+      "bytes": 362951,
+      "sha256": "170e1c04908bb2cfbc0157eaa17ebb7f7b4b4745a2c8f69eac3603193cb3acee"
+    },
+    {
+      "path": "assets/locomotion-v16-davi.png",
+      "bytes": 413855,
+      "sha256": "8bdc7616eef4184b8f81ffc961adcadcc46b2ec85818345f5e754bcf5892d61d"
+    },
+    {
+      "path": "assets/locomotion-v16-dex.png",
+      "bytes": 404199,
+      "sha256": "cf1a6b544523c36584eedb1aff5e3cdfba058e0a235a3828ad8ed2751a1ff6cf"
+    },
+    {
+      "path": "assets/locomotion-v16-dusty.png",
+      "bytes": 450495,
+      "sha256": "6ee7c4f5f467674a20e62dcf199536c272315a4218efe4d0914f6a72de5581c0"
+    },
+    {
+      "path": "assets/locomotion-v16-eleanor.png",
+      "bytes": 383644,
+      "sha256": "e53a44f5c6e7c9c3abb31c47381f0d74e94f1a8c7881d340a88ee6925d96e2ab"
+    },
+    {
+      "path": "assets/locomotion-v16-enzo.png",
+      "bytes": 417865,
+      "sha256": "b4aa5ce8590595fdf5c263e5e82ce405b03419ba016b4c1c46314fceeba201fd"
+    },
+    {
+      "path": "assets/locomotion-v16-gloria.png",
+      "bytes": 428923,
+      "sha256": "1f7e289a7a79310e58d163f4e4a8bee846ec282c84d41af40a543c4d502950ae"
+    },
+    {
+      "path": "assets/locomotion-v16-goro.png",
+      "bytes": 471832,
+      "sha256": "0ebe376b166c31c88833ddc699f1706762128740edfb8b8ad7e776ce333b868d"
+    },
+    {
+      "path": "assets/locomotion-v16-grey.png",
+      "bytes": 401456,
+      "sha256": "87c162a4bd6594d7c80f89b010a2ef2d447d3881074f62e49d085e66b21617bb"
+    },
+    {
+      "path": "assets/locomotion-v16-homer.png",
+      "bytes": 415104,
+      "sha256": "cf5bf60a86c74d60d1fa4def82f2bae9ea9bc8aea6ee0b0c4d11f9aea60a84c8"
+    },
+    {
+      "path": "assets/locomotion-v16-irina.png",
+      "bytes": 469324,
+      "sha256": "19a556a10894a39de9719cd3fd0e2d704e68655c2214cdff7f8d8e4d9232304e"
+    },
+    {
+      "path": "assets/locomotion-v16-iris.png",
+      "bytes": 387585,
+      "sha256": "bcd4f87318bdbe6aad542600a44c05f3347e863c996af5a4a695eac5f604b3c5"
+    },
+    {
+      "path": "assets/locomotion-v16-jack.png",
+      "bytes": 355142,
+      "sha256": "9a137d11061c61555f8dc788da346fb83e4c60d430ecac80b147a15dbd8c7790"
+    },
+    {
+      "path": "assets/locomotion-v16-jana.png",
+      "bytes": 443610,
+      "sha256": "11aefd3c3d48d32c76f22393b0186ac862f8d1d0713a48f9b5e5ac1c12541a7e"
+    },
+    {
+      "path": "assets/locomotion-v16-kitsune.png",
+      "bytes": 424366,
+      "sha256": "d6305bbf2e38091eaa373e66b78d6dde0d40b655a25a9cd0b14848e441f2b270"
+    },
+    {
+      "path": "assets/locomotion-v16-lev.png",
+      "bytes": 440201,
+      "sha256": "af49d56924a3251517272c1861aec6f3bcfc03dbd98cf23bf4996778a2253869"
+    },
+    {
+      "path": "assets/locomotion-v16-lia.png",
+      "bytes": 396380,
+      "sha256": "a8e477be50256c156d22c444c8ac6e38d0578fbeb194f7bd101c5fdd60e276a6"
+    },
+    {
+      "path": "assets/locomotion-v16-liang.png",
+      "bytes": 451150,
+      "sha256": "696ce572bf1ca23a8a865a1732a7940377b8d8e3efc269f4c63586866a26e33f"
+    },
+    {
+      "path": "assets/locomotion-v16-lin.png",
+      "bytes": 557362,
+      "sha256": "573a1573f917329c2a01655a617fc36d63f3bf8294488ef1ebfe3e56dff33584"
+    },
+    {
+      "path": "assets/locomotion-v16-long.png",
+      "bytes": 493298,
+      "sha256": "4cdaf5c8cfcb98127ef567134f777136cfd189a67e54d4ebcc08ddd64c101547"
+    },
+    {
+      "path": "assets/locomotion-v16-luca.png",
+      "bytes": 482973,
+      "sha256": "8c808d39669e3dc595a8cbc83558f3386c67ffdc5fc9152c52a3559948e2a5cd"
+    },
+    {
+      "path": "assets/locomotion-v16-luz.png",
+      "bytes": 383625,
+      "sha256": "1a991aee3a29f427ea3b3908a83081a1ac63395ed03b0b2a54eccc6bbb8d2cfc"
+    },
+    {
+      "path": "assets/locomotion-v16-maksim.png",
+      "bytes": 467001,
+      "sha256": "c0376dfd3e62fd6d9ac1dfc136e702d1401e6ec51269594933604b1fc7df1c5e"
+    },
+    {
+      "path": "assets/locomotion-v16-marco.png",
+      "bytes": 407828,
+      "sha256": "2e9dfed19decb41f5eb291aef93cfe6078be45fb9a3fc801354cfa6beacc0961"
+    },
+    {
+      "path": "assets/locomotion-v16-mei.png",
+      "bytes": 485556,
+      "sha256": "3e697e164bed406ab4cd35f8eccdf8af465076cfccd12c1d8722cea3d0978604"
+    },
+    {
+      "path": "assets/locomotion-v16-mika.png",
+      "bytes": 399585,
+      "sha256": "6dbedd620610560fbf3e3ca7f07fc904a35b55c6c06e4e76d4a7e21ff0f55360"
+    },
+    {
+      "path": "assets/locomotion-v16-morgan.png",
+      "bytes": 490591,
+      "sha256": "d8aedfb2943ec3164d8a1302e77462b62dd6153937cb532a821622cc4676bed6"
+    },
+    {
+      "path": "assets/locomotion-v16-nara.png",
+      "bytes": 272589,
+      "sha256": "8f0dd6365cb604cc200e382a31f7522ad230cfcbcdf08245e7ce3c7aedc6fa91"
+    },
+    {
+      "path": "assets/locomotion-v16-nikolai.png",
+      "bytes": 537299,
+      "sha256": "bd4606f2a6ea209e2c9d2d8c68fd66073aa03626c3ec4338a1c1ebb40092d62e"
+    },
+    {
+      "path": "assets/locomotion-v16-nonna.png",
+      "bytes": 471423,
+      "sha256": "7c56fd6af9220633a276d674148d85db1c174245a434682c7b1405fe73335017"
+    },
+    {
+      "path": "assets/locomotion-v16-qiao.png",
+      "bytes": 406011,
+      "sha256": "2823161b4e415d0402c10ca2132dae4047357f85694632c9adf5ebf68faba78e"
+    },
+    {
+      "path": "assets/locomotion-v16-ramiro.png",
+      "bytes": 471335,
+      "sha256": "2105cc2d9f39602e0214c44a4dec5859c086f7e7400a0c8e840ffdd9ab097715"
+    },
+    {
+      "path": "assets/locomotion-v16-regolith.png",
+      "bytes": 413603,
+      "sha256": "d8f19b8af0d05bc1ef4e95769d625eb91614e484697d8dc31e820417e0dd7319"
+    },
+    {
+      "path": "assets/locomotion-v16-ren.png",
+      "bytes": 461515,
+      "sha256": "3267d3073657538a41364a6e3eb6ca6e46dec279d101e589ca91ebc3f35e22a2"
+    },
+    {
+      "path": "assets/locomotion-v16-rocco.png",
+      "bytes": 403257,
+      "sha256": "ac370c8113dcb4a15188c896235015fd643416624e659fb85be78c5ab3eebe6d"
+    },
+    {
+      "path": "assets/locomotion-v16-rosa.png",
+      "bytes": 444782,
+      "sha256": "f082f84eb7337dc6abc413a268d5aac91a466583d13805bb9c98bd0dcaddd4b4"
+    },
+    {
+      "path": "assets/locomotion-v16-roxy.png",
+      "bytes": 428144,
+      "sha256": "4e1942132750f10f0ae7b4651c470df4717a42558777c6cd721f3ae3d4f793a4"
+    },
+    {
+      "path": "assets/locomotion-v16-selene.png",
+      "bytes": 540848,
+      "sha256": "13082f63f7c7f628d2704ae5aa932119c5b59e5ffc64d19f9bd2224a6d43c1f4"
+    },
+    {
+      "path": "assets/locomotion-v16-serena.png",
+      "bytes": 344283,
+      "sha256": "e2e48c54d59784b6ba9fd1dc59c370e43cf79ca4de967003435d5359e6355a0b"
+    },
+    {
+      "path": "assets/locomotion-v16-shen.png",
+      "bytes": 451813,
+      "sha256": "ae4e6fd703bdfa7dfe972731c6121817b6cffe19d6b37885d498f2de2aae5b8e"
+    },
+    {
+      "path": "assets/locomotion-v16-shiori.png",
+      "bytes": 397275,
+      "sha256": "20d55c2151a0c76c42f400a1cdfb4720112b2b333bc45adafadaae9da8a5b072"
+    },
+    {
+      "path": "assets/locomotion-v16-silas.png",
+      "bytes": 485035,
+      "sha256": "f17f38c52a6b2b3ccb2c9a567a880a5ad0a582035dbe1aa3787ca0c6ae58539e"
+    },
+    {
+      "path": "assets/locomotion-v16-steele.png",
+      "bytes": 415912,
+      "sha256": "f3e76fa967b60d473ea58844e46a0a39a1c4a67ee20bb96a95fcc3e20bafa16e"
+    },
+    {
+      "path": "assets/locomotion-v16-tenor.png",
+      "bytes": 444744,
+      "sha256": "8a8346ce49e9c8d4c471a9a84f64f688d8bd25d3450362d5a486898c451c174d"
+    },
+    {
+      "path": "assets/locomotion-v16-tetsu.png",
+      "bytes": 499600,
+      "sha256": "5fbda428e1897e57bcc30483498c021243d7db9673a83a03c3204a7b9d28a8d5"
+    },
+    {
+      "path": "assets/locomotion-v16-ti.png",
+      "bytes": 400721,
+      "sha256": "debf59c918d4e61820cfed72841dcae7b4574a3f642d552ad126fe8e5146783c"
+    },
+    {
+      "path": "assets/locomotion-v16-tiao.png",
+      "bytes": 354688,
+      "sha256": "9373b7ad7281a214c6c5c268b82b8bca2c21834bfc99241de3d23f8fec37c18d"
+    },
+    {
+      "path": "assets/locomotion-v16-tommy.png",
+      "bytes": 397576,
+      "sha256": "a8d61e84545e7f4bca36eb275c9b0956aed68fad2b0b13fffe122ef1adac1394"
+    },
+    {
+      "path": "assets/locomotion-v16-umbriel.png",
+      "bytes": 314930,
+      "sha256": "71b6f4df4e22a015a2fc075d9d5f4632719c3c376dad10cfc135b4d43c9d65c0"
+    },
+    {
+      "path": "assets/locomotion-v16-valter.png",
+      "bytes": 375528,
+      "sha256": "73f0494541475a28313a45a36aa42cac7e22933ad2f02a3415956afe9de14e11"
+    },
+    {
+      "path": "assets/locomotion-v16-vera.png",
+      "bytes": 455084,
+      "sha256": "0bb21e60c79cedc3ac3b64f67baeee9d7987cd58ede74d560304f0964d23f9e7"
+    },
+    {
+      "path": "assets/locomotion-v16-vittoria.png",
+      "bytes": 351537,
+      "sha256": "8f6a58cb6be8c5e4d3f6725cfb6a07084c4e6e687a97e6130c905e33bb6b6d5e"
+    },
+    {
+      "path": "assets/locomotion-v16-voltx.png",
+      "bytes": 450641,
+      "sha256": "b89c6fe45e9fbc88aae47ffdb40d6cf4299d8e101a20572ef3f1d58f4f4ad0cb"
+    },
+    {
+      "path": "assets/locomotion-v16-yan.png",
+      "bytes": 577601,
+      "sha256": "a2b6ac2de5c70523238d5deffb5ac0920e8b877100c30ecea18bf27bc59b2357"
+    },
+    {
+      "path": "assets/locomotion-v16-yuri.png",
+      "bytes": 477327,
+      "sha256": "5f01c7b4c65c9f8309c1942226b9d22700ee7dc690e977a9632120f6c5cf0007"
+    },
+    {
+      "path": "assets/locomotion-v16-zoya.png",
+      "bytes": 455772,
+      "sha256": "4b87217f1b6c400639e15bee98ea83242b7839b68e290cb72e5c81bd662e1c0d"
+    },
+    {
+      "path": "assets/locomotion-v16.json",
+      "bytes": 4376010,
+      "sha256": "ee57ac5bea99961e9a25053b2ee302b330fdb2acf06c87e13c1d044b4395c7d5"
+    },
+    {
       "path": "assets/prebaked-stages-v07.json",
       "bytes": 1529,
       "sha256": "7fe93b8572c90ed677d4eba17d64cf6e7dd3f44dde227d7bf174377a510604ab"

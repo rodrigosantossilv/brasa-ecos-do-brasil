@@ -6,6 +6,7 @@ const root=path.resolve(__dirname,'../game'),read=file=>fs.readFileSync(path.joi
 const {canvasContext,frameIndex,crop,pixels}=legacy;
 function createHarness(options={}){
  const h=legacy.createHarness(options),loadInitial=h.loadAll;
+ for(const name of ['combat-frame-data.js','input-history.js'])vm.runInContext(read(name),h.sandbox,{filename:name});
  h.authored=h.window.BRASA_ASSETS.authoredFighters||[];
  h.loadInitial=loadInitial;
  h.loadAll=except=>{h.renderer.readyMotion();loadInitial(except);};

@@ -1,4 +1,4 @@
-# BRASA 0.15 — Elenco e atlas de arenas
+# BRASA 0.16 — Elenco e atlas de arenas
 
 76/76 personagens com novas folhas de 64 quadros; 0 personagens ainda usam animação anterior.
 

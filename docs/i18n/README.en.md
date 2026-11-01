@@ -12,14 +12,14 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.15.0"><img src="../images/brasa-badge-version.svg" alt="Development version 0.15.0" height="24"></a>
+  <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.16.0"><img src="../images/brasa-badge-version.svg" alt="Development version 0.16.0" height="24"></a>
   <a href="#play"><img src="../images/brasa-badge-platform.svg" alt="Windows 10 and 11" height="24"></a>
   <a href="#controls"><img src="../images/brasa-badge-controls.svg" alt="Keyboard and gamepads" height="24"></a>
   <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/actions/workflows/ci.yml"><img src="../images/brasa-badge-ci.svg" alt="GitHub Actions" height="24"></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.15.0/BRASA-PC-v0.15.zip"><strong>Download for Windows</strong></a> ·
+  <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.16.0/BRASA-PC-v0.16.zip"><strong>Download for Windows</strong></a> ·
   <a href="../README.md"><strong>Documentation</strong></a> ·
   <a href="#controls"><strong>Controls</strong></a>
 </p>
@@ -35,7 +35,7 @@
 
 <a id="the-game"></a>
 
-## New in version 0.15
+## New in version 0.16
 
 Movement profiles for all 76 fighters, fair simultaneous normal trades, jump-and-attack input and safe landing transitions. Projectile blocking follows the incoming side, and health bars highlight recent damage. See the [changelog](../../CHANGELOG.md) and [source-study notes](../COMBAT_REFERENCES.md).
 
@@ -53,13 +53,13 @@ Play on a keyboard or with up to two gamepads on the same computer. Remap contro
 
 ## Play on Windows
 
-**Development package v0.15.0.** Requires Windows 10/11 and an installed copy of Edge or Chrome.
+**Development package v0.16.0.** Requires Windows 10/11 and an installed copy of Edge or Chrome.
 
-1. Download [BRASA-PC-v0.15.zip](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.15.0/BRASA-PC-v0.15.zip).
+1. Download [BRASA-PC-v0.16.zip](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.16.0/BRASA-PC-v0.16.zip).
 2. Extract the ZIP to a folder.
 3. Open **BRASA.exe** and select a game mode.
 
-The package includes the assets for offline play. See the [release notes](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.15.0) and [SHA-256 checksums](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.15.0/SHA256SUMS.txt). Downloads follow the private repository's access permissions.
+The package includes the assets for offline play. See the [release notes](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.16.0) and [SHA-256 checksums](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.16.0/SHA256SUMS.txt). Downloads follow the private repository's access permissions.
 
 <a id="controls"></a>
 

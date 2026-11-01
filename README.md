@@ -12,14 +12,14 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.15.0"><img src="docs/images/brasa-badge-version.svg" alt="Versão de desenvolvimento 0.15.0" height="24"></a>
+  <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.16.0"><img src="docs/images/brasa-badge-version.svg" alt="Versão de desenvolvimento 0.16.0" height="24"></a>
   <a href="#jogar"><img src="docs/images/brasa-badge-platform.svg" alt="Windows 10 e 11" height="24"></a>
   <a href="#controles"><img src="docs/images/brasa-badge-controls.svg" alt="Teclado e controles" height="24"></a>
   <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/actions/workflows/ci.yml"><img src="docs/images/brasa-badge-ci.svg" alt="GitHub Actions" height="24"></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.15.0/BRASA-PC-v0.15.zip"><strong>Baixar para Windows</strong></a> ·
+  <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.16.0/BRASA-PC-v0.16.zip"><strong>Baixar para Windows</strong></a> ·
   <a href="docs/README.md"><strong>Documentação</strong></a> ·
   <a href="#controles"><strong>Controles</strong></a>
 </p>
@@ -35,9 +35,9 @@
 
 <a id="o-jogo"></a>
 
-## Novidades da versão 0.15
+## Novidades da versão 0.16
 
-Mobilidade própria para os 76 lutadores, troca de golpes sem vantagem de posição de jogador, pulo com ataque e aterrissagem corrigidos. A guarda acompanha a chegada dos projéteis e a barra destaca o dano recente. Veja o [histórico](CHANGELOG.md) e as [referências estudadas](docs/COMBAT_REFERENCES.md).
+Caminhada refeita para os 76 lutadores: 64 quadros por direção, roupa consistente e apoio dos pés. O combate ganhou relógio de golpes por frame, defesa corrigida e comandos direcionais opcionais. No treino, o laboratório permite pausar, avançar um frame, testar guarda e consultar contato, comandos e vantagem. Os botões simples do PS5 e Xbox continuam disponíveis. Veja [o que mudou](docs/COMBAT_V16.md) e o [histórico](CHANGELOG.md).
 
 ## Causos que entram na luta
 
@@ -53,13 +53,13 @@ Teclado ou até dois controles na mesma máquina, com comandos remapeáveis e co
 
 ## Jogar no Windows
 
-**Pacote de desenvolvimento v0.15.0.** Requer Windows 10/11 e Edge ou Chrome instalado.
+**Pacote de desenvolvimento v0.16.0.** Requer Windows 10/11 e Edge ou Chrome instalado.
 
-1. Baixe [BRASA-PC-v0.15.zip](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.15.0/BRASA-PC-v0.15.zip).
+1. Baixe [BRASA-PC-v0.16.zip](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.16.0/BRASA-PC-v0.16.zip).
 2. Extraia o ZIP em uma pasta.
 3. Abra **BRASA.exe** e escolha seu modo de jogo.
 
-O pacote reúne os recursos para jogar offline. Veja as [notas da versão](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.15.0) e os [checksums SHA-256](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.15.0/SHA256SUMS.txt). O download segue as permissões do repositório privado.
+O pacote reúne os recursos para jogar offline. Veja as [notas da versão](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.16.0) e os [checksums SHA-256](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.16.0/SHA256SUMS.txt). O download segue as permissões do repositório privado.
 
 <a id="controles"></a>
 
@@ -125,7 +125,7 @@ Comece pelo [índice da documentação](docs/README.md) ou escolha seu caminho:
 | [Especiais de cada lutador](docs/guides/PLAYER_SPECIALS.md) | [Validação e limites dos testes](docs/VALIDATION.md) |
 | [Apresentação e animação](docs/guides/GUIA-ANIMACOES.md) | [Artes e recursos](docs/ART_ASSETS.md) |
 
-Auditoria técnica da versão 0.15: [relatório](docs/combat-audit.md),
+Auditoria técnica da versão 0.15, preservada como baseline: [relatório](docs/combat-audit.md),
 [frame data medido](reports/frame-data-current.csv),
 [comparação de design com SFIII](reports/brasa-vs-sfiii.md) e
 [plano da Fase 2](docs/combat-phase-2-plan.md). A auditoria não altera o gameplay.

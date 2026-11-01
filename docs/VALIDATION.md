@@ -9,3 +9,7 @@ As suítes da versão 0.15 cobrem contatos simultâneos nas duas posições de j
 São verificações automatizadas; não avaliam FPS em janela de navegador, latência Bluetooth ou sensação de controle físico. Não há alegação de aprovação da Steam ou liberação comercial.
 
 Resultados são escritos em diretórios ignorados. Consulte Actions para a execução correspondente ao commit.
+
+## 0.16
+
+O runner inclui16 suítes: as11 regressões anteriores e5 grupos para combate/treino/apoios/raster/determinismo. A revisão final foi feita pelo implementador, pois os workers independentes estavam indisponíveis. Ver [combate 0.16](COMBAT_V16.md) para escopo e limites; imagens de caminhada e laboratório foram inspecionadas.

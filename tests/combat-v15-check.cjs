@@ -2,7 +2,7 @@
 // Public fixed-step regressions for contact fairness and input/landing transitions.
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
 const sandbox={window:{},console};vm.createContext(sandbox);
-for(const file of ['assets.js','data.js','moves.js','combat.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../game',file),'utf8'),sandbox,{filename:file});
+for(const file of ['assets.js','data.js','moves.js','combat-frame-data.js','input-history.js','combat.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../game',file),'utf8'),sandbox,{filename:file});
 const {BRASA_DATA:data,BRASA_MOVES:moves,BrasaCombat:Combat}=sandbox.window,dt=1/60;
 let checks=0,failed=0;
 function test(name,run){try{run();checks++;console.log('PASS '+name);}catch(error){failed++;console.error('FAIL '+name+'\n'+error.stack);}}

@@ -2,7 +2,7 @@
 
 Guias para conhecer os lutadores, aprender os comandos e trabalhar no motor de **BRASA — Ecos do Brasil**.
 
-[← Página do projeto](../README.md) · [English overview](i18n/README.en.md) · [Baixar v0.15.0](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.15.0)
+[← Página do projeto](../README.md) · [English overview](i18n/README.en.md) · [Baixar v0.16.0](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.16.0)
 
 ## Para jogar
 
@@ -19,6 +19,7 @@ Para começar, veja [como jogar no Windows](../README.md#jogar) ou abra o [resum
 
 | Documento | O que você encontra |
 |---|---|
+| [Combate e caminhada0.16](COMBAT_V16.md) | Melhorias aplicadas aos76personagens e comandos do laboratório de treino. |
 | [Arquitetura](ARCHITECTURE.md) | Canvas 2D, simulação de combate, renderização, entradas, história e launcher Windows. |
 | [Execução e build](BUILD.md) | Node.js 24, comandos do projeto, pacote Windows, workflow de publicação e checksums. |
 | [Validação](VALIDATION.md) | Motor real, entradas simuladas, rasterização, verificação de recursos e limites das suítes. |
@@ -30,9 +31,9 @@ O [início rápido do código-fonte](../README.md#desenvolver) usa `npm start`. 
 
 ## Versões e execução automatizada
 
-- [Referências de combate](COMBAT_REFERENCES.md): projetos estudados e técnicas adaptadas na versão 0.15.
+- [Referências de combate](COMBAT_REFERENCES.md): projetos estudados e técnicas adaptadas na versão 0.16.
 - [Histórico de versões](../CHANGELOG.md): mudanças do jogo e do motor.
-- [Release v0.15.0](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.15.0): pacote Windows de desenvolvimento e checksums.
+- [Release v0.16.0](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.16.0): pacote Windows de desenvolvimento e checksums.
 - [Qualidade no GitHub Actions](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/actions/workflows/ci.yml): execuções das verificações e testes.
 - [Pacote Windows no GitHub Actions](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/actions/workflows/build-windows.yml): build e publicação da prerelease privada.
 

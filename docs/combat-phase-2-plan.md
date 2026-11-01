@@ -1,5 +1,7 @@
 # Fase 2 proposta — contrato de frames com compatibilidade
 
+> Registro da proposta após a auditoria0.15. As mudanças entregues na0.16 e seus limites estão em [COMBAT_V16.md](COMBAT_V16.md).
+
 **Status: proposta, não executada.** A Fase 1 termina nesta entrega. O jogo
 publicado continua 0.15. O plano não substitui personagens, assets, golpes,
 arenas ou progressão e não remove os atalhos do controle PS5/Xbox.

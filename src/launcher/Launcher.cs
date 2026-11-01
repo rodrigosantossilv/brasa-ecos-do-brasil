@@ -15,9 +15,9 @@ using System.Windows.Forms;
 [assembly: AssemblyDescription("BRASA: jogo de luta brasileiro para computador. Aplicativo portátil e offline.")]
 [assembly: AssemblyCompany("Projeto BRASA")]
 [assembly: AssemblyProduct("BRASA — Ecos do Brasil")]
-[assembly: AssemblyVersion("0.15.0.0")]
-[assembly: AssemblyFileVersion("0.15.0.0")]
-[assembly: AssemblyInformationalVersion("0.15 PC")]
+[assembly: AssemblyVersion("0.16.0.0")]
+[assembly: AssemblyFileVersion("0.16.0.0")]
+[assembly: AssemblyInformationalVersion("0.16 PC")]
 [assembly: AssemblyCopyright("Projeto BRASA. Personagens e conteúdo originais.")]
 
 internal static class Launcher
@@ -33,7 +33,7 @@ internal static class Launcher
             try { ExtractGame(Path.GetFullPath(args[1])); return 0; }
             catch (Exception error) { Console.Error.WriteLine("Falha ao verificar BRASA: " + error.Message); return 1; }
         }
-        if (args.Length == 1 && args[0] == "--version") { Console.WriteLine("BRASA 0.15 PC"); return 0; }
+        if (args.Length == 1 && args[0] == "--version") { Console.WriteLine("BRASA 0.16 PC"); return 0; }
         if (args.Length != 0) { Console.Error.WriteLine("Uso: BRASA.exe [--verify <pasta> | --version]"); return 2; }
 
         string gameFile = null;
