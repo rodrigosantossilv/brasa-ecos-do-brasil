@@ -1,0 +1,43 @@
+{
+  "checks": 8,
+  "failures": 0,
+  "evidence": {
+    "determinism": {
+      "runs": 100,
+      "uniqueHashes": 1,
+      "stateSHA256": "07c72c29c8b55125bba26915d3a48c837386de8618a371276d238804d2234274",
+      "debugEnabledEqualsDisabled": true,
+      "scope": "Fixed-step engine, seeded CPU, 360 ticks, same logical inputs; not browser/driver/network/rollback proof"
+    },
+    "renderRates": [
+      {
+        "hz": 30,
+        "steps": 720,
+        "stateSHA256": "b5bedde15302eef9ec3e73a716eb999d4bb1b17704ba917f72cac2a12c4ebad9",
+        "cameraSHA256": "77185418863cbb2252b253feeeda31fa031bf84e4932023aa7d72faf9de4698b"
+      },
+      {
+        "hz": 60,
+        "steps": 720,
+        "stateSHA256": "b5bedde15302eef9ec3e73a716eb999d4bb1b17704ba917f72cac2a12c4ebad9",
+        "cameraSHA256": "77185418863cbb2252b253feeeda31fa031bf84e4932023aa7d72faf9de4698b"
+      },
+      {
+        "hz": 120,
+        "steps": 720,
+        "stateSHA256": "b5bedde15302eef9ec3e73a716eb999d4bb1b17704ba917f72cac2a12c4ebad9",
+        "cameraSHA256": "77185418863cbb2252b253feeeda31fa031bf84e4932023aa7d72faf9de4698b"
+      },
+      {
+        "hz": 144,
+        "steps": 720,
+        "stateSHA256": "b5bedde15302eef9ec3e73a716eb999d4bb1b17704ba917f72cac2a12c4ebad9",
+        "cameraSHA256": "77185418863cbb2252b253feeeda31fa031bf84e4932023aa7d72faf9de4698b"
+      }
+    ],
+    "renderMethod": "Actual app frame(), BrasaInput, BrasaCombat and camera; mocked DOM/Canvas; logical input injection, not real display/GPU timing",
+    "measurements": 1140
+  },
+  "hardwareControllersTested": false,
+  "browserFPSMeasured": false
+}

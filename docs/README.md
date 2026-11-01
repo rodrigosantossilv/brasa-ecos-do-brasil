@@ -23,6 +23,8 @@ Para começar, veja [como jogar no Windows](../README.md#jogar) ou abra o [resum
 | [Execução e build](BUILD.md) | Node.js 24, comandos do projeto, pacote Windows, workflow de publicação e checksums. |
 | [Validação](VALIDATION.md) | Motor real, entradas simuladas, rasterização, verificação de recursos e limites das suítes. |
 | [Artes e recursos](ART_ASSETS.md) | Origem e tratamento das artes, manifesto de recursos e informações sobre direitos. |
+| [Auditoria técnica do combate 0.15](combat-audit.md) | Arquitetura inspecionada, 1.140 ações medidas, determinismo, achados e limites. |
+| [Plano técnico da Fase 2](combat-phase-2-plan.md) | Migração gradual para contratos de frames, input, estados, caixas e ferramentas de treino. |
 
 O [início rápido do código-fonte](../README.md#desenvolver) usa `npm start`. As dependências de desenvolvimento são instaladas com `npm ci` para executar as verificações e os testes.
 

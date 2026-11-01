@@ -1,0 +1,80 @@
+{
+  "baselineCommit": "08e8701fb1e4c60338e66bab374d89dc264938b2",
+  "baselineTree": "f41a5cdd18fe2fe92488774065918b536e963344",
+  "runtimeAndAssetsUnchanged": true,
+  "packageAndWorkflowsUnchanged": true,
+  "existingSuites": [
+    {
+      "suite": "tools-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "combat-v15-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "movement-v15-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "damage-hud-v15-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "fluid-combat-v14-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "impact-clock-v14-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "fluid-app-v14-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "fluid-render-v14-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "app-regression-v14-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "renderer-regression-v14-check.cjs",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "suite": "story-specials-check.cjs",
+      "status": 0,
+      "signal": null
+    }
+  ],
+  "additionalChecks": 8,
+  "additionalFailures": 0,
+  "measurements": 1140,
+  "staticCheck": "PASS: syntax, 14-script order, offline runtime, 121 asset hashes, roster, retired narrator, secret scan",
+  "frameDataSHA256": "4ffc0a74a97e1958f84062e40ad143bcf74f07a5b26f1c396fa4fde412e57e43",
+  "commands": [
+    "npm test",
+    "node scripts/audit-combat.cjs",
+    "node scripts/audit-inventory.cjs",
+    "node tests/combat-audit-check.cjs",
+    "npm run check"
+  ],
+  "limitations": [
+    "No physical controller test",
+    "No browser/GPU FPS or latency measurement",
+    "Phase 2 and interactive viewer are proposals only"
+  ]
+}

@@ -1,0 +1,3489 @@
+{
+  "state": {
+    "phase": "fight",
+    "phaseTime": 5.999999999999984,
+    "clock": 5.999999999999984,
+    "simulationClock": 4.866666666666655,
+    "seed": 34852383,
+    "timer": null,
+    "round": 1,
+    "winner": null,
+    "actionSequence": 10,
+    "freeze": 0,
+    "previous": [
+      {
+        "pressed": {
+          "left": false,
+          "right": false,
+          "up": false,
+          "down": false,
+          "light": false,
+          "heavy": false,
+          "kick": false,
+          "special": false,
+          "special2": false,
+          "special3": false,
+          "grab": false,
+          "block": false,
+          "super": false
+        },
+        "directSpecial": false,
+        "left": false,
+        "right": false,
+        "up": false,
+        "down": false,
+        "light": false,
+        "heavy": false,
+        "kick": false,
+        "special": false,
+        "special2": false,
+        "special3": false,
+        "grab": false,
+        "block": false,
+        "super": false
+      },
+      {
+        "pressed": {
+          "left": false,
+          "right": false,
+          "up": false,
+          "down": false,
+          "light": false,
+          "heavy": false,
+          "kick": false,
+          "special": false,
+          "special2": false,
+          "special3": false,
+          "grab": false,
+          "block": false,
+          "super": false
+        },
+        "directSpecial": false,
+        "left": false,
+        "right": false,
+        "up": false,
+        "down": false,
+        "light": false,
+        "heavy": false,
+        "kick": false,
+        "special": false,
+        "special2": false,
+        "special3": false,
+        "grab": false,
+        "block": false,
+        "super": false
+      }
+    ],
+    "ai": {
+      "next": 0.08796501910934845,
+      "pulse": 0.031666666666666676,
+      "input": {},
+      "comboSent": true,
+      "reactionAction": 10,
+      "reactionAt": 5.8403145721888325
+    },
+    "players": [
+      {
+        "data": {
+          "id": "bento",
+          "name": "Bento Brasa",
+          "title": "O Cangaceiro Amaldiçoado",
+          "origin": "Sertão de Pernambuco",
+          "state": "PE",
+          "region": "Nordeste",
+          "archetype": "Pressão terrestre",
+          "color": "#9f653c",
+          "accent": "#ff763a",
+          "skin": "#b9764e",
+          "hair": "#2b211c",
+          "description": "Chapéu de couro com estrela rachada, lenço vermelho, gibão gasto e botas de poeira. O braço esquerdo exibe fissuras de brasa. Sua silhueta combina ombros largos, contorno escuro e uma postura baixa e firme.",
+          "personality": "Orgulhoso, econômico nas palavras e protetor de quem não consegue se defender. A dureza esconde o medo de se tornar a presença que o salvou.",
+          "story": "Depois de uma emboscada, Bento aceitou o pacto de uma presença enterrada sob a terra seca. Regressou com fogo sob a pele e procura quem o traiu, enquanto impede que o pacto cobre a vida de sua comunidade.",
+          "inspiration": "Cangaço, vestuário de couro sertanejo, literatura de cordel e causos de pactos. É um personagem inventado, sem representar uma figura histórica específica.",
+          "style": "Golpes pesados, rasteiras longas e fogo que percorre o chão. Avança devagar e encurrala com pressão terrestre; sua recuperação longa oferece aberturas para saltos e contra-ataques.",
+          "specials": [
+            {
+              "name": "Sol Rachado",
+              "description": "Abre uma fissura de brasa longa que atinge apenas o rival no chão; saltos escapam e a recuperação é lenta."
+            },
+            {
+              "name": "Passo de Cinza",
+              "description": "Avança com uma cotovelada e recebe armadura breve durante o início. Agarrões vencem a proteção."
+            },
+            {
+              "name": "Ferro em Brasa",
+              "description": "Soco ascendente curto que lança o alvo e alcança saltos baixos; uma defesa deixa Bento exposto."
+            }
+          ],
+          "stats": {
+            "power": 5,
+            "speed": 2,
+            "reach": 3,
+            "defense": 4
+          },
+          "stage": "sertao",
+          "attackStyle": "cangaco",
+          "defenseName": "Guarda do Gibão",
+          "finisher": {
+            "name": "Cerco da Brasa",
+            "line": "O sertão nunca luta sozinho.",
+            "kind": "cangaco"
+          },
+          "country": "BR",
+          "nationality": "Brasileira",
+          "originalStage": "sertao",
+          "locked": false,
+          "secret": false,
+          "intro": "O sertão não chega sozinho.",
+          "entrance": {
+            "name": "Bento chega entre dois companheiros cangaceiros de tamanho humano.",
+            "line": "O sertão não chega sozinho.",
+            "style": "grapple",
+            "gesture": "O bando se despede na lateral; Bento tira a poeira do gibão.",
+            "duration": 4,
+            "beats": [
+              {
+                "at": 0,
+                "action": "Bento chega entre dois companheiros cangaceiros de tamanho humano.",
+                "pose": "arrive",
+                "prop": "cangaco-band",
+                "effect": "none"
+              },
+              {
+                "at": 1.05,
+                "action": "O bando se despede na lateral; Bento tira a poeira do gibão.",
+                "pose": "warmup",
+                "prop": "cangaco-band",
+                "effect": "none"
+              },
+              {
+                "at": 2.25,
+                "action": "Ele acende uma brasa na palma, fecha a mão e pisa na linha.",
+                "pose": "signature",
+                "prop": "cangaco-band",
+                "effect": "fissure"
+              },
+              {
+                "at": 3.25,
+                "action": "O sertão não chega sozinho.",
+                "pose": "ready",
+                "prop": "cangaco-band",
+                "effect": "none"
+              }
+            ]
+          },
+          "visual": {
+            "body": "athletic",
+            "silhouette": "Chapéu de couro com estrela rachada, lenço vermelho, gibão gasto e botas de poeira. O braço esquerdo exibe fissuras de brasa. Sua silhueta combina ombros largos, contorno escuro e uma postura baixa e firme.",
+            "outfit": "Chapéu de couro com estrela rachada, lenço vermelho, gibão gasto e botas de poeira. O braço esquerdo exibe fissuras de brasa. Sua silhueta combina ombros largos, contorno escuro e uma postura baixa e firme.",
+            "prop": "cangaco-band",
+            "stance": "Nó de Couro",
+            "palette": [
+              "#9f653c",
+              "#ff763a",
+              "#b9764e",
+              "#2b211c"
+            ]
+          },
+          "victory": {
+            "pose": "celebrate",
+            "action": "Bento ergue o chapéu para os companheiros que aguardam fora da faixa de luta.",
+            "effect": "fissure",
+            "line": "O sertão nunca luta sozinho."
+          },
+          "defeat": {
+            "pose": "kneel",
+            "action": "Bento apoia a mão no joelho; a última brasa da palma se apaga.",
+            "effect": "none"
+          }
+        },
+        "x": 1313.0611360530688,
+        "y": 0,
+        "vx": -9.480026118743606,
+        "vy": 0,
+        "facing": 1,
+        "visualBounds": {
+          "left": 95.7421875,
+          "right": 100.78125,
+          "top": 218.359375,
+          "bottom": 1.6796875
+        },
+        "visualHalfWidth": 100.78125,
+        "pushBounds": {
+          "left": 77.265625,
+          "right": 83.984375,
+          "top": 215,
+          "bottom": 0
+        },
+        "walkDistance": 57.556249999999864,
+        "walkVelocity": 0,
+        "jumpBufferUntil": 0,
+        "jumpPhase": "grounded",
+        "airTime": 0,
+        "groundedTime": 4.866666666666655,
+        "landingTime": 0,
+        "motion": {
+          "jumpPhase": "grounded",
+          "phaseTime": 4.866666666666655,
+          "airTime": 0,
+          "groundedTime": 4.866666666666655,
+          "landingTime": 0,
+          "landingProgress": 1,
+          "landingImpact": 0,
+          "verticalSpeed": 0,
+          "moveSpeed": 0,
+          "walkSpeed": 0,
+          "anticipation": 0,
+          "apex": false,
+          "landing": false,
+          "jumpDirection": 0,
+          "dashing": false,
+          "dashDirection": 0,
+          "dashProgress": 1
+        },
+        "dashTime": 0,
+        "dashDuration": 0,
+        "dashDirection": 0,
+        "dashSpeed": 0,
+        "dashCooldown": 0,
+        "dashQueued": 0,
+        "lastTapDirection": 0,
+        "lastTapAt": null,
+        "reaction": {
+          "time": 0.13333333333333333,
+          "duration": 0.22,
+          "direction": -1,
+          "strength": 0.4,
+          "impactFrame": 5,
+          "impactMirror": false,
+          "impactClock": 4.733333333333322
+        },
+        "hp": 269,
+        "maxHp": 1000,
+        "meter": 66,
+        "maxMeter": 100,
+        "rounds": 0,
+        "pose": "hurt",
+        "attack": null,
+        "stun": 0.44666666666666643,
+        "blockStun": false,
+        "guard": false,
+        "crouching": false,
+        "grounded": true,
+        "specialCooldown": 0,
+        "specialCooldowns": [
+          0,
+          0.11666666666666964,
+          0
+        ],
+        "combo": 0,
+        "comboTime": 0,
+        "comboDamage": 0,
+        "comboName": "",
+        "lastComboName": "",
+        "lastComboDamage": 0,
+        "comboActions": [],
+        "comboTarget": null,
+        "comboActionIds": [],
+        "inputBuffer": null,
+        "lastMoveName": "Passo de Cinza",
+        "lastMoveId": "bento-passo",
+        "armor": 0,
+        "invulnerable": 0,
+        "root": 0,
+        "frozen": 0,
+        "iceImmunity": 0,
+        "defenseCooldown": 0,
+        "revive": 0,
+        "guardAge": 99,
+        "counterWindow": 0,
+        "dodgeTime": 0,
+        "dodgeCooldown": 0,
+        "thrownTime": 0,
+        "float": 0,
+        "overheat": 0,
+        "buff": null,
+        "stance": 0,
+        "moveSpeed": 183.29999999999998,
+        "backSpeed": 0.6595744680851064,
+        "jumpSpeed": 474.7
+      },
+      {
+        "data": {
+          "id": "bento",
+          "name": "Bento Brasa",
+          "title": "O Cangaceiro Amaldiçoado",
+          "origin": "Sertão de Pernambuco",
+          "state": "PE",
+          "region": "Nordeste",
+          "archetype": "Pressão terrestre",
+          "color": "#9f653c",
+          "accent": "#ff763a",
+          "skin": "#b9764e",
+          "hair": "#2b211c",
+          "description": "Chapéu de couro com estrela rachada, lenço vermelho, gibão gasto e botas de poeira. O braço esquerdo exibe fissuras de brasa. Sua silhueta combina ombros largos, contorno escuro e uma postura baixa e firme.",
+          "personality": "Orgulhoso, econômico nas palavras e protetor de quem não consegue se defender. A dureza esconde o medo de se tornar a presença que o salvou.",
+          "story": "Depois de uma emboscada, Bento aceitou o pacto de uma presença enterrada sob a terra seca. Regressou com fogo sob a pele e procura quem o traiu, enquanto impede que o pacto cobre a vida de sua comunidade.",
+          "inspiration": "Cangaço, vestuário de couro sertanejo, literatura de cordel e causos de pactos. É um personagem inventado, sem representar uma figura histórica específica.",
+          "style": "Golpes pesados, rasteiras longas e fogo que percorre o chão. Avança devagar e encurrala com pressão terrestre; sua recuperação longa oferece aberturas para saltos e contra-ataques.",
+          "specials": [
+            {
+              "name": "Sol Rachado",
+              "description": "Abre uma fissura de brasa longa que atinge apenas o rival no chão; saltos escapam e a recuperação é lenta."
+            },
+            {
+              "name": "Passo de Cinza",
+              "description": "Avança com uma cotovelada e recebe armadura breve durante o início. Agarrões vencem a proteção."
+            },
+            {
+              "name": "Ferro em Brasa",
+              "description": "Soco ascendente curto que lança o alvo e alcança saltos baixos; uma defesa deixa Bento exposto."
+            }
+          ],
+          "stats": {
+            "power": 5,
+            "speed": 2,
+            "reach": 3,
+            "defense": 4
+          },
+          "stage": "sertao",
+          "attackStyle": "cangaco",
+          "defenseName": "Guarda do Gibão",
+          "finisher": {
+            "name": "Cerco da Brasa",
+            "line": "O sertão nunca luta sozinho.",
+            "kind": "cangaco"
+          },
+          "country": "BR",
+          "nationality": "Brasileira",
+          "originalStage": "sertao",
+          "locked": false,
+          "secret": false,
+          "intro": "O sertão não chega sozinho.",
+          "entrance": {
+            "name": "Bento chega entre dois companheiros cangaceiros de tamanho humano.",
+            "line": "O sertão não chega sozinho.",
+            "style": "grapple",
+            "gesture": "O bando se despede na lateral; Bento tira a poeira do gibão.",
+            "duration": 4,
+            "beats": [
+              {
+                "at": 0,
+                "action": "Bento chega entre dois companheiros cangaceiros de tamanho humano.",
+                "pose": "arrive",
+                "prop": "cangaco-band",
+                "effect": "none"
+              },
+              {
+                "at": 1.05,
+                "action": "O bando se despede na lateral; Bento tira a poeira do gibão.",
+                "pose": "warmup",
+                "prop": "cangaco-band",
+                "effect": "none"
+              },
+              {
+                "at": 2.25,
+                "action": "Ele acende uma brasa na palma, fecha a mão e pisa na linha.",
+                "pose": "signature",
+                "prop": "cangaco-band",
+                "effect": "fissure"
+              },
+              {
+                "at": 3.25,
+                "action": "O sertão não chega sozinho.",
+                "pose": "ready",
+                "prop": "cangaco-band",
+                "effect": "none"
+              }
+            ]
+          },
+          "visual": {
+            "body": "athletic",
+            "silhouette": "Chapéu de couro com estrela rachada, lenço vermelho, gibão gasto e botas de poeira. O braço esquerdo exibe fissuras de brasa. Sua silhueta combina ombros largos, contorno escuro e uma postura baixa e firme.",
+            "outfit": "Chapéu de couro com estrela rachada, lenço vermelho, gibão gasto e botas de poeira. O braço esquerdo exibe fissuras de brasa. Sua silhueta combina ombros largos, contorno escuro e uma postura baixa e firme.",
+            "prop": "cangaco-band",
+            "stance": "Nó de Couro",
+            "palette": [
+              "#9f653c",
+              "#ff763a",
+              "#b9764e",
+              "#2b211c"
+            ]
+          },
+          "victory": {
+            "pose": "celebrate",
+            "action": "Bento ergue o chapéu para os companheiros que aguardam fora da faixa de luta.",
+            "effect": "fissure",
+            "line": "O sertão nunca luta sozinho."
+          },
+          "defeat": {
+            "pose": "kneel",
+            "action": "Bento apoia a mão no joelho; a última brasa da palma se apaga.",
+            "effect": "none"
+          }
+        },
+        "x": 1510.4225085219007,
+        "y": 0,
+        "vx": 0,
+        "vy": 0,
+        "facing": -1,
+        "visualBounds": {
+          "left": 95.7421875,
+          "right": 100.78125,
+          "top": 218.359375,
+          "bottom": 1.6796875
+        },
+        "visualHalfWidth": 100.78125,
+        "pushBounds": {
+          "left": 77.265625,
+          "right": 83.984375,
+          "top": 215,
+          "bottom": 0
+        },
+        "walkDistance": 54.990000000001146,
+        "walkVelocity": 0,
+        "jumpBufferUntil": 0,
+        "jumpPhase": "grounded",
+        "airTime": 0,
+        "groundedTime": 4.866666666666655,
+        "landingTime": 0,
+        "motion": {
+          "jumpPhase": "grounded",
+          "phaseTime": 4.866666666666655,
+          "airTime": 0,
+          "groundedTime": 4.866666666666655,
+          "landingTime": 0,
+          "landingProgress": 1,
+          "landingImpact": 0,
+          "verticalSpeed": 0,
+          "moveSpeed": 0,
+          "walkSpeed": 0,
+          "anticipation": 0,
+          "apex": false,
+          "landing": false,
+          "jumpDirection": 0,
+          "dashing": false,
+          "dashDirection": 0,
+          "dashProgress": 1
+        },
+        "dashTime": 0,
+        "dashDuration": 0,
+        "dashDirection": 0,
+        "dashSpeed": 0,
+        "dashCooldown": 0,
+        "dashQueued": 0,
+        "lastTapDirection": 0,
+        "lastTapAt": null,
+        "reaction": null,
+        "hp": 882,
+        "maxHp": 1000,
+        "meter": 87,
+        "maxMeter": 100,
+        "rounds": 0,
+        "pose": "kick",
+        "attack": {
+          "startup": 0.15393258426966294,
+          "active": 0.12134831460674157,
+          "recovery": 0.216,
+          "range": 136.99,
+          "damage": 91.19999999999999,
+          "stun": 0.58,
+          "push": 20.9,
+          "token": "kick",
+          "moveId": "bento:kick",
+          "moveName": "Bota de Poeira",
+          "kind": "kick",
+          "actionToken": "kick",
+          "actionId": 10,
+          "time": 0.3,
+          "direction": -1,
+          "hits": 1,
+          "confirmed": true,
+          "nextHit": null,
+          "targets": [
+            0
+          ],
+          "comboFinished": false,
+          "visualContactOffset": 0
+        },
+        "stun": 0,
+        "blockStun": false,
+        "guard": false,
+        "crouching": false,
+        "grounded": true,
+        "specialCooldown": 0,
+        "specialCooldowns": [
+          0.4833333333333338,
+          0,
+          0
+        ],
+        "combo": 1,
+        "comboTime": 1.016666666666667,
+        "comboDamage": 91,
+        "comboName": "",
+        "lastComboName": "Couro, Poeira e Brasa",
+        "lastComboDamage": 246,
+        "comboActions": [
+          "kick"
+        ],
+        "comboTarget": 0,
+        "comboActionIds": [
+          10
+        ],
+        "inputBuffer": null,
+        "lastMoveName": "Bota de Poeira",
+        "lastMoveId": "bento:kick",
+        "armor": 0,
+        "invulnerable": 0,
+        "root": 0,
+        "frozen": 0,
+        "iceImmunity": 0,
+        "defenseCooldown": 0,
+        "revive": 0,
+        "guardAge": 99,
+        "counterWindow": 0,
+        "dodgeTime": 0,
+        "dodgeCooldown": 0,
+        "thrownTime": 0,
+        "float": 0,
+        "overheat": 0,
+        "buff": null,
+        "stance": 0,
+        "moveSpeed": 183.29999999999998,
+        "backSpeed": 0.6595744680851064,
+        "jumpSpeed": 474.7
+      }
+    ],
+    "projectiles": []
+  },
+  "events": [
+    {
+      "simulationFrame": 1,
+      "activeFrame": 1,
+      "event": "INPUT",
+      "player": 0,
+      "direction": 6,
+      "directionAbsolute": 6,
+      "facing": 1,
+      "buttons": [],
+      "pressed": [
+        "right"
+      ]
+    },
+    {
+      "simulationFrame": 1,
+      "activeFrame": 1,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "IDLE",
+      "state": "WALK_FORWARD"
+    },
+    {
+      "simulationFrame": 1,
+      "activeFrame": 1,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "IDLE",
+      "state": "WALK_FORWARD"
+    },
+    {
+      "simulationFrame": 11,
+      "activeFrame": 11,
+      "event": "ATTACK_START",
+      "type": "move",
+      "player": 1,
+      "name": "Nó de Couro",
+      "id": "bento:light",
+      "kind": "light",
+      "variant": null,
+      "fighter": "bento",
+      "move": "bento:light",
+      "moveFrame": 0
+    },
+    {
+      "simulationFrame": 11,
+      "activeFrame": 11,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "WALK_FORWARD",
+      "state": "ATTACK"
+    },
+    {
+      "simulationFrame": 16,
+      "activeFrame": 16,
+      "event": "ACTIVE_START",
+      "fighter": "bento",
+      "move": "bento:light",
+      "moveFrame": 6,
+      "meaning": "timer envelope, not every tick is an offensive box"
+    },
+    {
+      "simulationFrame": 16,
+      "activeFrame": 16,
+      "event": "HIT",
+      "type": "hit",
+      "player": 1,
+      "victim": 0,
+      "damage": 63,
+      "combo": 1,
+      "special": false,
+      "freeze": 0.1,
+      "fighter": "bento",
+      "move": "bento:light",
+      "moveFrame": 6
+    },
+    {
+      "simulationFrame": 16,
+      "activeFrame": 16,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "WALK_FORWARD",
+      "state": "HITSTUN"
+    },
+    {
+      "simulationFrame": 23,
+      "activeFrame": 17,
+      "event": "ATTACK_START",
+      "type": "move",
+      "player": 1,
+      "name": "Punho do Sertão",
+      "id": "bento:heavy",
+      "kind": "heavy",
+      "variant": null,
+      "fighter": "bento",
+      "move": "bento:heavy",
+      "moveFrame": 0
+    },
+    {
+      "simulationFrame": 31,
+      "activeFrame": 25,
+      "event": "INPUT",
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [
+        "light"
+      ],
+      "pressed": [
+        "light"
+      ]
+    },
+    {
+      "simulationFrame": 36,
+      "activeFrame": 30,
+      "event": "ACTIVE_START",
+      "fighter": "bento",
+      "move": "bento:heavy",
+      "moveFrame": 14,
+      "meaning": "timer envelope, not every tick is an offensive box"
+    },
+    {
+      "simulationFrame": 36,
+      "activeFrame": 30,
+      "event": "HIT",
+      "type": "hit",
+      "player": 1,
+      "victim": 0,
+      "damage": 107,
+      "combo": 2,
+      "special": false,
+      "freeze": 0.13333333333333333,
+      "fighter": "bento",
+      "move": "bento:heavy",
+      "moveFrame": 14
+    },
+    {
+      "simulationFrame": 45,
+      "activeFrame": 31,
+      "event": "ATTACK_START",
+      "type": "move",
+      "player": 1,
+      "name": "Bota de Poeira",
+      "id": "bento:kick",
+      "kind": "kick",
+      "variant": null,
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 0
+    },
+    {
+      "simulationFrame": 54,
+      "activeFrame": 40,
+      "event": "ACTIVE_START",
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 10,
+      "meaning": "timer envelope, not every tick is an offensive box"
+    },
+    {
+      "simulationFrame": 54,
+      "activeFrame": 40,
+      "event": "HIT",
+      "type": "hit",
+      "player": 1,
+      "victim": 0,
+      "damage": 76,
+      "combo": 3,
+      "special": false,
+      "freeze": 0.1,
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 10
+    },
+    {
+      "simulationFrame": 67,
+      "activeFrame": 47,
+      "event": "ACTIVE_END",
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 17
+    },
+    {
+      "simulationFrame": 80,
+      "activeFrame": 60,
+      "event": "INPUT",
+      "player": 0,
+      "direction": 8,
+      "directionAbsolute": 8,
+      "facing": 1,
+      "buttons": [],
+      "pressed": [
+        "up"
+      ]
+    },
+    {
+      "simulationFrame": 80,
+      "activeFrame": 60,
+      "event": "RECOVERY_END",
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 30,
+      "reason": "timer"
+    },
+    {
+      "simulationFrame": 80,
+      "activeFrame": 60,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "ATTACK",
+      "state": "IDLE"
+    },
+    {
+      "simulationFrame": 81,
+      "activeFrame": 61,
+      "event": "INPUT",
+      "player": 0,
+      "direction": 4,
+      "directionAbsolute": 4,
+      "facing": 1,
+      "buttons": [],
+      "pressed": [
+        "left"
+      ]
+    },
+    {
+      "simulationFrame": 95,
+      "activeFrame": 75,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "HITSTUN",
+      "state": "BLOCK"
+    },
+    {
+      "simulationFrame": 100,
+      "activeFrame": 80,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "BLOCK",
+      "state": "IDLE"
+    },
+    {
+      "simulationFrame": 111,
+      "activeFrame": 91,
+      "event": "ATTACK_START",
+      "type": "move",
+      "player": 1,
+      "name": "Bota de Poeira",
+      "id": "bento:kick",
+      "kind": "kick",
+      "variant": null,
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 0
+    },
+    {
+      "simulationFrame": 111,
+      "activeFrame": 91,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "IDLE",
+      "state": "ATTACK"
+    },
+    {
+      "simulationFrame": 120,
+      "activeFrame": 100,
+      "event": "ACTIVE_START",
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 10,
+      "meaning": "timer envelope, not every tick is an offensive box"
+    },
+    {
+      "simulationFrame": 120,
+      "activeFrame": 100,
+      "event": "HIT",
+      "type": "hit",
+      "player": 1,
+      "victim": 0,
+      "damage": 91,
+      "combo": 1,
+      "special": false,
+      "freeze": 0.1,
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 10
+    },
+    {
+      "simulationFrame": 120,
+      "activeFrame": 100,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "IDLE",
+      "state": "HITSTUN"
+    },
+    {
+      "simulationFrame": 127,
+      "activeFrame": 101,
+      "event": "ATTACK_START",
+      "type": "move",
+      "player": 1,
+      "name": "Sol Rachado",
+      "id": "bento-sol",
+      "kind": "special",
+      "variant": 0,
+      "fighter": "bento",
+      "move": "bento-sol",
+      "moveFrame": 0
+    },
+    {
+      "simulationFrame": 127,
+      "activeFrame": 101,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "ATTACK",
+      "state": "SPECIAL"
+    },
+    {
+      "simulationFrame": 135,
+      "activeFrame": 109,
+      "event": "INPUT",
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [
+        "kick"
+      ],
+      "pressed": [
+        "kick"
+      ]
+    },
+    {
+      "simulationFrame": 140,
+      "activeFrame": 114,
+      "event": "ACTIVE_START",
+      "fighter": "bento",
+      "move": "bento-sol",
+      "moveFrame": 14,
+      "meaning": "timer envelope, not every tick is an offensive box"
+    },
+    {
+      "simulationFrame": 140,
+      "activeFrame": 114,
+      "event": "HIT",
+      "type": "hit",
+      "player": 1,
+      "victim": 0,
+      "damage": 106,
+      "combo": 2,
+      "special": true,
+      "freeze": 0.16666666666666666,
+      "fighter": "bento",
+      "move": "bento-sol",
+      "moveFrame": 14
+    },
+    {
+      "simulationFrame": 157,
+      "activeFrame": 121,
+      "event": "ACTIVE_END",
+      "fighter": "bento",
+      "move": "bento-sol",
+      "moveFrame": 21
+    },
+    {
+      "simulationFrame": 173,
+      "activeFrame": 137,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "HITSTUN",
+      "state": "IDLE"
+    },
+    {
+      "simulationFrame": 179,
+      "activeFrame": 143,
+      "event": "RECOVERY_END",
+      "fighter": "bento",
+      "move": "bento-sol",
+      "moveFrame": 43,
+      "reason": "timer"
+    },
+    {
+      "simulationFrame": 179,
+      "activeFrame": 143,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "SPECIAL",
+      "state": "IDLE"
+    },
+    {
+      "simulationFrame": 180,
+      "activeFrame": 144,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "IDLE",
+      "state": "WALK_FORWARD"
+    },
+    {
+      "simulationFrame": 188,
+      "activeFrame": 152,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "WALK_FORWARD",
+      "state": "IDLE"
+    },
+    {
+      "simulationFrame": 200,
+      "activeFrame": 164,
+      "event": "INPUT",
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [
+        "special2"
+      ],
+      "pressed": [
+        "special2"
+      ]
+    },
+    {
+      "simulationFrame": 200,
+      "activeFrame": 164,
+      "event": "ATTACK_START",
+      "type": "move",
+      "player": 0,
+      "name": "Passo de Cinza",
+      "id": "bento-passo",
+      "kind": "special",
+      "variant": 1,
+      "fighter": "bento",
+      "move": "bento-passo",
+      "moveFrame": 0
+    },
+    {
+      "simulationFrame": 200,
+      "activeFrame": 164,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "IDLE",
+      "state": "SPECIAL"
+    },
+    {
+      "simulationFrame": 205,
+      "activeFrame": 169,
+      "event": "ATTACK_START",
+      "type": "move",
+      "player": 1,
+      "name": "Bota de Poeira",
+      "id": "bento:kick",
+      "kind": "kick",
+      "variant": null,
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 0
+    },
+    {
+      "simulationFrame": 205,
+      "activeFrame": 169,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "IDLE",
+      "state": "ATTACK"
+    },
+    {
+      "simulationFrame": 210,
+      "activeFrame": 174,
+      "event": "ACTIVE_START",
+      "fighter": "bento",
+      "move": "bento-passo",
+      "moveFrame": 11,
+      "meaning": "timer envelope, not every tick is an offensive box"
+    },
+    {
+      "simulationFrame": 210,
+      "activeFrame": 174,
+      "event": "HIT",
+      "type": "hit",
+      "player": 0,
+      "victim": 1,
+      "damage": 118,
+      "combo": 1,
+      "special": true,
+      "freeze": 0.16666666666666666,
+      "fighter": "bento",
+      "move": "bento-passo",
+      "moveFrame": 11
+    },
+    {
+      "simulationFrame": 210,
+      "activeFrame": 174,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "ATTACK",
+      "state": "HITSTUN"
+    },
+    {
+      "simulationFrame": 232,
+      "activeFrame": 186,
+      "event": "ACTIVE_END",
+      "fighter": "bento",
+      "move": "bento-passo",
+      "moveFrame": 23
+    },
+    {
+      "simulationFrame": 239,
+      "activeFrame": 193,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "HITSTUN",
+      "state": "IDLE"
+    },
+    {
+      "simulationFrame": 247,
+      "activeFrame": 201,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "IDLE",
+      "state": "BLOCK"
+    },
+    {
+      "simulationFrame": 250,
+      "activeFrame": 204,
+      "event": "INPUT",
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": [
+        "left"
+      ]
+    },
+    {
+      "simulationFrame": 253,
+      "activeFrame": 207,
+      "event": "RECOVERY_END",
+      "fighter": "bento",
+      "move": "bento-passo",
+      "moveFrame": 44,
+      "reason": "timer"
+    },
+    {
+      "simulationFrame": 253,
+      "activeFrame": 207,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "SPECIAL",
+      "state": "IDLE"
+    },
+    {
+      "simulationFrame": 264,
+      "activeFrame": 218,
+      "event": "ATTACK_START",
+      "type": "move",
+      "player": 1,
+      "name": "Bota de Poeira",
+      "id": "bento:kick",
+      "kind": "kick",
+      "variant": null,
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 0
+    },
+    {
+      "simulationFrame": 264,
+      "activeFrame": 218,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "BLOCK",
+      "state": "ATTACK"
+    },
+    {
+      "simulationFrame": 273,
+      "activeFrame": 227,
+      "event": "ACTIVE_START",
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 10,
+      "meaning": "timer envelope, not every tick is an offensive box"
+    },
+    {
+      "simulationFrame": 273,
+      "activeFrame": 227,
+      "event": "HIT",
+      "type": "hit",
+      "player": 1,
+      "victim": 0,
+      "damage": 91,
+      "combo": 1,
+      "special": false,
+      "freeze": 0.1,
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 10
+    },
+    {
+      "simulationFrame": 273,
+      "activeFrame": 227,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "IDLE",
+      "state": "HITSTUN"
+    },
+    {
+      "simulationFrame": 280,
+      "activeFrame": 228,
+      "event": "ATTACK_START",
+      "type": "move",
+      "player": 1,
+      "name": "Sol Rachado",
+      "id": "bento-sol",
+      "kind": "special",
+      "variant": 0,
+      "fighter": "bento",
+      "move": "bento-sol",
+      "moveFrame": 0
+    },
+    {
+      "simulationFrame": 280,
+      "activeFrame": 228,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "ATTACK",
+      "state": "SPECIAL"
+    },
+    {
+      "simulationFrame": 285,
+      "activeFrame": 233,
+      "event": "INPUT",
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [
+        "heavy"
+      ],
+      "pressed": [
+        "heavy"
+      ]
+    },
+    {
+      "simulationFrame": 293,
+      "activeFrame": 241,
+      "event": "ACTIVE_START",
+      "fighter": "bento",
+      "move": "bento-sol",
+      "moveFrame": 14,
+      "meaning": "timer envelope, not every tick is an offensive box"
+    },
+    {
+      "simulationFrame": 293,
+      "activeFrame": 241,
+      "event": "HIT",
+      "type": "hit",
+      "player": 1,
+      "victim": 0,
+      "damage": 106,
+      "combo": 2,
+      "special": true,
+      "freeze": 0.16666666666666666,
+      "fighter": "bento",
+      "move": "bento-sol",
+      "moveFrame": 14
+    },
+    {
+      "simulationFrame": 310,
+      "activeFrame": 248,
+      "event": "ACTIVE_END",
+      "fighter": "bento",
+      "move": "bento-sol",
+      "moveFrame": 21
+    },
+    {
+      "simulationFrame": 326,
+      "activeFrame": 264,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "HITSTUN",
+      "state": "IDLE"
+    },
+    {
+      "simulationFrame": 332,
+      "activeFrame": 270,
+      "event": "RECOVERY_END",
+      "fighter": "bento",
+      "move": "bento-sol",
+      "moveFrame": 43,
+      "reason": "timer"
+    },
+    {
+      "simulationFrame": 332,
+      "activeFrame": 270,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "SPECIAL",
+      "state": "IDLE"
+    },
+    {
+      "simulationFrame": 337,
+      "activeFrame": 275,
+      "event": "ATTACK_START",
+      "type": "move",
+      "player": 1,
+      "name": "Bota de Poeira",
+      "id": "bento:kick",
+      "kind": "kick",
+      "variant": null,
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 0
+    },
+    {
+      "simulationFrame": 337,
+      "activeFrame": 275,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "IDLE",
+      "state": "ATTACK"
+    },
+    {
+      "simulationFrame": 346,
+      "activeFrame": 284,
+      "event": "ACTIVE_START",
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 10,
+      "meaning": "timer envelope, not every tick is an offensive box"
+    },
+    {
+      "simulationFrame": 346,
+      "activeFrame": 284,
+      "event": "HIT",
+      "type": "hit",
+      "player": 1,
+      "victim": 0,
+      "damage": 91,
+      "combo": 1,
+      "special": false,
+      "freeze": 0.1,
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 10
+    },
+    {
+      "simulationFrame": 346,
+      "activeFrame": 284,
+      "event": "STATE_CHANGE",
+      "fighter": "bento",
+      "from": "IDLE",
+      "state": "HITSTUN"
+    },
+    {
+      "simulationFrame": 359,
+      "activeFrame": 291,
+      "event": "ACTIVE_END",
+      "fighter": "bento",
+      "move": "bento:kick",
+      "moveFrame": 17
+    }
+  ],
+  "inputHistory": [
+    {
+      "simulationFrame": 241,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 241,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 242,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 242,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 243,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 243,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 244,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 244,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 245,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 245,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 246,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 246,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 247,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 247,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 248,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 248,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 249,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 249,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 250,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 250,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": [
+        "left"
+      ]
+    },
+    {
+      "simulationFrame": 251,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 251,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 252,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 252,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 253,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 253,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 254,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 254,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 255,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 255,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 256,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 256,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 257,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 257,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 258,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 258,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 259,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 259,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 260,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 260,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 261,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 261,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 262,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 262,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 263,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 263,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 264,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 264,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 265,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 265,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 266,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 266,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 267,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 267,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 268,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 268,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 269,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 269,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 270,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 270,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 271,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 271,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 272,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 272,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 273,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 273,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 274,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 274,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 275,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 275,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 276,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 276,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 277,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 277,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 278,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 278,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 279,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 279,
+      "player": 1,
+      "direction": 6,
+      "directionAbsolute": 4,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 280,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 280,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 281,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 281,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 282,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 282,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 283,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 283,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 284,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 284,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 285,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 285,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [
+        "heavy"
+      ],
+      "pressed": [
+        "heavy"
+      ]
+    },
+    {
+      "simulationFrame": 286,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 286,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 287,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 287,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 288,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 288,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 289,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 289,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 290,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 290,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 291,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 291,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 292,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 292,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 293,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 293,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 294,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 294,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 295,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 295,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 296,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 296,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 297,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 297,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 298,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 298,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 299,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 299,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 300,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 300,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 301,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 301,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 302,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 302,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 303,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 303,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 304,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 304,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 305,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 305,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 306,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 306,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 307,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 307,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 308,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 308,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 309,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 309,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 310,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 310,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 311,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 311,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 312,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 312,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 313,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 313,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 314,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 314,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 315,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 315,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 316,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 316,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 317,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 317,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 318,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 318,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 319,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 319,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 320,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 320,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 321,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 321,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 322,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 322,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 323,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 323,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 324,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 324,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 325,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 325,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 326,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 326,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 327,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 327,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 328,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 328,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 329,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 329,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 330,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 330,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 331,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 331,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 332,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 332,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 333,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 333,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 334,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 334,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 335,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 335,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 336,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 336,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 337,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 337,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 338,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 338,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 339,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 339,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 340,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 340,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 341,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 341,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 342,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 342,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 343,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 343,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 344,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 344,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 345,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 345,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 346,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 346,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 347,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 347,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 348,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 348,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 349,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 349,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 350,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 350,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 351,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 351,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 352,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 352,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 353,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 353,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 354,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 354,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 355,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 355,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 356,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 356,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 357,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 357,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 358,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 358,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 359,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 359,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 360,
+      "player": 0,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": 1,
+      "buttons": [],
+      "pressed": []
+    },
+    {
+      "simulationFrame": 360,
+      "player": 1,
+      "direction": 5,
+      "directionAbsolute": 5,
+      "facing": -1,
+      "buttons": [],
+      "pressed": []
+    }
+  ]
+}

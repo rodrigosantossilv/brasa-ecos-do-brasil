@@ -125,6 +125,11 @@ Comece pelo [índice da documentação](docs/README.md) ou escolha seu caminho:
 | [Especiais de cada lutador](docs/guides/PLAYER_SPECIALS.md) | [Validação e limites dos testes](docs/VALIDATION.md) |
 | [Apresentação e animação](docs/guides/GUIA-ANIMACOES.md) | [Artes e recursos](docs/ART_ASSETS.md) |
 
+Auditoria técnica da versão 0.15: [relatório](docs/combat-audit.md),
+[frame data medido](reports/frame-data-current.csv),
+[comparação de design com SFIII](reports/brasa-vs-sfiii.md) e
+[plano da Fase 2](docs/combat-phase-2-plan.md). A auditoria não altera o gameplay.
+
 Acompanhe as mudanças no [histórico de versões](CHANGELOG.md) e as execuções em [GitHub Actions](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/actions).
 
 BRASA está em desenvolvimento. **Todos os direitos reservados**; consulte [LICENSE](LICENSE) para as condições de uso e distribuição.
