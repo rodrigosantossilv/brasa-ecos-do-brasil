@@ -105,7 +105,7 @@
         comboName: '', lastComboName: '', lastComboDamage: 0, comboActions: [], comboTarget: null, comboActionIds: [], inputBuffer: null,
         lastMoveName: '', lastMoveId: '', armor: 0, invulnerable: 0, root: 0, frozen: 0, iceImmunity: 0, defenseCooldown: 0, revive: 0,
         guardAge: 99, counterWindow: 0, dodgeTime: 0, dodgeCooldown: 0, thrownTime: 0, float: 0, overheat: 0, buff: null, stance: 0,
-        moveSpeed: MOBILITY[data.id] || (movement ? baseSpeed*clamp(Number(movement.walk)||1,.65,1.35) : 220),
+        moveSpeed: movement ? baseSpeed*clamp(Number(movement.walk)||1,.65,1.35) : MOBILITY[data.id] || 220,
         backSpeed: movement ? clamp((Number(movement.backwalk)||.73)/(Number(movement.walk)||1),.45,.95) : .73,
         jumpSpeed: 505*clamp(Number(movement?.jump)||1,.7,1.3) };
     }
@@ -406,7 +406,7 @@
         spec.push *= .38;
       }
       if (kind !== 'grab' && !p.grounded) {
-        spec.hitHeight = 'overhead'; spec.reachY = 155; spec.damage *= 1.08;
+        spec.hitHeight = 'overhead'; spec.reachY = 155; spec.damage *= 1.08; spec.airOnly = true;
         spec.moveName = { light: 'Soco aéreo', heavy: 'Martelo aéreo', kick: 'Voadora' }[kind];
         spec.moveId += ':air'; spec.pose = { light: 'airLight', heavy: 'airHeavy', kick: 'airKick' }[kind];
       } else if (kind !== 'grab' && crouching) {
@@ -487,7 +487,20 @@
       if (this.phase !== 'fight') { this.previous = controls; return; }
       this.separatePlayers();
       this.constrainToViewport();
-      this.players.forEach((p, i) => this.updateAttack(p, i, dt));
+      // Only ordinary contacts already eligible in this step may trade. Capture
+      // both before either hit can interrupt an attack or move its target.
+      const contacts = this.players.map((p,i) => this.attackContact(p,i));
+      const trade = contacts.every(contact => contact && !contact.attack.special && !contact.attack.throw &&
+        ['light','heavy','kick'].includes(contact.attack.kind));
+      if (trade) contacts.forEach((contact,i) => {
+        const p=this.players[i];
+        contact.chain={combo:p.combo,comboDamage:p.comboDamage,comboActions:[...p.comboActions],
+          comboActionIds:[...p.comboActionIds],comboTarget:p.comboTarget};
+      });
+      this.players.forEach((p, i) => this.updateAttack(p, i, dt, trade ? contacts[i] : null));
+      if (trade) this.players.forEach((p,i) => {
+        if (p.attack !== contacts[i].attack) this.clearCombo(p);
+      });
       this.updateProjectiles(dt);
       this.constrainToViewport();
       this.facePlayers();
@@ -497,6 +510,17 @@
       });
       this.previous = controls;
       if (this.mode !== 'training' && (this.timer <= 0 || this.players.some(p => p.hp <= 0))) this.endRound();
+    }
+
+    beginJump(p, i, input, axis) {
+      if (p.attack || !p.grounded || input.block || input.down || !p.jumpBufferUntil || p.jumpBufferUntil < this.simulationClock - 1e-9) return false;
+      p.vy = p.jumpSpeed; p.grounded = false; p.guard = false; p.crouching = false;
+      p.airTime = 0; p.groundedTime = 0; p.landingTime = 0; p.jumpBufferUntil = 0;
+      p.motion.jumpDirection = axis * p.facing; p.motion.landingImpact = 0;
+      p.vx = axis * p.moveSpeed * 180 / 220 * (p.buff?.speed || 1);
+      p.walkVelocity = 0;
+      this.event('jump', { player: i });
+      return true;
     }
 
     updatePlayer(p, i, input, dt) {
@@ -531,6 +555,9 @@
       const canAct = p.hp > 0 && p.frozen <= 0 && p.stun <= 0 && !p.attack && p.root <= 0 && p.dodgeTime <= 0 && p.dashTime <= 0 && p.overheat <= 0;
       const axis = Number(input.right) - Number(input.left);
       let walkingDisplacement = null;
+      // A simultaneous face-button normal belongs to the requested jump. Other
+      // command priorities (grabs, specials, block chords and dash) stay intact.
+      if (canAct && ['light','heavy','kick'].includes(p.inputBuffer?.kind)) this.beginJump(p,i,input,axis);
       const incomingVx = p.vx;
       p.vx *= Math.exp(-dt * 18);
       if (p.hp > 0 && p.frozen <= 0 && (p.stun <= 0 || p.blockStun) && p.root <= 0) this.consumeInput(p, i);
@@ -545,14 +572,7 @@
         p.crouching = p.grounded && input.down;
         p.guard = p.grounded && (input.block || back);
         if (input.block || input.down) p.jumpBufferUntil = 0;
-        if (!p.attack && p.jumpBufferUntil >= this.simulationClock - 1e-9 && p.jumpBufferUntil > 0 && p.grounded && !input.block) {
-          p.vy = p.jumpSpeed; p.grounded = false; p.guard = false; p.crouching = false;
-          p.airTime = 0; p.groundedTime = 0; p.landingTime = 0; p.jumpBufferUntil = 0;
-          p.motion.jumpDirection = axis * p.facing; p.motion.landingImpact = 0;
-          p.vx = axis * p.moveSpeed * 180 / 220 * (p.buff?.speed || 1);
-          p.walkVelocity = 0;
-          this.event('jump', { player: i });
-        }
+        this.beginJump(p,i,input,axis);
         if (p.grounded && !p.attack && !input.block && !p.crouching && p.dodgeTime <= 0) {
           // Ground movement starts, reverses and stops on the same simulation tick.
           // Animation eases between poses; the controls never add unwanted skating.
@@ -590,6 +610,10 @@
         if (p.y <= 0) {
           p.motion.landingImpact = clamp(Math.abs(p.vy) / 650, 0, 1);
           p.y = 0; p.vy = 0; p.grounded = true; p.groundedTime = 0;
+          if (p.attack?.airOnly && !p.attack.special && !p.attack.throw) {
+            if (!p.attack.confirmed) this.clearCombo(p);
+            p.attack = null;
+          }
           p.landingTime = p.attack || input.block || input.down || axis ? 0 : MOTION.landing;
           this.event('land', { player: i, impact: p.motion.landingImpact });
         }
@@ -812,9 +836,8 @@
       this.projectiles.push(projectile);
     }
 
-    updateAttack(p, i) {
-      const a = p.attack;
-      if (!a) return;
+    attackContact(p, i, a = p.attack) {
+      if (!a) return null;
       const enemy = this.players[1 - i];
       const strike=global.BrasaMoveTiming?.sample(a),canContact=!strike||(strike.canHit&&!a.strikeContacts?.has(strike.index));
       if (!a.projectileOnly && canContact && a.time >= a.startup && a.time <= a.startup + a.active && a.time >= a.nextHit) {
@@ -824,13 +847,22 @@
         const reach=this.attackReach(p,enemy,a);
         const facingTarget = dx * a.direction >= -22 || a.pass;
         if (facingTarget && Math.abs(dx) <= reach && overlapsBody && (!a.ground || enemy.grounded) && (!a.throw || (enemy.grounded && !enemy.crouching)) && (!a.targets.has(1 - i) || a.multi)) {
-          if (this.hit(p, enemy, i, a)) {
-            a.targets.add(1 - i); a.hits++;
-            if(strike)(a.strikeContacts||(a.strikeContacts=new Set())).add(strike.index);
-            a.nextHit = strike?strike.windowEnd:a.time + .16;
-            if (!a.multi || a.hits >= a.multi) a.nextHit = Infinity;
-          }
+          return {attack:a,strike};
         }
+      }
+      return null;
+    }
+
+    updateAttack(p, i, dt, contact = null) {
+      const a = contact?.attack || p.attack;
+      if (!a) return;
+      const collision = contact || this.attackContact(p,i,a);
+      if (collision && this.hit(p,this.players[1-i],i,a,contact?.chain)) {
+        const strike=collision.strike;
+        a.targets.add(1-i); a.hits++;
+        if(strike)(a.strikeContacts||(a.strikeContacts=new Set())).add(strike.index);
+        a.nextHit = strike?strike.windowEnd:a.time+.16;
+        if (!a.multi || a.hits >= a.multi) a.nextHit = Infinity;
       }
       if (a.time >= a.startup + a.active + a.recovery && p.attack === a) {
         if (a.overheat) p.overheat = Math.min(1.8, Math.max(.25, Number(a.overheat)));
@@ -839,13 +871,15 @@
       }
     }
 
-    hit(attacker, victim, owner, attack) {
+    hit(attacker, victim, owner, attack, chainSnapshot = null) {
       if (victim.hp <= 0 || victim.invulnerable > 0) return false;
       const impactFrame=global.BrasaSpriteGeometry?.sampleFrame(victim.data.id,victim.pose,this.simulationClock,victim.attack,
         {motion:victim.motion,walkDistance:victim.walkDistance});
-      const direction = victim.x >= attacker.x ? 1 : -1;
+      const contactDirection = Number.isFinite(attack.contactDirection) ? Math.sign(attack.contactDirection) : null;
+      const direction = contactDirection || (victim.x >= attacker.x ? 1 : -1);
       const body=this.hurtbox(victim), impactY=clamp(Number.isFinite(attack.y)?attack.y:attacker.y+(attack.hitHeight==='low'?42:128)*this.fighterScale,body.bottom+10*this.fighterScale,body.top-10*this.fighterScale);
-      const front = (attacker.x - victim.x) * victim.facing >= -10;
+      const front = contactDirection === null ? (attacker.x - victim.x) * victim.facing >= -10 :
+        contactDirection === 0 || contactDirection * victim.facing < 0;
       const counter = victim.attack;
       if (counter?.counter && !counter.triggered && front && !attack.throw && attack.hitHeight !== 'low' &&
           counter.time >= counter.startup && counter.time <= counter.startup + (counter.counterWindow || counter.active)) {
@@ -863,14 +897,15 @@
       const armor = victim.armor > 0 && !attack.throw;
       const a = attack.parentAttack || attack;
       const actionId = attack.actionId ?? a.actionId ?? ++this.actionSequence;
-      if (attacker.combo && (attacker.comboTarget !== 1 - owner || (victim.stun <= 0 && victim.root <= 0 && victim.frozen <= 0 && victim.grounded))) this.clearCombo(attacker);
-      const existingAction = attacker.comboActionIds.indexOf(actionId);
-      const actionIndex = existingAction < 0 ? attacker.comboActions.length : existingAction;
+      if (!chainSnapshot && attacker.combo && (attacker.comboTarget !== 1 - owner || (victim.stun <= 0 && victim.root <= 0 && victim.frozen <= 0 && victim.grounded))) this.clearCombo(attacker);
+      const chain = chainSnapshot || attacker;
+      const existingAction = chain.comboActionIds.indexOf(actionId);
+      const actionIndex = existingAction < 0 ? chain.comboActions.length : existingAction;
       const exhaustedChain = !!this.catalog(attacker.data.id) && actionIndex >= 3;
       const scaling = this.catalog(attacker.data.id) ? Math.max(.35, 1 - actionIndex * .15) : 1;
       let bonus = null, matchedCombo = null;
       if (!blocked && existingAction < 0 && !a.comboFinished) {
-        const sequence = [...attacker.comboActions, attack.token || a.token || a.kind];
+        const sequence = [...chain.comboActions, attack.token || a.token || a.kind];
         matchedCombo = this.catalog(attacker.data.id)?.combos?.find(combo =>
           combo.sequence?.length === sequence.length && combo.sequence.every((token, index) => token === sequence[index]));
         if (matchedCombo) bonus = matchedCombo.bonus || {};
@@ -923,7 +958,9 @@
         }
         victim.inputBuffer = null;
         if (attack.meterDrain) victim.meter = Math.max(0, victim.meter - Math.min(35, Number(attack.meterDrain)));
-        this.clearCombo(victim);
+        // In a captured trade, armor keeps both the attack and its confirmed
+        // route. The step clears only combatants whose attack was interrupted.
+        if (!chainSnapshot || !armor) this.clearCombo(victim);
         if (attack.throw) { victim.thrownTime = .44; victim.vy = Math.max(victim.vy, 230); victim.grounded = false; }
         if (attack.pull) victim.x = clamp(attacker.x + direction * 105, this.worldMin, this.worldMax);
         if (attack.swap && attack.throw) {
@@ -948,13 +985,16 @@
         if (!exhaustedChain && attack.float > 0) { victim.float = Math.min(.8, Number(attack.float)); victim.y = Math.max(5, victim.y); victim.vy = Math.max(75, victim.vy); victim.grounded = false; }
         if (bonus?.push) victim.vx += direction * clamp(bonus.push, 0, 90) * 5;
         a.confirmed = !armor || victim.stun > 0 || victim.root > 0 || victim.frozen > 0 || !victim.grounded;
+        if (chainSnapshot) {
+          attacker.comboActions = [...chain.comboActions]; attacker.comboActionIds = [...chain.comboActionIds];
+        }
         if (existingAction < 0) {
           attacker.comboActionIds.push(actionId);
           attacker.comboActions.push(attack.token || a.token || a.kind || 'special');
         }
         attacker.comboTarget = 1 - owner;
-        attacker.combo++;
-        attacker.comboDamage += damage;
+        attacker.combo = chain.combo + 1;
+        attacker.comboDamage = chain.comboDamage + damage;
         attacker.comboTime = 1.15;
         attacker.meter += 10;
         victim.meter += 7;
@@ -1007,6 +1047,9 @@
         }
         const body=this.hurtbox(target);
         if (q.x+q.radius>=body.left && q.x-q.radius<=body.right && q.y + q.radius >= body.bottom && q.y - q.radius <= body.top && (q.kind !== 'trap' || target.grounded)) {
+          // Travel defines the incoming side even after the owner crosses.
+          // A stationary trap directly below the target has no horizontal side.
+          q.contactDirection = Math.sign(q.vx) || Math.sign(target.x-q.x);
           if (this.hit(this.players[q.owner], target, q.owner, q)) q.life = 0;
         }
       });

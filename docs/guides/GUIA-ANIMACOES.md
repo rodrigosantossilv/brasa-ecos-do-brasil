@@ -1,4 +1,4 @@
-# BRASA 0.14 — Apresentação e animação
+# BRASA 0.15 — Apresentação e animação
 
 76/76 personagens com novas folhas de 64 quadros; 0 personagens ainda usam animação anterior.
 
@@ -18,7 +18,7 @@ As 228 técnicas conservam seus efeitos, regras e nomes ligados à história. Co
 
 ## Ritmo de luta
 
-Na versão 0.14, os lutadores voltam à escala maior, com altura nominal de 215 pixels na área lógica de 960 × 540. A espera tem respiração leve de 1,5 pixel em um segundo; os ciclos autorais de avanço e recuo recebem balanço discreto. O pulo estica levemente na subida e comprime ao pousar. A reação a dano usa recuo e tremor, sem alterar as cores do personagem. Golpes rápidos deixam um rastro discreto dos próprios pixels.
+Na versão 0.15, os lutadores voltam à escala maior, com altura nominal de 215 pixels na área lógica de 960 × 540. A espera tem respiração leve de 1,5 pixel em um segundo; os ciclos autorais de avanço e recuo recebem balanço discreto. O pulo estica levemente na subida e comprime ao pousar. A reação a dano usa recuo e tremor, sem alterar as cores do personagem. Golpes rápidos deixam um rastro discreto dos próprios pixels.
 
 Golpes possuem preparação, contato e recuperação. O instante de impacto coincide com o quadro de extensão do ataque. Avanço e parada respondem ao comando; o salto mantém uma trajetória definida no momento da saída, sem mudar de direção no ar. Especiais ficam em botões próprios do controle e continuam sujeitos aos limites de dano. A recuperação dos golpes básicos foi reduzida em 28%. A pausa de impacto dura seis passos para golpes leves, oito para fortes e dez para especiais; a câmera e o relógio de animação acompanham essa pausa. A simulação executa 60 passos por segundo e a exibição interpola entre eles. O buffer de seis passos permanece disponível durante a pausa de impacto.
 

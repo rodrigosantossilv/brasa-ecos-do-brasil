@@ -1,10 +1,14 @@
-# BRASA 0.14 — Guia de golpes e controles
+# BRASA 0.15 — Guia de golpes e controles
 
 76/76 personagens com novas folhas de 64 quadros; 0 personagens ainda usam animação anterior.
 
 76 lutadores, três especiais e um super por personagem. Os quatro guardiões lunares começam bloqueados. As setas de avanço significam em direção ao adversário; ao trocar de lado, o comando do teclado acompanha a direção do lutador.
 
 Os golpes aceitam comandos até seis passos antes de ficarem disponíveis. Ao acertar um normal, pressione o próximo normal ou especial durante o contato para cancelar a recuperação. As sequências têm limite de três ações; o especial encerra o cancelamento. Dois toques na mesma direção fazem um dash curto para avançar ou recuar.
+
+Você pode pressionar salto e um golpe normal juntos para atacar no ar. A direção do salto fica definida na saída; o ataque aéreo termina ao pousar. Golpes normais que se encontram no mesmo passo podem atingir os dois lutadores. Contra um projétil, a defesa considera o lado de onde ele chega, mesmo que o rival tenha mudado de posição.
+
+Cada lutador tem seu perfil de avanço, recuo e salto; personagens pesados e ágeis precisam abordar a distância de formas diferentes. A vida real diminui imediatamente: o segmento atrasado da barra mostra o dano recente, sem conceder vida extra.
 
 ## Comandos padrão
 

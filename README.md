@@ -12,14 +12,14 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.14.0"><img src="docs/images/brasa-badge-version.svg" alt="Versão de desenvolvimento 0.14.0" height="24"></a>
+  <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.15.0"><img src="docs/images/brasa-badge-version.svg" alt="Versão de desenvolvimento 0.15.0" height="24"></a>
   <a href="#jogar"><img src="docs/images/brasa-badge-platform.svg" alt="Windows 10 e 11" height="24"></a>
   <a href="#controles"><img src="docs/images/brasa-badge-controls.svg" alt="Teclado e controles" height="24"></a>
   <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/actions/workflows/ci.yml"><img src="docs/images/brasa-badge-ci.svg" alt="GitHub Actions" height="24"></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.14.0/BRASA-PC-v0.14.zip"><strong>Baixar para Windows</strong></a> ·
+  <a href="https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.15.0/BRASA-PC-v0.15.zip"><strong>Baixar para Windows</strong></a> ·
   <a href="docs/README.md"><strong>Documentação</strong></a> ·
   <a href="#controles"><strong>Controles</strong></a>
 </p>
@@ -35,6 +35,10 @@
 
 <a id="o-jogo"></a>
 
+## Novidades da versão 0.15
+
+Mobilidade própria para os 76 lutadores, troca de golpes sem vantagem de posição de jogador, pulo com ataque e aterrissagem corrigidos. A guarda acompanha a chegada dos projéteis e a barra destaca o dano recente. Veja o [histórico](CHANGELOG.md) e as [referências estudadas](docs/COMBAT_REFERENCES.md).
+
 ## Causos que entram na luta
 
 Do sertão de Bento Brasa à ginga de Jana Faísca, cada lutador carrega uma história para a arena. O elenco parte do Brasil, encontra convidados internacionais e chega aos quatro guardiões lunares secretos.
@@ -49,13 +53,13 @@ Teclado ou até dois controles na mesma máquina, com comandos remapeáveis e co
 
 ## Jogar no Windows
 
-**Pacote de desenvolvimento v0.14.0.** Requer Windows 10/11 e Edge ou Chrome instalado.
+**Pacote de desenvolvimento v0.15.0.** Requer Windows 10/11 e Edge ou Chrome instalado.
 
-1. Baixe [BRASA-PC-v0.14.zip](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.14.0/BRASA-PC-v0.14.zip).
+1. Baixe [BRASA-PC-v0.15.zip](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.15.0/BRASA-PC-v0.15.zip).
 2. Extraia o ZIP em uma pasta.
 3. Abra **BRASA.exe** e escolha seu modo de jogo.
 
-O pacote reúne os recursos para jogar offline. Veja as [notas da versão](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.14.0) e os [checksums SHA-256](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.14.0/SHA256SUMS.txt). O download segue as permissões do repositório privado.
+O pacote reúne os recursos para jogar offline. Veja as [notas da versão](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.15.0) e os [checksums SHA-256](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/download/v0.15.0/SHA256SUMS.txt). O download segue as permissões do repositório privado.
 
 <a id="controles"></a>
 

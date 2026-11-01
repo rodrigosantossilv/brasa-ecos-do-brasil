@@ -204,7 +204,7 @@
   function fightScreen(){
     const engine=state.engine;if(!engine){go('home');return;}
     const shell=el('div','fight-shell');shell.id='fightShell';shell.innerHTML='<canvas id="fightCanvas" class="fight-canvas" width="480" height="270" aria-label="Partida de luta em andamento"></canvas><div class="fight-top">'+hudMarkup(engine.players[0],0)+'<div class="timer"><span id="timer">60</span><small class="timer-label" id="roundLabel">ROUND 01</small></div>'+hudMarkup(engine.players[1],1)+'</div><div class="fight-bottom">'+[0,1].map(i=>'<div class="meter '+(i?'right':'')+'"><span id="superHint'+i+'">BRASA / SUPER · '+escapeText(commandText('super',i,input.slots[i]!==null))+'</span><div class="meter-track"><div class="meter-fill" id="meter'+i+'"></div></div></div>').join('')+'</div><div class="fight-banner" id="fightBanner"></div><div class="scanlines"></div>';
-    app.append(shell);fight=$('#fightCanvas');fight.tabIndex=-1;hud={timer:$('#timer'),round:$('#roundLabel'),banner:$('#fightBanner'),hp:[$('#hp0'),$('#hp1')],meter:[$('#meter0'),$('#meter1')],pipNodes:[$('#pips0'),$('#pips1')].map(row=>Array.from(row.querySelectorAll('i'))),cache:Object.create(null)};
+    app.append(shell);fight=$('#fightCanvas');fight.tabIndex=-1;hud={timer:$('#timer'),round:$('#roundLabel'),banner:$('#fightBanner'),hp:[$('#hp0'),$('#hp1')],damage:[$('#hpDamage0'),$('#hpDamage1')],meter:[$('#meter0'),$('#meter1')],pipNodes:[$('#pips0'),$('#pips1')].map(row=>Array.from(row.querySelectorAll('i'))),cache:Object.create(null)};
     const introHint=el('div','intro-skip','× / A / ENTER: PULAR ENTRADAS');introHint.id='introSkip';shell.append(introHint);
     hud.skip=introHint;
     const commands=el('div','fight-input-hints');commands.id='fightInputHints';commands.setAttribute('aria-label','Atalhos dos comandos de combate');commands.innerHTML=quickFightHelpMarkup();shell.append(commands);
@@ -217,7 +217,7 @@
     const note=el('p','story-note','Especiais usam recarga curta. No controle: △, R2 e L2 fazem os três especiais; R3 usa o super com BRASA cheia. No teclado, forte + especial usa o super. '+(state.mode==='training'?'O parceiro de treino fica parado e recupera a vida após um nocaute.':'Vença dois rounds para encerrar a partida.'));app.append(note);
     if(state.paused)showPause();else syncLunarMusic();
   }
-  function hudMarkup(player,i){return '<div class="fighter-hud '+(i?'right':'')+'"><div class="hud-heading">'+(i?'<small>'+(['cpu','story'].includes(state.mode)?'CPU':'P2')+' / '+player.data.state+'</small>':'')+'<span>'+escapeText(player.data.name)+'</span>'+(!i?'<small>P1 / '+player.data.state+'</small>':'')+'</div><div class="life-track"><div class="life-fill" id="hp'+i+'"></div></div><div class="round-pips" id="pips'+i+'"><i></i><i></i></div></div>';}
+  function hudMarkup(player,i){return '<div class="fighter-hud '+(i?'right':'')+'"><div class="hud-heading">'+(i?'<small>'+(['cpu','story'].includes(state.mode)?'CPU':'P2')+' / '+player.data.state+'</small>':'')+'<span>'+escapeText(player.data.name)+'</span>'+(!i?'<small>P1 / '+player.data.state+'</small>':'')+'</div><div class="life-track"><div class="life-damage" id="hpDamage'+i+'" aria-hidden="true"></div><div class="life-fill" id="hp'+i+'"></div></div><div class="round-pips" id="pips'+i+'"><i></i><i></i></div></div>';}
   function helpMarkup(p){const pad=input.slots[p]!==null;return '<strong>P'+(p+1)+' / '+(pad?'CONTROLE':'TECLADO')+'</strong> '+['left','right','up','down','light','heavy','kick','special',...(pad?['special2','special3','super']:[]),'grab','block'].map(a=>'<kbd>'+escapeText(pad?input.padLabel(p,a):input.label(input.config.keyboard[p][a]))+'</kbd> '+({left:'',right:'MOVER',up:'PULAR',down:'ABAIXAR',light:'LEVE',heavy:'FORTE',kick:'CHUTE',special:'ESP. 1',special2:'ESP. 2',special3:'ESP. 3',super:'SUPER',grab:'AGARRAR',block:'DEFENDER'})[a]).join(' ')+(pad?' · OPTIONS / MENU: PAUSAR':'');}
   function quickFightHelpMarkup(){return (state.mode==='versus'?[0,1]:[0]).map(player=>{const pad=input.slots[player]!==null,label=action=>escapeText(pad?input.padLabel(player,action):input.label(input.config.keyboard[player][action]));return '<div class="fight-input-row"><strong>P'+(player+1)+'</strong><span><kbd>'+label('light')+'</kbd> SOCO</span><span><kbd>'+label('heavy')+'</kbd> FORTE</span><span><kbd>'+label('kick')+'</kbd> CHUTE</span><span><kbd>'+label('special')+'</kbd> ESP. 1</span>'+(pad?'<span><kbd>'+label('special2')+'</kbd> ESP. 2</span><span><kbd>'+label('special3')+'</kbd> ESP. 3</span><span><kbd>'+label('super')+'</kbd> SUPER</span>':'')+'<span><kbd>'+label('block')+'</kbd> DEFESA</span><small>'+(pad?'OPTIONS / MENU':'ESC')+' PAUSA</small></div>';}).join('');}
   function fightHelpMarkup(){return helpMarkup(0)+(state.mode==='versus'?'<br>'+helpMarkup(1):'<br>Defenda com o botão de defesa ou caminhando para trás. Agarrões vencem a guarda.')+'<br>Dash: dois toques rápidos na mesma direção.';}
@@ -321,6 +321,27 @@
   }
   function hudWrite(key,node,property,value){if(!node||hud.cache[key]===value)return;hud.cache[key]=value;node[property]=value;}
   function hudClass(key,node,name,value){if(hud.cache[key]===value)return;hud.cache[key]=value;node.classList.toggle(name,value);}
+  function updateDamageHud(engine,dt){
+    if(!hud?.damage)return;
+    const reset=hud.damageEngine!==engine||hud.damageRound!==engine.round;
+    hud.damageState ||= [];
+    engine.players.forEach((p,i)=>{
+      const hp=Math.max(0,Math.min(100,p.hp/p.maxHp*100));let segment=hud.damageState[i];
+      if(reset||!segment||segment.maxHp!==p.maxHp||hp>segment.hp||input.config.reducedMotion){
+        segment=hud.damageState[i]={hp,value:hp,hold:0,maxHp:p.maxHp};
+      }else if(hp<segment.hp){
+        // Repeated hits hold only the damage still visible from this exchange.
+        segment.hold=.35;
+      }else{
+        const elapsed=Math.max(0,dt),waiting=Math.min(segment.hold,elapsed);
+        segment.hold=Math.max(0,segment.hold-elapsed);
+        segment.value=Math.max(hp,segment.value-(elapsed-waiting)*60);
+      }
+      segment.hp=hp;
+      hudWrite('damage'+i,hud.damage[i]?.style,'width',segment.value+'%');
+    });
+    hud.damageEngine=engine;hud.damageRound=engine.round;
+  }
   function drawFight(time,alpha=1){
     const actual=state.engine,engine=state.finisherPreview?{...actual,phase:'finisher',phaseTime:state.finisherPreview.time,finisherTime:state.finisherPreview.time,finisherWinner:0,finisherLoser:1,finisher:moveSet(actual.players[0].data).finisher}:interpolatedFightEngine(actual,alpha);
     const holdingImpact=actual.phase==='fight'&&(actual.freeze>0||previousTick?.engine===actual&&previousTick.round===actual.round&&previousTick.freeze>0);
@@ -379,6 +400,7 @@
     if(state.screen==='fight'&&fight&&state.engine){
       if(state.finisherPreview){accumulator=0;if(!state.paused){state.finisherPreview.time+=dt;if(state.finisherPreview.time>=state.engine.finisherDuration)state.finisherPreview=null;}input.consume();}
       else if(!state.paused){accumulator=Math.min(accumulator+dt,.25);while(accumulator+1e-9>=1/60){captureFightPositions(state.engine);state.engine.update(1/60,input.states());updateFightWorld(1/60);input.consume();accumulator=Math.max(0,accumulator-1/60);}}else accumulator=0;
+      if(hud)updateDamageHud(state.engine,state.paused?0:dt);
       if(!state.paused||!pausedFrameDrawn)drawFight(time,accumulator*60);pausedFrameDrawn=state.paused;
     }else{
       if(hero){const ctx=hero.getContext('2d');render.stage(ctx,stages[0],960,540,input.config.reducedMotion?17:time);render.fighter(ctx,fighters[0],700,488,3.65,'idle',-1,time,{});}

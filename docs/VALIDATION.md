@@ -4,6 +4,8 @@ As suítes exercitam o motor real em VM e PNGs reais em Canvas nativo. Incluem e
 
 O alcance dos normais é comparado às poses renderizadas, com contatos e golpes fora do alcance nas duas orientações. Referências e recursos são verificados por hashes.
 
+As suítes da versão 0.15 cobrem contatos simultâneos nas duas posições de jogador, pulo com ataque, aterrissagem, lado de impacto dos projéteis, perfis de mobilidade dos 76 kits e apresentação do dano na barra de vida. Os casos de cura, novo round e movimento reduzido também são exercitados.
+
 São verificações automatizadas; não avaliam FPS em janela de navegador, latência Bluetooth ou sensação de controle físico. Não há alegação de aprovação da Steam ou liberação comercial.
 
 Resultados são escritos em diretórios ignorados. Consulte Actions para a execução correspondente ao commit.

@@ -2,7 +2,7 @@
 
 Guias para conhecer os lutadores, aprender os comandos e trabalhar no motor de **BRASA — Ecos do Brasil**.
 
-[← Página do projeto](../README.md) · [English overview](i18n/README.en.md) · [Baixar v0.14.0](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.14.0)
+[← Página do projeto](../README.md) · [English overview](i18n/README.en.md) · [Baixar v0.15.0](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.15.0)
 
 ## Para jogar
 
@@ -28,8 +28,9 @@ O [início rápido do código-fonte](../README.md#desenvolver) usa `npm start`. 
 
 ## Versões e execução automatizada
 
+- [Referências de combate](COMBAT_REFERENCES.md): projetos estudados e técnicas adaptadas na versão 0.15.
 - [Histórico de versões](../CHANGELOG.md): mudanças do jogo e do motor.
-- [Release v0.14.0](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.14.0): pacote Windows de desenvolvimento e checksums.
+- [Release v0.15.0](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/releases/tag/v0.15.0): pacote Windows de desenvolvimento e checksums.
 - [Qualidade no GitHub Actions](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/actions/workflows/ci.yml): execuções das verificações e testes.
 - [Pacote Windows no GitHub Actions](https://github.com/rodrigosantossilv/brasa-ecos-do-brasil/actions/workflows/build-windows.yml): build e publicação da prerelease privada.
 

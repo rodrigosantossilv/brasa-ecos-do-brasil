@@ -37,8 +37,8 @@ jobs:
           Get-Command gh -ErrorAction Stop | Out-Null
           gh --version
           if ($LASTEXITCODE -ne 0) { throw 'Não foi possível executar o GitHub CLI.' }
-          $tag = 'v0.14.0'
-          $assets = @('dist/BRASA-PC-v0.14.zip', 'dist/SHA256SUMS.txt')
+          $tag = 'v0.15.0'
+          $assets = @('dist/BRASA-PC-v0.15.zip', 'dist/SHA256SUMS.txt')
           foreach ($asset in $assets) {
             if (-not (Test-Path -LiteralPath $asset -PathType Leaf)) {
               throw "Arquivo de release ausente: $asset"
@@ -49,7 +49,7 @@ jobs:
             throw "A release $tag já existe. Nenhuma release ou anexo será substituído."
           }
           $notes = 'Versão de desenvolvimento para Windows, gerada neste commit pelo workflow manual. Baixe o ZIP e confira SHA256SUMS.txt. Pacote sem assinatura digital; esta prerelease não representa aprovação da Steam nem atesta teste físico em outro computador.'
-          gh release create $tag @assets --repo $env:GH_REPO --title 'BRASA 0.14 — versão de desenvolvimento' --notes $notes --prerelease --target $env:RELEASE_COMMIT
+          gh release create $tag @assets --repo $env:GH_REPO --title 'BRASA 0.15 — versão de desenvolvimento' --notes $notes --prerelease --target $env:RELEASE_COMMIT
           if ($LASTEXITCODE -ne 0) {
             throw 'Falha ao criar a prerelease. Releases e anexos existentes não são sobrescritos; consulte o erro acima.'
           }

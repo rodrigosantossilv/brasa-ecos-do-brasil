@@ -1,6 +1,7 @@
 'use strict';
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 const base=require('node:path').join(__dirname,'../game/'),app=fs.readFileSync(base+'app.js','utf8'),index=fs.readFileSync(base+'index.html','utf8');
+const releaseVersion=JSON.parse(fs.readFileSync(require('node:path').join(__dirname,'../package.json'),'utf8')).version.split('.').slice(0,2).join('.');
 let checks=0;
 const test=(name,run)=>{try{run();checks++;console.log('PASS '+name);}catch(error){console.error('FAIL '+name+'\n'+error.stack);process.exitCode=1;}};
 test('Spoken announcements, system speech fallback and narration controls are absent from the runtime',()=>{
@@ -37,7 +38,7 @@ test('Intro confirmation skips to FIGHT without opening a menu or clearing ordin
 });
 test('Fullscreen combat hints display remapped keyboard controls and both pad label sets',()=>{
   context.escapeText=value=>String(value);vm.runInContext(app.slice(app.indexOf('  function quickFightHelpMarkup()'),app.indexOf('  function fightHelpMarkup()')),context);
-  context.input.slots=[null,null];context.input.config.keyboard[0].light='KeyV';let html=context.quickFightHelpMarkup();assert(html.includes('<kbd>V</kbd> SOCO'));assert(html.includes('<kbd>R</kbd> ESP. 1'));context.input.slots=[2,null];html=context.quickFightHelpMarkup();for(const label of ['× / A','○ / B','△ / Y','R2 / RT','L2 / LT','R3 / RS'])assert(html.includes(label),label);context.state.mode='versus';html=context.quickFightHelpMarkup();assert(html.includes('<strong>P2</strong>'));assert(index.includes('ARCADE 0.14'));
+  context.input.slots=[null,null];context.input.config.keyboard[0].light='KeyV';let html=context.quickFightHelpMarkup();assert(html.includes('<kbd>V</kbd> SOCO'));assert(html.includes('<kbd>R</kbd> ESP. 1'));context.input.slots=[2,null];html=context.quickFightHelpMarkup();for(const label of ['× / A','○ / B','△ / Y','R2 / RT','L2 / LT','R3 / RS'])assert(html.includes(label),label);context.state.mode='versus';html=context.quickFightHelpMarkup();assert(html.includes('<strong>P2</strong>'));assert(index.includes('ARCADE '+releaseVersion));
 });
 test('move-card tokens name the actual one-button special and super mappings, including custom remaps',()=>{
   context.state.engine.players=[{facing:1},{facing:-1}];

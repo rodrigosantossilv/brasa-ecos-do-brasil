@@ -12,4 +12,8 @@ As coordenadas dos lutadores pertencem a um mundo de 2.880 unidades; a câmera s
 
 `assets.js` é o manifesto do navegador. `input.js` trata teclado, dois controles e persistência. `story.js` mantém a jornada; `presentation.js`, entradas e apresentações.
 
+Os normais elegíveis para uma troca no mesmo passo são examinados antes de aplicar os impactos. Ataques aéreos pertencem ao estado de salto e terminam na aterrissagem. Projéteis informam seu sentido de chegada ao resolver guarda e recuo, independentemente da posição atual do dono.
+
+Cada kit possui `movement` com avanço, recuo e salto. A velocidade base considera os atributos; perfis explícitos têm precedência sobre os valores antigos por identidade. A barra de dano recente pertence ao HUD: não altera HP, roda com o tempo de apresentação, pausa com o jogo e sincroniza em cura, novo round e movimento reduzido.
+
 O launcher Windows incorpora HTML e PNGs com manifesto SHA-256. Extrai para a pasta local do aplicativo, preserva `BrowserData` e abre Edge/Chrome em modo aplicativo. O build do repositório é independente do workspace original.

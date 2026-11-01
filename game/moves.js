@@ -15,6 +15,11 @@
   "version": 10,
   "fighters": {
     "bento": {
+      "movement": {
+        "walk": 0.94,
+        "backwalk": 0.62,
+        "jump": 0.94
+      },
       "normalScale": {
         "damage": 1.14,
         "speed": 0.89,
@@ -276,6 +281,11 @@
       }
     },
     "ramiro": {
+      "movement": {
+        "walk": 0.96,
+        "backwalk": 0.64,
+        "jump": 0.94
+      },
       "normalScale": {
         "damage": 1.07,
         "speed": 0.91,
@@ -566,6 +576,11 @@
       }
     },
     "jana": {
+      "movement": {
+        "walk": 1.06,
+        "backwalk": 0.78,
+        "jump": 1.06
+      },
       "normalScale": {
         "damage": 0.93,
         "speed": 1.15,
@@ -827,6 +842,11 @@
       }
     },
     "caua": {
+      "movement": {
+        "walk": 1.04,
+        "backwalk": 0.78,
+        "jump": 1.04
+      },
       "normalScale": {
         "damage": 0.87,
         "speed": 1.12,
@@ -1116,6 +1136,11 @@
       }
     },
     "nara": {
+      "movement": {
+        "walk": 0.98,
+        "backwalk": 0.7,
+        "jump": 0.98
+      },
       "normalScale": {
         "damage": 0.96,
         "speed": 1,
@@ -1398,6 +1423,11 @@
       }
     },
     "tiao": {
+      "movement": {
+        "walk": 1.08,
+        "backwalk": 0.78,
+        "jump": 1.08
+      },
       "normalScale": {
         "damage": 0.85,
         "speed": 1.15,
@@ -1686,6 +1716,11 @@
       }
     },
     "breu": {
+      "movement": {
+        "walk": 0.98,
+        "backwalk": 0.66,
+        "jump": 0.92
+      },
       "normalScale": {
         "damage": 1.03,
         "speed": 0.87,
@@ -1970,6 +2005,11 @@
       }
     },
     "damiao": {
+      "movement": {
+        "walk": 0.94,
+        "backwalk": 0.58,
+        "jump": 0.84
+      },
       "normalScale": {
         "damage": 1.15,
         "speed": 0.85,
@@ -2229,6 +2269,11 @@
       }
     },
     "lia": {
+      "movement": {
+        "walk": 1.06,
+        "backwalk": 0.76,
+        "jump": 1.04
+      },
       "normalScale": {
         "damage": 0.88,
         "speed": 1.14,
@@ -2490,6 +2535,11 @@
       }
     },
     "iris": {
+      "movement": {
+        "walk": 0.94,
+        "backwalk": 0.6,
+        "jump": 0.88
+      },
       "normalScale": {
         "damage": 1.1,
         "speed": 0.86,
@@ -2747,6 +2797,11 @@
       }
     },
     "rosa": {
+      "movement": {
+        "walk": 1,
+        "backwalk": 0.7,
+        "jump": 0.98
+      },
       "normalScale": {
         "damage": 1,
         "speed": 0.98,
@@ -3034,6 +3089,11 @@
       }
     },
     "augusto": {
+      "movement": {
+        "walk": 1,
+        "backwalk": 0.72,
+        "jump": 0.98
+      },
       "normalScale": {
         "damage": 1.05,
         "speed": 0.97,
@@ -3296,6 +3356,11 @@
       }
     },
     "valter": {
+      "movement": {
+        "walk": 1,
+        "backwalk": 0.68,
+        "jump": 0.96
+      },
       "normalScale": {
         "damage": 0.98,
         "speed": 0.93,
@@ -3577,6 +3642,11 @@
       }
     },
     "serena": {
+      "movement": {
+        "walk": 1.02,
+        "backwalk": 0.64,
+        "jump": 0.94
+      },
       "normalScale": {
         "damage": 1.06,
         "speed": 0.92,
@@ -3838,6 +3908,11 @@
       }
     },
     "caio": {
+      "movement": {
+        "walk": 1.02,
+        "backwalk": 0.7,
+        "jump": 1.02
+      },
       "normalScale": {
         "damage": 0.99,
         "speed": 1.07,
@@ -4098,6 +4173,11 @@
       }
     },
     "davi": {
+      "movement": {
+        "walk": 1.08,
+        "backwalk": 0.78,
+        "jump": 1.08
+      },
       "normalScale": {
         "damage": 0.97,
         "speed": 1.13,
@@ -4369,6 +4449,11 @@
       }
     },
     "luz": {
+      "movement": {
+        "walk": 1.06,
+        "backwalk": 0.74,
+        "jump": 1.04
+      },
       "normalScale": {
         "damage": 0.97,
         "speed": 1.04,
@@ -4640,6 +4725,11 @@
       }
     },
     "ti": {
+      "movement": {
+        "walk": 1.04,
+        "backwalk": 0.8,
+        "jump": 1.02
+      },
       "normalScale": {
         "damage": 1.01,
         "speed": 1.06,
@@ -5453,9 +5543,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.96,
+        "backwalk": 0.63,
+        "jump": 0.96
       },
       "passive": null,
       "visual": {
@@ -5738,9 +5828,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.08,
+        "backwalk": 0.76,
+        "jump": 1.02
       },
       "passive": null,
       "visual": {
@@ -6300,9 +6390,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.96,
+        "backwalk": 0.62,
+        "jump": 0.96
       },
       "passive": null,
       "visual": {
@@ -6591,9 +6681,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.02,
+        "backwalk": 0.72,
+        "jump": 1.08
       },
       "passive": null,
       "visual": {
@@ -6885,9 +6975,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.98,
+        "backwalk": 0.68,
+        "jump": 0.98
       },
       "passive": null,
       "visual": {
@@ -7172,9 +7262,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.98,
+        "backwalk": 0.64,
+        "jump": 0.98
       },
       "passive": null,
       "visual": {
@@ -8030,9 +8120,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.04,
+        "backwalk": 0.8,
+        "jump": 1.04
       },
       "passive": null,
       "visual": {
@@ -8331,9 +8421,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.94,
+        "backwalk": 0.6,
+        "jump": 0.88
       },
       "passive": null,
       "visual": {
@@ -8628,9 +8718,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.96,
+        "backwalk": 0.64,
+        "jump": 0.94
       },
       "passive": null,
       "visual": {
@@ -8911,9 +9001,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.94,
+        "backwalk": 0.59,
+        "jump": 0.86
       },
       "passive": null,
       "visual": {
@@ -9197,9 +9287,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.04,
+        "backwalk": 0.72,
+        "jump": 1.04
       },
       "passive": null,
       "visual": {
@@ -9487,9 +9577,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.06,
+        "backwalk": 0.8,
+        "jump": 1.04
       },
       "passive": null,
       "visual": {
@@ -9778,9 +9868,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.94,
+        "backwalk": 0.6,
+        "jump": 0.86
       },
       "passive": null,
       "visual": {
@@ -10076,9 +10166,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.06,
+        "backwalk": 0.8,
+        "jump": 1.04
       },
       "passive": null,
       "visual": {
@@ -10351,9 +10441,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.98,
+        "backwalk": 0.7,
+        "jump": 0.98
       },
       "passive": null,
       "visual": {
@@ -10915,9 +11005,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.94,
+        "backwalk": 0.58,
+        "jump": 0.84
       },
       "passive": null,
       "visual": {
@@ -11207,8 +11297,8 @@
       },
       "movement": {
         "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "backwalk": 0.74,
+        "jump": 1.02
       },
       "passive": null,
       "visual": {
@@ -11492,9 +11582,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.96,
+        "backwalk": 0.62,
+        "jump": 0.9
       },
       "passive": null,
       "visual": {
@@ -11779,9 +11869,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.04,
+        "backwalk": 0.8,
+        "jump": 1.02
       },
       "passive": null,
       "visual": {
@@ -12332,9 +12422,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.08,
+        "backwalk": 0.76,
+        "jump": 1.06
       },
       "passive": null,
       "visual": {
@@ -12636,9 +12726,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.96,
+        "backwalk": 0.68,
+        "jump": 0.96
       },
       "passive": null,
       "visual": {
@@ -13196,8 +13286,8 @@
       },
       "movement": {
         "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "backwalk": 0.76,
+        "jump": 1.04
       },
       "passive": null,
       "visual": {
@@ -13482,9 +13572,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.94,
+        "backwalk": 0.58,
+        "jump": 0.84
       },
       "passive": null,
       "visual": {
@@ -13758,9 +13848,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.04,
+        "backwalk": 0.8,
+        "jump": 1.08
       },
       "passive": null,
       "visual": {
@@ -14030,9 +14120,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.98,
+        "backwalk": 0.64,
+        "jump": 0.94
       },
       "passive": null,
       "visual": {
@@ -14329,9 +14419,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.96,
+        "backwalk": 0.68,
+        "jump": 0.96
       },
       "passive": null,
       "visual": {
@@ -14614,9 +14704,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.96,
+        "backwalk": 0.64,
+        "jump": 0.84
       },
       "passive": null,
       "visual": {
@@ -14900,9 +14990,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.02,
+        "backwalk": 0.72,
+        "jump": 1.04
       },
       "passive": null,
       "visual": {
@@ -15469,9 +15559,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.96,
+        "backwalk": 0.6,
+        "jump": 0.9
       },
       "passive": null,
       "visual": {
@@ -15757,9 +15847,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.08,
+        "backwalk": 0.78,
+        "jump": 1.04
       },
       "passive": {
         "kind": "movementCharge",
@@ -16044,9 +16134,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.96,
+        "backwalk": 0.62,
+        "jump": 0.94
       },
       "passive": null,
       "visual": {
@@ -16318,9 +16408,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.02,
+        "backwalk": 0.82,
+        "jump": 1.02
       },
       "passive": null,
       "visual": {
@@ -16607,9 +16697,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.98,
+        "backwalk": 0.64,
+        "jump": 1.08
       },
       "passive": null,
       "visual": {
@@ -16881,9 +16971,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.94,
+        "backwalk": 0.58,
+        "jump": 0.84
       },
       "passive": null,
       "visual": {
@@ -17165,9 +17255,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.98,
+        "backwalk": 0.64,
+        "jump": 0.94
       },
       "passive": null,
       "visual": {
@@ -17459,9 +17549,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.96,
+        "backwalk": 0.64,
+        "jump": 0.94
       },
       "passive": null,
       "visual": {
@@ -17758,9 +17848,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.96,
+        "backwalk": 0.66,
+        "jump": 0.92
       },
       "passive": null,
       "visual": {
@@ -18042,9 +18132,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.94,
+        "backwalk": 0.58,
+        "jump": 0.86
       },
       "passive": null,
       "visual": {
@@ -18318,9 +18408,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.06,
+        "backwalk": 0.72,
+        "jump": 1.02
       },
       "passive": null,
       "visual": {
@@ -18607,9 +18697,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.98,
+        "backwalk": 0.7,
+        "jump": 0.96
       },
       "passive": null,
       "visual": {
@@ -18899,9 +18989,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.02,
+        "backwalk": 0.82,
+        "jump": 1.02
       },
       "passive": null,
       "visual": {
@@ -19472,9 +19562,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.94,
+        "backwalk": 0.6,
+        "jump": 0.88
       },
       "passive": null,
       "visual": {
@@ -20057,9 +20147,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.96,
+        "backwalk": 0.66,
+        "jump": 0.94
       },
       "passive": null,
       "visual": {
@@ -20343,9 +20433,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.06,
+        "backwalk": 0.74,
+        "jump": 1.06
       },
       "passive": null,
       "visual": {
@@ -20643,9 +20733,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.98,
+        "backwalk": 0.76,
+        "jump": 1.02
       },
       "passive": null,
       "visual": {
@@ -20917,9 +21007,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 0.94,
+        "backwalk": 0.58,
+        "jump": 0.84
       },
       "passive": null,
       "visual": {
@@ -21207,9 +21297,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.04,
+        "backwalk": 0.82,
+        "jump": 1.04
       },
       "passive": null,
       "visual": {
@@ -21495,9 +21585,9 @@
         }
       },
       "movement": {
-        "walk": 1,
-        "backwalk": 0.67,
-        "jump": 1
+        "walk": 1.04,
+        "backwalk": 0.76,
+        "jump": 1.08
       },
       "passive": null,
       "visual": {
