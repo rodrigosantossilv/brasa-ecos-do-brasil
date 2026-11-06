@@ -195,7 +195,7 @@
     if(!panel){panel=el('div','fight-loading');panel.id='fightLoading';panel.setAttribute('role','status');panel.setAttribute('aria-live','polite');panel.innerHTML='<strong>PREPARANDO ANIMAÇÕES…</strong><p></p><div class="fight-loading-track"><span></span></div><small>A luta começa automaticamente quando os dois lutadores estiverem prontos.</small>';app.append(panel);}
     const progress=fightArtProgress(),fraction=Math.min(progress.total?progress.ready/progress.total:1,progress.prepared/Math.max(1,progress.fighters),fightArtReady()?1:.99);panel.querySelector('p').textContent=(progress.total?progress.ready+' / '+progress.total+' CONJUNTOS · ':'')+progress.prepared+' / '+progress.fighters+' LUTADORES';panel.querySelector('.fight-loading-track span').style.width=Math.round(fraction*100)+'%';
   }
-  function startFight(){if(state.mode!=='story'&&state.chosen.some(i=>!story.unlocked(fighters[i].id))){toast('Derrote os guardiões no Modo História para selecioná-los.');begin(state.mode);return;}if(!fightArtReady()){state.pendingFight=true;updateFightLoading();return;}state.pendingFight=false;state.trainingCombo=null;state.finisherPreview=null;state.storyRecorded=false;state.labPaused=false;state.lab={open:false,boxes:false,inputs:false};state.engine=new window.BrasaCombat({fighters:state.chosen.map(i=>fighters[i]),stage:stages[state.arena],mode:state.mode==='story'?'cpu':state.mode,difficulty:state.difficulty,introDuration:8.8,finishers:true,fighterScale:1,visualGeometry:true,motionInputs:true,debugCombat:state.mode==='training',onEvent:combatEvent});if(window.BrasaCamera)resetFightWorld();state.paused=false;go('fight');}
+  function startFight(){if(state.mode!=='story'&&state.chosen.some(i=>!story.unlocked(fighters[i].id))){toast('Derrote os guardiões no Modo História para selecioná-los.');begin(state.mode);return;}if(!fightArtReady()){state.pendingFight=true;updateFightLoading();return;}state.pendingFight=false;state.trainingCombo=null;state.finisherPreview=null;state.storyRecorded=false;state.labPaused=false;state.lab={open:false,boxes:false,inputs:false};state.engine=new window.BrasaCombat({fighters:state.chosen.map(i=>fighters[i]),stage:stages[state.arena],mode:state.mode==='story'?'cpu':state.mode,difficulty:state.difficulty,introDuration:8.8,finishers:true,fighterScale:.55,visualGeometry:true,motionInputs:true,debugCombat:state.mode==='training',onEvent:combatEvent});if(window.BrasaCamera)resetFightWorld();state.paused=false;go('fight');}
   function previewFinisher(){
     const engine=state.engine;if(!engine||state.mode!=='training')return;
     state.paused=false;$('.fight-overlay')?.remove();overlayDrawn=false;input.clear();
@@ -260,7 +260,7 @@
   function makeCombatLab(shell){
     const panel=el('section','combat-lab');panel.hidden=!state.lab.open;panel.setAttribute('aria-label','Laboratório de combate');
     panel.innerHTML='<div class="lab-heading"><strong>LABORATÓRIO / 60 Hz</strong><span class="lab-clock"></span></div><div class="lab-players"><pre></pre><pre></pre></div><div class="lab-timeline" aria-label="Timeline do ataque"></div><pre class="lab-inputs" hidden></pre>';
-    const controls=el('div','fight-controls lab-controls');for(const [label,action]of [['PAUSA F1','pause'],['+1 FRAME F2','step'],['CAIXAS F3','boxes'],['INPUTS F4','inputs'],['ALVO: SEM GUARDA','guard'],['RESET F5','reset'],['FECHAR','close']]){const b=button(label,()=>trainingAction(action,true),'');b.dataset.labAction=action;controls.append(b);}panel.append(controls);shell.append(panel);
+    const controls=el('div','fight-controls lab-controls');for(const [label,action]of [['PAUSA F1','pause'],['+1 FRAME F2','step'],['CAIXAS + CAMADAS F3','boxes'],['INPUTS F4','inputs'],['ALVO: SEM GUARDA','guard'],['RESET F5','reset'],['FECHAR','close']]){const b=button(label,()=>trainingAction(action,true),'');b.dataset.labAction=action;controls.append(b);}panel.append(controls);shell.append(panel);
     hud.lab={panel,clock:panel.querySelector('.lab-clock'),players:Array.from(panel.querySelectorAll('.lab-players pre')),timeline:panel.querySelector('.lab-timeline'),inputs:panel.querySelector('.lab-inputs')};
   }
   function trainingAction(action,fromButton=false){
@@ -275,12 +275,12 @@
         captureFightPositions(engine);engine.step(controls);updateFightWorld(1/60);input.consume();
       }
       accumulator=0;previousTick=null;syncLunarMusic();
-    }else if(action==='boxes')state.lab.boxes=!state.lab.boxes;
+    }else if(action==='boxes'){state.lab.boxes=!state.lab.boxes;state.debugLayers=!state.debugLayers;}
     else if(action==='inputs')state.lab.inputs=!state.lab.inputs;
     else if(action==='structure')state.debugLayers=!state.debugLayers;
     else if(action==='guard'){const values=['none','high','low'];engine.trainingGuard=values[(values.indexOf(engine.trainingGuard)+1)%values.length];}
     else if(action==='reset'){engine.resetTraining();input.clear();accumulator=0;previousTick=null;state.finisherPreview=null;state.trainingCombo=null;resetFightWorld();}
-    else if(action==='close'){state.lab.boxes=false;state.lab.inputs=false;if(state.labPaused){state.paused=false;state.labPaused=false;syncLunarMusic();}}
+    else if(action==='close'){state.lab.boxes=false;state.lab.inputs=false;state.debugLayers=false;if(state.labPaused){state.paused=false;state.labPaused=false;syncLunarMusic();}}
     pausedFrameDrawn=false;updateCombatLab(engine);return true;
   }
   function updateCombatLab(engine){
@@ -391,7 +391,8 @@
     const ctx=fight.getContext('2d');ctx.save();ctx.imageSmoothingEnabled=false;ctx.scale(fight.width/960,fight.height/540);
     if(!cameraView||!window.BrasaStages?.drawWorld?.(ctx,stages[state.arena],960,540,input.config.reducedMotion?17:time,cameraView,{reducedMotion:input.config.reducedMotion}))render.stage(ctx,stages[state.arena],960,540,input.config.reducedMotion?17:time);
     const environment=window.BrasaStages?.grounding?.(stages[state.arena])||{groundY:455};
-    const actorOptions={shadowColor:environment.shadowColor,shadowOpacity:environment.shadowOpacity,groundPlaneY:455,groundOffset:environment.groundY-455,viewport:cameraView,ellipseShadow:true,fighterScale:2.15,structureOnly:true,companions:false};
+    const actorScale=2.15*(Number(actual.fighterScale)||.55);
+    const actorOptions={shadowColor:environment.shadowColor,shadowOpacity:environment.shadowOpacity,groundPlaneY:455,groundOffset:environment.groundY-455,viewport:cameraView,ellipseShadow:true,fighterScale:actorScale,structureOnly:true,companions:false};
     ctx.save();state.camera?.apply(ctx,{shake:false,view:cameraView});ctx.translate(0,environment.groundY-455);
     const entrance=engine.phase==='intro'&&engine.introDuration>2&&!!window.BrasaPresentation;
     const entranceSlot=entrance?(engine.introDuration-.8)/2:0;
@@ -403,8 +404,8 @@
     else if(celebrating)window.BrasaPresentation.drawResult(ctx,engine,actorTime,{...actorOptions,reducedMotion:input.config.reducedMotion});
     else if(finishing)window.BrasaPresentation.drawFinisher(ctx,engine,actorTime,{...actorOptions,reducedMotion:input.config.reducedMotion});
     else for(let i=0;i<engine.players.length;i++){const p=engine.players[i];const pose=engine.phase==='matchOver'?(engine.winner===i?'win':'lose'):p.pose;
-      if(entrance&&activeEntry===i&&engine.phaseTime<engine.introDuration-.7){const progress=Math.min(1,(engine.phaseTime-i*entranceSlot)/entranceSlot);window.BrasaPresentation.drawEntrance(ctx,p.data,p.x,455,2.15,p.facing,progress,{...actorOptions,reducedMotion:input.config.reducedMotion});}
-      else render.fighter(ctx,p.data,p.x,455-p.y,2.15,pose,p.facing,actorTime,{...actorOptions,attack:p.attack,frozen:p.frozen,walkDistance:p.walkDistance,motion:p.motion,reaction:p.reaction,hitstopFrame:holdingImpact&&p.reaction?.impactClock===actual.simulationClock?p.reaction?.impactFrame:undefined,hitstopMirror:holdingImpact&&p.reaction?.impactClock===actual.simulationClock?!!p.reaction?.impactMirror:false,reducedMotion:input.config.reducedMotion,alpha:p.invulnerable>0?.7:1});
+      if(entrance&&activeEntry===i&&engine.phaseTime<engine.introDuration-.7){const progress=Math.min(1,(engine.phaseTime-i*entranceSlot)/entranceSlot);window.BrasaPresentation.drawEntrance(ctx,p.data,p.x,455,actorScale,p.facing,progress,{...actorOptions,reducedMotion:input.config.reducedMotion});}
+      else render.fighter(ctx,p.data,p.x,455-p.y,actorScale,pose,p.facing,actorTime,{...actorOptions,attack:p.attack,frozen:p.frozen,walkDistance:p.walkDistance,motion:p.motion,reaction:p.reaction,hitstopFrame:holdingImpact&&p.reaction?.impactClock===actual.simulationClock?p.reaction?.impactFrame:undefined,hitstopMirror:holdingImpact&&p.reaction?.impactClock===actual.simulationClock?!!p.reaction?.impactMirror:false,reducedMotion:input.config.reducedMotion,alpha:p.invulnerable>0?.7:1});
     }
     if(state.mode==='training'&&state.lab?.boxes)window.BrasaCombatDebug?.draw(ctx,engine,{groundY:455});
     // Discrete attacks remain visible; ambient and impact particle passes stay removed.

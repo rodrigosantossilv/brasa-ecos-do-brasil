@@ -35,9 +35,9 @@ function fixture({draw=false,world=false}={}){
  };return f;
 }
 
-test('fight launch restores full visual geometry without multiplying legacy movement or damage scale',()=>{
+test('fight launch uses55percent geometry without multiplying legacy movement or damage scale',()=>{
  let options;const c={state:{mode:'versus',chosen:[0,1],arena:0},fighters:[{id:'a'},{id:'b'}],stages:[{}],story:{unlocked:()=>true},window:{BrasaFighters:{ready:()=>true,readyMotion:()=>true},BrasaCombat:class{constructor(value){options=value;}}},toast(){},begin(){},go(){},combatEvent(){}};vm.createContext(c);
- vm.runInContext(slice('  function fightArtReady(','  function previewFinisher('),c);c.updateFightLoading=()=>{};c.startFight();assert(options,'Fight did not launch');assert.equal(options.fighterScale,1);assert.equal(options.visualGeometry,true);
+ vm.runInContext(slice('  function fightArtReady(','  function previewFinisher('),c);c.updateFightLoading=()=>{};c.startFight();assert(options,'Fight did not launch');assert.equal(options.fighterScale,.55);assert.equal(options.visualGeometry,true);
  const f=fixture();assert.equal(f.engine.fighterScale,1);assert.equal(f.engine.scaledGeometry,true);assert(f.engine.fighterMargin>55,'Opaque authored bounds are absent');evidence.geometry={scale:f.engine.fighterScale,margin:f.engine.fighterMargin};
 });
 

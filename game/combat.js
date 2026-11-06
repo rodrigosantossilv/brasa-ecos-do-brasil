@@ -203,9 +203,21 @@
     }
 
     pushBox(p) {
-      // Neutral opaque bodies give stable contact spacing. The full animation
-      // envelope still contains hands/costumes at world and camera edges.
-      const shape=p.pushBounds,left=p.facing<0?shape.right:shape.left,right=p.facing<0?shape.left:shape.right;
+      const moving=!p.attack&&['walk','backwalk','run'].includes(p.pose);
+      const resting=!p.attack&&['idle','guard'].includes(p.pose);
+      let shape=p.pushBounds;
+      if(moving||resting){
+        const options={motion:p.motion,walkDistance:p.walkDistance};
+        shape=this.spriteFootprint(p.data,p.pose,this.simulationClock,null,options)||shape;
+        // Separation can stop a walk and show the resting pose on this tick.
+        // Reserve room for both poses before solving the push.
+        if(moving){
+          const settled=this.spriteFootprint(p.data,p.guard?'guard':'idle',this.simulationClock,null,options)||p.pushBounds;
+          shape={left:Math.max(shape.left,settled.left),right:Math.max(shape.right,settled.right),
+            top:Math.max(shape.top,settled.top),bottom:Math.max(shape.bottom,settled.bottom)};
+        }
+      }
+      const left=p.facing<0?shape.right:shape.left,right=p.facing<0?shape.left:shape.right;
       return {left:p.x-left,right:p.x+right,top:p.y+shape.top,bottom:p.y-shape.bottom};
     }
 

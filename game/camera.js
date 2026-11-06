@@ -21,14 +21,12 @@
       this.zoom = 1;
       this.x = (this.worldWidth - this.width) / 2;
       this.shakeX = 0; this.shakeY = 0;
-      this.lastPositions = [];
       this.measurePlayers(players);
       const positions = players.map(p => Number(p.x)).filter(Number.isFinite);
       if (positions.length) {
         this.x = (Math.min(...positions) + Math.max(...positions) - this.visibleWidth) / 2;
-        this.contain(positions);
+        this.contain();
       }
-      this.lastPositions = positions;
       return this.snapshot();
     }
 
@@ -37,30 +35,8 @@
         ...players.map(p => Number(p.visualHalfWidth) > 0 ? Math.ceil(p.visualHalfWidth) + 3 : 0));
     }
 
-    // Follow normally eases. Containment only corrects enough to keep the
-    // current pair visible; combat stops outward movement at that live view.
-    contain(positions) {
-      if (!positions.length) {
-        this.x = clamp(this.x, 0, Math.max(0, this.worldWidth - this.visibleWidth));
-        return;
-      }
-      const left = Math.min(...positions), right = Math.max(...positions);
-      const margin = this.fighterMargin;
-      const worldEnd = Math.max(0, this.worldWidth - this.visibleWidth);
-      const safeMin = Math.max(0, right + margin - this.visibleWidth);
-      const safeMax = Math.min(worldEnd, left - margin);
-      if (safeMin <= safeMax) this.x = clamp(this.x, safeMin, safeMax);
-      else {
-        // An outward mover or teleport may exceed a fixed-width view. Keep
-        // the less-moving fighter visible, then let combat clip the offender.
-        let anchor = 0;
-        for (let i = 1; i < positions.length; i++) {
-          if (Math.abs(positions[i] - (this.lastPositions[i] ?? positions[i])) <
-              Math.abs(positions[anchor] - (this.lastPositions[anchor] ?? positions[anchor]))) anchor = i;
-        }
-        this.x = clamp(this.x, positions[anchor] + margin - this.visibleWidth, positions[anchor] - margin);
-      }
-      this.x = clamp(this.x, 0, worldEnd);
+    contain() {
+      this.x = clamp(this.x, 0, Math.max(0, this.worldWidth - this.visibleWidth));
     }
 
     update(dt, players = []) {
@@ -75,8 +51,9 @@
         const nextCenter = center + ((left + right) / 2 - center) * alpha;
         this.x = nextCenter - this.visibleWidth / 2;
       }
-      this.contain(positions);
-      this.lastPositions = positions;
+      // Combat owns player containment. The camera itself only follows the
+      // midpoint and clamps to the world; actor-edge correction caused snaps.
+      this.contain();
       this.shakeX = 0; this.shakeY = 0;
       return this.snapshot();
     }
